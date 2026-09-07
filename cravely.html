@@ -1,0 +1,2680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Cravely | Crave More. Waste Less.</title>
+  <!-- Google Fonts + Font Awesome + Canvas Confetti -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --sage: #8FBF9F;
+      --sage-dark: #5c8b6d;
+      --sage-light: #EAF4EE;
+      --cream: #FFF8F0;
+      --beige: #F5E6D3;
+      --soft-orange: #FF9F6E;
+      --orange-hover: #f08954;
+      --dark: #2B2B2B;
+      --gray: #6b7280;
+      --light-gray: #f3f4f6;
+      --glass-bg: rgba(255, 248, 240, 0.82);
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --glass-border: rgba(143, 191, 159, 0.28);
+      --ngo-accent: #3b82f6;
+      --ngo-light: rgba(59, 130, 246, 0.12);
+      --shadow-sm: 0 10px 25px -5px rgba(0,0,0,0.06);
+      --shadow-md: 0 20px 35px -10px rgba(0,0,0,0.12);
+      --shadow-lg: 0 30px 60px -15px rgba(0,0,0,0.18);
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    body.dark {
+      --cream: #121b16;
+      --beige: #1a2720;
+      --dark: #F5F0E8;
+      --gray: #9ca3af;
+      --light-gray: #24352c;
+      --glass-bg: rgba(22, 33, 27, 0.85);
+      --card-bg: rgba(26, 39, 32, 0.92);
+      --glass-border: rgba(143, 191, 159, 0.25);
+      --ngo-light: rgba(59, 130, 246, 0.22);
+      --shadow-sm: 0 10px 25px -5px rgba(0,0,0,0.3);
+      --shadow-md: 0 20px 35px -10px rgba(0,0,0,0.4);
+      --shadow-lg: 0 30px 60px -15px rgba(0,0,0,0.5);
+      background: #0d1410;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--cream);
+      color: var(--dark);
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* LOADER */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: var(--sage);
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      transition: opacity 0.6s ease, visibility 0.6s;
+    }
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loader-logo {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: white;
+      background: rgba(255,255,240,0.25);
+      padding: 1.2rem 2.5rem;
+      border-radius: 999px;
+      animation: pulseScale 1.2s infinite alternate ease-in-out;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .loader-tagline {
+      color: rgba(255,255,255,0.9);
+      font-weight: 500;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    @keyframes pulseScale {
+      0% { transform: scale(0.96); opacity: 0.85; }
+      100% { transform: scale(1.06); opacity: 1; }
+    }
+
+    /* TOP LIVE TICKER */
+    .live-ticker {
+      background: linear-gradient(90deg, #5c8b6d, #FF9F6E, #3b82f6);
+      color: white;
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      z-index: 101;
+      position: relative;
+      text-align: center;
+    }
+    .live-ticker .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      border-radius: 50%;
+      animation: blink 1.2s infinite;
+      flex-shrink: 0;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.7); }
+    }
+
+    /* Sticky Nav */
+    nav {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: var(--glass-bg);
+      border-bottom: 1px solid var(--glass-border);
+      z-index: 100;
+      padding: 0.9rem 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .logo-icon {
+      font-size: 1.8rem;
+    }
+    .logo {
+      font-size: 1.85rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--sage), var(--soft-orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--dark);
+      transition: 0.25s ease;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -6px;
+      left: 0;
+      border-radius: 2px;
+      background: var(--soft-orange);
+      transition: 0.3s ease;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after {
+      width: 100%;
+    }
+    .nav-links .ngo-link-badge {
+      background: rgba(59, 130, 246, 0.15);
+      color: #2563eb;
+      padding: 0.15rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      margin-left: 0.2rem;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .mobile-menu {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--dark);
+    }
+    .btn-icon {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--dark);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .btn-icon:hover {
+      transform: scale(1.08);
+      border-color: var(--soft-orange);
+    }
+    .badge-count {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--soft-orange);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dark-toggle {
+      background: var(--card-bg);
+      border: 1px solid var(--sage);
+      color: var(--dark);
+      padding: 0.45rem 1rem;
+      border-radius: 40px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: var(--transition);
+    }
+    .dark-toggle:hover {
+      background: var(--sage);
+      color: white;
+    }
+
+    /* Mobile Nav */
+    @media (max-width: 1020px) {
+      .nav-links {
+        position: fixed;
+        top: 74px;
+        left: -100%;
+        flex-direction: column;
+        background: var(--glass-bg);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        width: 78%;
+        max-width: 320px;
+        height: calc(100vh - 74px);
+        padding: 2.5rem 2rem;
+        transition: 0.35s ease;
+        gap: 1.6rem;
+        border-right: 1px solid var(--glass-border);
+        box-shadow: var(--shadow-lg);
+        align-items: flex-start;
+      }
+      .nav-links.active {
+        left: 0;
+      }
+      .mobile-menu {
+        display: block;
+      }
+    }
+
+    /* Canvas background */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    section, footer, .hero, .stats, .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Container & Buttons */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 3rem auto;
+    }
+    .section-tag {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--sage-dark);
+      background: rgba(143, 191, 159, 0.2);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 0.8rem;
+    }
+    .section-tag.ngo-tag {
+      color: #2563eb;
+      background: rgba(59, 130, 246, 0.15);
+    }
+    .section-title {
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+    .section-desc {
+      color: var(--gray);
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--soft-orange);
+      color: #1f1f1f;
+      box-shadow: 0 8px 20px rgba(255,159,110,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--orange-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(255,159,110,0.5);
+    }
+    .btn-ngo {
+      background: #2563eb;
+      color: white;
+      box-shadow: 0 8px 20px rgba(37,99,235,0.35);
+    }
+    .btn-ngo:hover {
+      background: #1d4ed8;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(37,99,235,0.5);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--sage);
+      color: var(--dark);
+    }
+    .btn-outline:hover {
+      background: var(--sage);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-dark {
+      background: var(--dark);
+      color: var(--cream);
+    }
+    .btn-dark:hover {
+      opacity: 0.9;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-sm {
+      padding: 0.55rem 1.2rem;
+      font-size: 0.85rem;
+      border-radius: 30px;
+    }
+
+    /* Hero */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
+      align-items: center;
+      padding: 2rem 0;
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.5px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, var(--sage-dark), var(--soft-orange));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-desc {
+      margin: 1.5rem 0 2rem 0;
+      font-size: 1.15rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+    .hero-badges {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 2.2rem;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-sm);
+      border-radius: 60px;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--dark);
+    }
+
+    .floating-cards {
+      position: relative;
+      height: 490px;
+      perspective: 1000px;
+    }
+    .mock-card {
+      position: absolute;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: var(--dark);
+    }
+    .mock-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--shadow-lg);
+    }
+    .card-1 {
+      top: 6%;
+      left: 4%;
+      width: 220px;
+      animation: floatSlow 6s infinite ease-in-out;
+    }
+    .card-2 {
+      top: 36%;
+      right: 3%;
+      width: 210px;
+      animation: floatSlow 5.5s infinite ease-in-out 0.8s;
+    }
+    .card-3 {
+      bottom: 10%;
+      left: 8%;
+      width: 250px;
+      animation: floatSlow 7s infinite ease-in-out 1.5s;
+    }
+    .card-center {
+      top: 25%;
+      left: 26%;
+      width: 230px;
+      background: linear-gradient(145deg, rgba(255, 159, 110, 0.2), var(--card-bg));
+      border: 2px solid var(--soft-orange);
+      z-index: 3;
+      animation: floatSlow 5s infinite ease-in-out 0.3s;
+    }
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-14px); }
+    }
+
+    /* Stats Banner */
+    .stats-section {
+      background: var(--glass-bg);
+      border-top: 1px solid var(--glass-border);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 2.5rem 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-card {
+      padding: 1.2rem;
+    }
+    .stat-number-wrap {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 2px;
+    }
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--soft-orange);
+      line-height: 1;
+    }
+    .stat-number.ngo-stat {
+      color: #2563eb;
+    }
+    .stat-suffix {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--soft-orange);
+    }
+    .stat-label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin-top: 0.5rem;
+    }
+
+    /* Filter Controls & Live Deals */
+    .filter-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+    .search-city-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .search-input-box {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+    .search-input-box i {
+      position: absolute;
+      left: 1.2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray);
+    }
+    .search-input-box input {
+      width: 100%;
+      padding: 0.85rem 1rem 0.85rem 3rem;
+      border-radius: 40px;
+      border: 1px solid var(--glass-border);
+      background: var(--card-bg);
+      color: var(--dark);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: var(--transition);
+    }
+    .search-input-box input:focus {
+      border-color: var(--soft-orange);
+      box-shadow: 0 0 0 3px rgba(255,159,110,0.25);
+    }
+    .city-pills, .category-pills {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.3rem;
+      scrollbar-width: thin;
+    }
+    .filter-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--dark);
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .filter-pill:hover {
+      border-color: var(--sage);
+      transform: translateY(-2px);
+    }
+    .filter-pill.active {
+      background: var(--dark);
+      color: var(--cream);
+      border-color: var(--dark);
+    }
+
+    /* Food Deals Grid */
+    .deals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .food-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .food-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--sage);
+    }
+    .food-image-wrap {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+    }
+    .food-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .food-card:hover .food-image-wrap img {
+      transform: scale(1.08);
+    }
+    .diet-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255,255,255,0.92);
+      color: #111;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .diet-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .veg .diet-dot { background: #16a34a; }
+    .non-veg .diet-dot { background: #dc2626; }
+    .food-timer-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      backdrop-filter: blur(4px);
+    }
+    .food-timer-badge i {
+      color: var(--soft-orange);
+    }
+    .food-card-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .food-city-tag {
+      font-size: 0.78rem;
+      color: var(--sage-dark);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.2rem;
+    }
+    .food-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+      color: var(--dark);
+    }
+    .restaurant-name {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .food-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-top: 1px dashed var(--glass-border);
+      border-bottom: 1px dashed var(--glass-border);
+      margin-bottom: 1.1rem;
+    }
+    .pricing {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+    .price-discount {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--soft-orange);
+    }
+    .price-original {
+      font-size: 0.95rem;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+    .discount-tag {
+      background: rgba(255,159,110,0.2);
+      color: #e06c30;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+    .stock-left {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #ef4444;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* NGO REDISTRIBUTION SECTION */
+    .ngo-section-card {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(143, 191, 159, 0.15), var(--card-bg));
+      border: 2px solid rgba(59, 130, 246, 0.28);
+      border-radius: 38px;
+      padding: 3.5rem 3rem;
+      box-shadow: var(--shadow-lg);
+      margin-top: 1rem;
+    }
+    @media (max-width: 860px) {
+      .ngo-section-card { padding: 2rem 1.5rem; }
+    }
+    .ngo-workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin: 2.5rem 0;
+    }
+    .ngo-step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 1.8rem;
+      position: relative;
+      transition: var(--transition);
+    }
+    .ngo-step-card:hover {
+      transform: translateY(-5px);
+      border-color: #3b82f6;
+      box-shadow: var(--shadow-md);
+    }
+    .ngo-step-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    .ngo-partners-banner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: center;
+      padding-top: 2rem;
+      border-top: 1px dashed var(--glass-border);
+    }
+    .ngo-pill {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* Savings Calculator */
+    .calc-card {
+      background: linear-gradient(135deg, var(--card-bg), var(--glass-bg));
+      border: 1px solid var(--glass-border);
+      border-radius: 36px;
+      padding: 3rem 2.5rem;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .calc-card { grid-template-columns: 1fr; gap: 2rem; padding: 2rem 1.5rem; }
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+    .slider-container {
+      margin: 1.8rem 0;
+    }
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+    .slider-val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--soft-orange);
+    }
+    .calc-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: var(--light-gray);
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--soft-orange);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255,159,110,0.6);
+      transition: transform 0.1s ease;
+    }
+    .calc-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+    .calc-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .calc-metric-box {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 1.4rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .calc-metric-num {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--sage-dark);
+      margin-top: 0.3rem;
+    }
+
+    /* Business Section */
+    .business-banner {
+      background: linear-gradient(135deg, rgba(143,191,159,0.25), rgba(255,159,110,0.15));
+      border: 1px solid var(--glass-border);
+      border-radius: 40px;
+      padding: 3.5rem 3rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .business-banner { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .modal-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-dialog {
+      background: var(--cream);
+      color: var(--dark);
+      width: 100%;
+      max-width: 560px;
+      border-radius: 32px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow-lg);
+      transform: scale(0.92);
+      transition: transform 0.3s ease;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-backdrop.active .modal-dialog {
+      transform: scale(1);
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--dark);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+    .modal-close:hover {
+      background: #ef4444;
+      color: white;
+      border-color: #ef4444;
+    }
+
+    /* Quantity selector */
+    .qty-control {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+    .qty-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border);
+      background: var(--card-bg);
+      color: var(--dark);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qty-btn:hover {
+      border-color: var(--soft-orange);
+      background: var(--soft-orange);
+      color: #111;
+    }
+
+    /* UPI Option pill */
+    .payment-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin: 1.2rem 0;
+    }
+    .payment-pill {
+      background: var(--card-bg);
+      border: 1.5px solid var(--glass-border);
+      padding: 0.8rem 0.5rem;
+      border-radius: 16px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .payment-pill.selected {
+      border-color: var(--soft-orange);
+      background: rgba(255, 159, 110, 0.15);
+      color: var(--dark);
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 18px;
+      border: 1px solid var(--glass-border);
+      background: var(--card-bg);
+      color: var(--dark);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--soft-orange);
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 100000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      pointer-events: none;
+    }
+    .toast {
+      background: var(--card-bg);
+      color: var(--dark);
+      border: 1px solid var(--glass-border);
+      border-left: 5px solid var(--soft-orange);
+      padding: 1rem 1.4rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      font-size: 0.92rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      animation: slideInToast 0.35s ease forwards;
+      pointer-events: auto;
+      max-width: 360px;
+    }
+    .toast.ngo-toast {
+      border-left-color: #2563eb;
+    }
+    @keyframes slideInToast {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: var(--card-bg);
+      margin-bottom: 1rem;
+      border-radius: 20px;
+      padding: 1.2rem 1.6rem;
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, margin-top 0.3s ease;
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 250px;
+      margin-top: 0.9rem;
+    }
+    .faq-item.active {
+      border-color: var(--sage);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    .back-to-top:hover {
+      transform: translateY(-4px);
+      background: var(--soft-orange);
+      color: #111;
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Ripple */
+    .ripple-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear;
+      pointer-events: none;
+    }
+    @keyframes rippleAnim {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--beige);
+      border-radius: 48px 48px 0 0;
+      padding: 4rem 6% 2rem;
+      margin-top: 4rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(auto-fit, minmax(160px, 1fr));
+      gap: 3rem;
+    }
+    .footer-col h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--dark);
+    }
+    .footer-col a {
+      display: block;
+      color: var(--gray);
+      text-decoration: none;
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .footer-col a:hover {
+      color: var(--soft-orange);
+      transform: translateX(4px);
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .social-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .social-icon:hover {
+      background: var(--soft-orange);
+      color: white;
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-logo">
+    <span>🍽️</span> Cravely
+  </div>
+  <div class="loader-tagline">Crave More. Waste Less.</div>
+</div>
+
+<!-- LIVE IMPACT TICKER -->
+<div class="live-ticker">
+  <span class="pulse-dot"></span>
+  <span id="liveTickerText">⚡ Live: 14 meals rescued + 6 surplus boxes donated to Feeding India NGO in Mumbai & Delhi!</span>
+</div>
+
+<!-- STICKY NAVIGATION -->
+<nav>
+  <a href="#home" class="logo-container">
+    <span class="logo-icon">🌿</span>
+    <span class="logo">Cravely</span>
+  </a>
+
+  <div class="mobile-menu" id="mobileMenuBtn" aria-label="Toggle Navigation">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#home" class="active">Home</a>
+    <a href="#deals">Live Deals</a>
+    <a href="#ngo-network">NGO Network <span class="ngo-link-badge">100% Zero Waste</span></a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#calculator">Impact Calculator</a>
+    <a href="#business">For Restaurants</a>
+    <a href="#faq">FAQs</a>
+  </div>
+
+  <div class="nav-actions">
+    <button class="btn-icon" id="cartBtn" title="Saved Meal Reservations">
+      <i class="fas fa-bag-shopping"></i>
+      <span class="badge-count" id="cartCount">0</span>
+    </button>
+    <button class="dark-toggle" id="darkModeToggle">
+      <i class="fas fa-moon"></i> <span>Dark</span>
+    </button>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO SECTION -->
+  <section id="home" class="container hero">
+    <div class="hero-grid">
+      <div class="hero-text reveal">
+        <span class="section-tag"><i class="fas fa-seedling"></i> India's #1 Surplus Food Rescue & NGO Network</span>
+        <h1 class="hero-title">
+          Rescue Delicious Food Before It Goes To <span>Waste</span>
+        </h1>
+        <p class="hero-desc">
+          Get fresh meals at <strong>50% to 70% OFF</strong> from top restaurants. If any food is still remaining at closing time, restaurants seamlessly connect with verified <strong>NGOs & shelters</strong> for 100% zero-waste redistribution.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#deals" class="btn btn-primary ripple-btn">
+            <i class="fas fa-fire"></i> Explore Live Deals
+          </a>
+          <button class="btn btn-ngo ripple-btn" id="openNgoHeroBtn">
+            <i class="fas fa-hand-holding-heart"></i> Dispatch to NGO
+          </button>
+          <button class="btn btn-outline ripple-btn" id="openPartnerHeroBtn">
+            <i class="fas fa-store"></i> Partner With Us
+          </button>
+        </div>
+        <div class="hero-badges">
+          <span class="badge"><i class="fas fa-tag" style="color:var(--soft-orange)"></i> 50–70% OFF</span>
+          <span class="badge"><i class="fas fa-hand-holding-heart" style="color:#2563eb"></i> NGO Food Connect</span>
+          <span class="badge"><i class="fas fa-leaf" style="color:var(--sage-dark)"></i> 100% Zero Waste</span>
+          <span class="badge"><i class="fas fa-shield-check" style="color:#3b82f6"></i> Verified Safety</span>
+        </div>
+      </div>
+
+      <div class="floating-cards">
+        <div class="mock-card card-1">
+          <div style="font-size:0.8rem; color:var(--sage-dark); font-weight:700;">🔥 POPULAR DEAL</div>
+          <div style="font-weight:700; font-size:1.05rem;">Paneer Dum Biryani</div>
+          <div style="font-size:0.85rem; color:var(--gray);">Spice Bites, Virar</div>
+          <div style="margin-top:0.4rem;"><strong style="color:var(--soft-orange)">₹99</strong> <span style="text-decoration:line-through; font-size:0.8rem; color:var(--gray);">₹299</span></div>
+        </div>
+
+        <div class="mock-card card-center">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-weight:800; font-size:1.1rem;">⚡ Flash Drop</span>
+            <span style="background:#ef4444; color:white; font-size:0.7rem; font-weight:800; padding:2px 8px; border-radius:12px;">3 Left</span>
+          </div>
+          <div style="margin:0.5rem 0; font-size:0.9rem;">Belgian Truffle Pastry</div>
+          <div style="font-size:0.8rem; color:var(--gray);"><i class="fas fa-clock"></i> Pickup in 25 mins</div>
+          <div style="font-weight:800; color:var(--soft-orange); font-size:1.2rem; margin-top:0.3rem;">₹79 <span style="font-size:0.8rem; text-decoration:line-through; color:var(--gray);">₹220</span></div>
+        </div>
+
+        <div class="mock-card card-2">
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <i class="fas fa-hand-holding-heart" style="font-size:1.4rem; color:#2563eb;"></i>
+            <div>
+              <div style="font-weight:700; font-size:0.95rem;">NGO Pickup Ready</div>
+              <div style="font-size:0.8rem; color:var(--gray);">Robin Hood Army & Feeding India</div>
+            </div>
+          </div>
+          <div style="font-size:0.75rem; color:#2563eb; font-weight:700; margin-top:0.4rem;">✓ 1-Click NGO Dispatch</div>
+        </div>
+
+        <div class="mock-card card-3">
+          <div style="display:flex; align-items:center; gap:0.5rem;">
+            <i class="fas fa-earth-asia" style="font-size:1.3rem; color:var(--sage-dark);"></i>
+            <div>
+              <div style="font-weight:700; font-size:0.9rem;">Total Climate Impact</div>
+              <div style="font-size:0.78rem; color:var(--gray);">5,400+ Meals Fed to Shelters</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STATS SECTION -->
+  <section class="stats-section">
+    <div class="container" style="padding:0 1.5rem;">
+      <div class="stats-grid" id="statsSection">
+        <div class="stat-card reveal">
+          <div class="stat-number-wrap">
+            <span class="stat-number" data-count="14850">0</span>
+            <span class="stat-suffix">+</span>
+          </div>
+          <div class="stat-label">Meals Rescued by Users</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-number-wrap">
+            <span class="stat-number ngo-stat" data-count="5600" id="ngoMealsCount">0</span>
+            <span class="stat-suffix" style="color:#2563eb;">+</span>
+          </div>
+          <div class="stat-label">Meals Donated to NGOs</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-number-wrap">
+            <span class="stat-number" data-count="620">0</span>
+            <span class="stat-suffix">+</span>
+          </div>
+          <div class="stat-label">Partner Restaurants</div>
+        </div>
+        <div class="stat-card reveal">
+          <div class="stat-number-wrap">
+            <span class="stat-number" data-count="18">0</span>
+            <span class="stat-suffix">.5T</span>
+          </div>
+          <div class="stat-label">CO₂ Averted</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE FOOD DEALS WITH FILTERS -->
+  <section id="deals" class="container reveal">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-bolt"></i> Surplus Drops</span>
+      <h2 class="section-title">🔥 Live Food Deals Near You</h2>
+      <p class="section-desc">Limited surplus stock from top eateries. Grab your meal before the timer runs out!</p>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="filter-wrapper">
+      <div class="search-city-row">
+        <div class="search-input-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="dealSearchInput" placeholder="Search biryani, pizza, dosa, restaurant name...">
+        </div>
+        <div class="city-pills" id="cityFilter">
+          <button class="filter-pill active" data-city="all">All Cities</button>
+          <button class="filter-pill" data-city="Mumbai">Mumbai</button>
+          <button class="filter-pill" data-city="Pune">Pune</button>
+          <button class="filter-pill" data-city="Bengaluru">Bengaluru</button>
+          <button class="filter-pill" data-city="Delhi">Delhi</button>
+          <button class="filter-pill" data-city="Virar">Virar</button>
+        </div>
+      </div>
+
+      <div class="category-pills" id="categoryFilter">
+        <button class="filter-pill active" data-category="all">All Categories</button>
+        <button class="filter-pill" data-category="veg">🌱 Pure Veg</button>
+        <button class="filter-pill" data-category="non-veg">🍗 Non-Veg</button>
+        <button class="filter-pill" data-category="dessert">🍰 Desserts & Bakery</button>
+        <button class="filter-pill" data-category="fast-food">🥪 Fast Food & Combos</button>
+      </div>
+    </div>
+
+    <!-- Deals Grid Container -->
+    <div class="deals-grid" id="dealsContainer">
+      <!-- Generated via JS -->
+    </div>
+  </section>
+
+  <!-- NGO REDISTRIBUTION & ZERO WASTE SECTION -->
+  <section id="ngo-network" class="container reveal">
+    <div class="ngo-section-card">
+      <div class="section-header" style="margin-bottom:1.5rem;">
+        <span class="section-tag ngo-tag"><i class="fas fa-hand-holding-heart"></i> Zero Food Waste Guarantee</span>
+        <h2 class="section-title">Remaining Food? Donate to Verified NGOs in 1-Click</h2>
+        <p class="section-desc">
+          When the discounted customer pickup window closes, no food is thrown away. Partner restaurants use Cravely to instantly dispatch unsold surplus meals to nearby verified NGOs, community kitchens, and homeless shelters.
+        </p>
+      </div>
+
+      <div class="ngo-workflow-grid">
+        <div class="ngo-step-card">
+          <div class="ngo-step-num">1</div>
+          <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-bell" style="color:#2563eb;"></i> End-of-Day Alert</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">
+            Restaurants receive a prompt 45 mins before kitchen closing showing any remaining unsold portions with instant donation options.
+          </p>
+        </div>
+
+        <div class="ngo-step-card">
+          <div class="ngo-step-num">2</div>
+          <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-truck-fast" style="color:#2563eb;"></i> Volunteer Dispatch</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">
+            Cravely matches the surplus with nearest active NGO volunteer teams (Robin Hood Army, Feeding India, Roti Bank) for quick pickup.
+          </p>
+        </div>
+
+        <div class="ngo-step-card">
+          <div class="ngo-step-num">3</div>
+          <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-bowl-rice" style="color:#2563eb;"></i> Direct Shelter Feeding</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">
+            Surplus food is safely transported and distributed to local night shelters, orphanages, and children in need on the same night.
+          </p>
+        </div>
+
+        <div class="ngo-step-card">
+          <div class="ngo-step-num">4</div>
+          <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-file-invoice-dollar" style="color:#2563eb;"></i> 80G Tax & CSR Credit</h3>
+          <p style="color:var(--gray); font-size:0.9rem;">
+            Donating restaurants receive verified food donation certificates eligible for 80G tax deductions and sustainability CSR badges.
+          </p>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-bottom:2rem;">
+        <button class="btn btn-ngo ripple-btn" id="openNgoDonateBtn">
+          <i class="fas fa-truck-fast"></i> Request Instant NGO Food Pickup
+        </button>
+        <button class="btn btn-outline" id="openNgoPartnerBtn">
+          <i class="fas fa-handshake-angle"></i> Register as an NGO Recipient
+        </button>
+      </div>
+
+      <div class="ngo-partners-banner">
+        <span style="font-weight:700; font-size:0.9rem; color:var(--gray);">Verified NGO Rescue Partners:</span>
+        <div class="ngo-pill"><i class="fas fa-shield-heart" style="color:#ef4444;"></i> Robin Hood Army</div>
+        <div class="ngo-pill"><i class="fas fa-utensils" style="color:#f59e0b;"></i> Feeding India (Zomato)</div>
+        <div class="ngo-pill"><i class="fas fa-bread-slice" style="color:#10b981;"></i> Mumbai Roti Bank</div>
+        <div class="ngo-pill"><i class="fas fa-hands-holding-child" style="color:#3b82f6;"></i> Akshaya Patra</div>
+        <div class="ngo-pill"><i class="fas fa-house-chimney-user" style="color:#8b5cf6;"></i> Local Night Shelters</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="container reveal">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-circle-question"></i> Simple Process</span>
+      <h2 class="section-title">How Cravely Works</h2>
+      <p class="section-desc">Rescue fresh food in three frictionless steps and save up to 70% every day.</p>
+    </div>
+
+    <div class="deals-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="mock-card" style="position:relative; width:auto; text-align:center; padding:2.5rem 1.8rem;">
+        <div style="width:70px; height:70px; border-radius:50%; background:rgba(255,159,110,0.15); color:var(--soft-orange); display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; font-size:1.8rem;">
+          <i class="fas fa-map-location-dot"></i>
+        </div>
+        <h3 style="font-size:1.3rem; margin-bottom:0.6rem;">1. Discover Surplus</h3>
+        <p style="color:var(--gray); font-size:0.95rem;">Browse surplus surprise meals, pastries and combos from verified eateries near your current location.</p>
+      </div>
+
+      <div class="mock-card" style="position:relative; width:auto; text-align:center; padding:2.5rem 1.8rem;">
+        <div style="width:70px; height:70px; border-radius:50%; background:rgba(143,191,159,0.2); color:var(--sage-dark); display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; font-size:1.8rem;">
+          <i class="fas fa-hand-holding-dollar"></i>
+        </div>
+        <h3 style="font-size:1.3rem; margin-bottom:0.6rem;">2. Reserve & Pay UPI</h3>
+        <p style="color:var(--gray); font-size:0.95rem;">Lock your discounted food with instant UPI payment. You get a direct pickup code on your screen.</p>
+      </div>
+
+      <div class="mock-card" style="position:relative; width:auto; text-align:center; padding:2.5rem 1.8rem;">
+        <div style="width:70px; height:70px; border-radius:50%; background:rgba(59,130,246,0.15); color:#3b82f6; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; font-size:1.8rem;">
+          <i class="fas fa-person-walking-luggage"></i>
+        </div>
+        <h3 style="font-size:1.3rem; margin-bottom:0.6rem;">3. Pickup & Relish</h3>
+        <p style="color:var(--gray); font-size:0.95rem;">Show your pickup QR at the restaurant during the collection window, take your food, and save the planet!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAVINGS & IMPACT CALCULATOR -->
+  <section id="calculator" class="container reveal">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-calculator"></i> Impact Estimator</span>
+      <h2 class="section-title">Calculate Your Savings & Climate Impact</h2>
+      <p class="section-desc">See how much money and carbon emissions you save when you rescue surplus food with Cravely.</p>
+    </div>
+
+    <div class="calc-card">
+      <div>
+        <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:0.8rem;">Your Weekly Rescue Habit</h3>
+        <p style="color:var(--gray); font-size:0.95rem;">Adjust how many meals you or your family rescue per week to see your projected annual impact.</p>
+
+        <div class="slider-container">
+          <div class="slider-header">
+            <span>Meals Rescued / Week:</span>
+            <span class="slider-val" id="sliderValueText">3 meals</span>
+          </div>
+          <input type="range" min="1" max="14" value="3" class="calc-slider" id="mealsSlider">
+        </div>
+
+        <div style="display:flex; gap:0.8rem; align-items:center; margin-top:1.5rem;">
+          <i class="fas fa-circle-check" style="color:var(--sage-dark)"></i>
+          <span style="font-size:0.9rem; color:var(--gray);">Calculated based on avg. ₹120 savings per meal</span>
+        </div>
+      </div>
+
+      <div class="calc-metrics">
+        <div class="calc-metric-box">
+          <i class="fas fa-wallet" style="font-size:1.8rem; color:var(--soft-orange);"></i>
+          <div class="calc-metric-num" id="calcMoneySaved">₹18,720</div>
+          <div style="font-size:0.85rem; color:var(--gray); font-weight:600;">Annual ₹ Saved</div>
+        </div>
+        <div class="calc-metric-box">
+          <i class="fas fa-leaf" style="font-size:1.8rem; color:var(--sage-dark);"></i>
+          <div class="calc-metric-num" id="calcCO2Saved">390 kg</div>
+          <div style="font-size:0.85rem; color:var(--gray); font-weight:600;">CO₂ Emissions Saved</div>
+        </div>
+        <div class="calc-metric-box">
+          <i class="fas fa-droplet" style="font-size:1.8rem; color:#3b82f6;"></i>
+          <div class="calc-metric-num" id="calcWaterSaved">15,600 L</div>
+          <div style="font-size:0.85rem; color:var(--gray); font-weight:600;">Water Footprint Saved</div>
+        </div>
+        <div class="calc-metric-box">
+          <i class="fas fa-utensils" style="font-size:1.8rem; color:#a855f7;"></i>
+          <div class="calc-metric-num" id="calcMealsYear">156</div>
+          <div style="font-size:0.85rem; color:var(--gray); font-weight:600;">Meals Saved / Year</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR BUSINESSES / RESTAURANTS -->
+  <section id="business" class="container reveal">
+    <div class="business-banner">
+      <div>
+        <span class="section-tag" style="background:rgba(255,255,255,0.4);"><i class="fas fa-shop"></i> Restaurant Partners</span>
+        <h2 style="font-size:clamp(1.8rem, 3vw, 2.5rem); font-weight:800; margin:0.8rem 0;">Turn Unsold Surplus Food Into Net Revenue & Social Good</h2>
+        <p style="color:var(--gray); font-size:1rem; margin-bottom:1.5rem;">
+          Over 600+ restaurants, cafes, and bakeries in India use Cravely to recover food costs through flash discounts and connect directly with NGOs for any remaining food at day's end.
+        </p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <button class="btn btn-primary ripple-btn" id="openPartnerModalBtn">
+            <i class="fas fa-handshake"></i> Register Your Restaurant
+          </button>
+          <button class="btn btn-ngo ripple-btn" id="openNgoFromBusinessBtn">
+            <i class="fas fa-hand-holding-heart"></i> Dispatch Remaining to NGO
+          </button>
+        </div>
+      </div>
+
+      <div class="mock-card" style="position:relative; width:auto; padding:2rem;">
+        <h4 style="font-weight:800; margin-bottom:1rem;"><i class="fas fa-chart-line" style="color:var(--sage-dark)"></i> Partner ROI & Impact</h4>
+        <div style="margin-bottom:1rem; border-bottom:1px solid var(--glass-border); padding-bottom:0.8rem;">
+          <div style="font-size:0.85rem; color:var(--gray);">Average Extra Monthly Revenue</div>
+          <div style="font-size:1.6rem; font-weight:800; color:var(--soft-orange);">₹35,000 – ₹75,000</div>
+        </div>
+        <div style="margin-bottom:1rem; border-bottom:1px solid var(--glass-border); padding-bottom:0.8rem;">
+          <div style="font-size:0.85rem; color:var(--gray);">100% Zero Food Waste</div>
+          <div style="font-size:1.3rem; font-weight:800; color:#2563eb;">Unsold Food → Free NGO Feed</div>
+        </div>
+        <div style="font-size:0.85rem; color:var(--gray);">
+          <i class="fas fa-check-circle" style="color:var(--sage-dark)"></i> Zero listing fees • 80G Tax Certificates
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="container reveal">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-heart"></i> Verified Reviews</span>
+      <h2 class="section-title">Loved by Foodies, Restaurants & NGO Volunteers</h2>
+      <p class="section-desc">Hear how Cravely is transforming everyday dining and hunger alleviation across India.</p>
+    </div>
+
+    <div class="deals-grid" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));">
+      <div class="mock-card" style="position:relative; width:auto; padding:2rem;">
+        <div style="color:gold; font-size:1.1rem; margin-bottom:0.8rem;">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p style="font-size:0.95rem; color:var(--dark); margin-bottom:1.2rem; font-style:italic;">
+          "Cravely saved me ₹2,400 on lunch expenses last month! I get hot Paneer Biryani and Dosa combos right after college at insane discounts."
+        </p>
+        <div style="display:flex; align-items:center; gap:0.8rem;">
+          <div style="width:40px; height:40px; border-radius:50%; background:var(--soft-orange); display:flex; align-items:center; justify-content:center; font-weight:800; color:white;">A</div>
+          <div>
+            <div style="font-weight:700; font-size:0.95rem;">Anjali Sharma</div>
+            <div style="font-size:0.8rem; color:var(--gray);">Student, Mumbai University</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mock-card" style="position:relative; width:auto; padding:2rem;">
+        <div style="color:gold; font-size:1.1rem; margin-bottom:0.8rem;">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p style="font-size:0.95rem; color:var(--dark); margin-bottom:1.2rem; font-style:italic;">
+          "The 1-click NGO pickup feature is incredible. Whatever surplus meals aren't bought by customers are collected by Robin Hood Army in 30 mins to feed a local orphanage. Zero waste, pure blessings!"
+        </p>
+        <div style="display:flex; align-items:center; gap:0.8rem;">
+          <div style="width:40px; height:40px; border-radius:50%; background:var(--sage-dark); display:flex; align-items:center; justify-content:center; font-weight:800; color:white;">R</div>
+          <div>
+            <div style="font-weight:700; font-size:0.95rem;">Rajesh Deshmukh</div>
+            <div style="font-size:0.8rem; color:var(--gray);">Owner, Flavours of Deccan (Pune)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mock-card" style="position:relative; width:auto; padding:2rem;">
+        <div style="color:gold; font-size:1.1rem; margin-bottom:0.8rem;">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p style="font-size:0.95rem; color:var(--dark); margin-bottom:1.2rem; font-style:italic;">
+          "As an NGO volunteer coordinator, Cravely's real-time surplus dispatch notifications help our team distribute 150+ fresh, hot restaurant meals every single evening."
+        </p>
+        <div style="display:flex; align-items:center; gap:0.8rem;">
+          <div style="width:40px; height:40px; border-radius:50%; background:#2563eb; display:flex; align-items:center; justify-content:center; font-weight:800; color:white;">P</div>
+          <div>
+            <div style="font-weight:700; font-size:0.95rem;">Pooja Nair</div>
+            <div style="font-size:0.8rem; color:var(--gray);">NGO Volunteer Lead, Bengaluru</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQS -->
+  <section id="faq" class="container reveal">
+    <div class="section-header">
+      <span class="section-tag"><i class="fas fa-circle-info"></i> Got Questions?</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-desc">Everything you need to know about food safety, reservations, and NGO food donations.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What happens if surplus food is still remaining at the end of the day?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Restaurants never have to throw away edible food! Cravely has an integrated NGO Dispatch network (Robin Hood Army, Feeding India, Roti Bank). With one click on the restaurant app, nearby NGO volunteers are notified to pick up remaining portions and distribute them to local shelters.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How does Cravely ensure the food is safe and fresh?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          All surplus meals listed on Cravely are fresh, perfectly edible food prepared on the same day by verified partner restaurants and bakeries. Items are listed only within certified safe consumption windows.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>How do I pick up my reserved meal as a customer?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Once you reserve and pay via UPI, you receive an instant Order Pickup ID and QR code. Simply show this at the restaurant's takeaway counter during your scheduled pickup window.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Can NGOs register to receive surplus food donations?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Yes! Registered charities, community food banks, and shelter homes can join Cravely's verified NGO Rescue Network with zero cost. You will receive real-time surplus dispatch pings based on your volunteer coverage areas.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Do restaurants get tax benefits for NGO donations?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Yes. All food donations logged through verified NGO partners on Cravely generate digital donation receipts eligible for tax exemption under Section 80G and corporate social responsibility (CSR) compliance.
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo-container" style="margin-bottom:0.8rem;">
+        <span class="logo-icon">🌿</span>
+        <span class="logo">Cravely</span>
+      </div>
+      <p style="color:var(--gray); font-size:0.95rem; max-width:320px;">
+        India's mission-driven platform connecting hungry food lovers with surplus restaurant food at 50–70% discounts, with 100% zero-waste NGO backup.
+      </p>
+      <div class="social-links">
+        <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/sidzooni-ctrl/cravely" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="#home">Home</a>
+      <a href="#deals">Live Food Drops</a>
+      <a href="#ngo-network">NGO Food Network</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#calculator">Impact Calculator</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Cities</h4>
+      <a href="#deals" onclick="selectCity('Mumbai')">Mumbai</a>
+      <a href="#deals" onclick="selectCity('Pune')">Pune</a>
+      <a href="#deals" onclick="selectCity('Bengaluru')">Bengaluru</a>
+      <a href="#deals" onclick="selectCity('Delhi')">Delhi</a>
+      <a href="#deals" onclick="selectCity('Virar')">Virar</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>NGO & Partners</h4>
+      <a href="javascript:void(0)" onclick="openNgoModal()">Dispatch Food to NGO</a>
+      <a href="javascript:void(0)" onclick="openPartner()">Restaurant Onboarding</a>
+      <a href="javascript:void(0)" onclick="openNgoRecipientModal()">NGO Registration</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Newsletter</h4>
+      <p style="font-size:0.85rem; color:var(--gray); margin-bottom:0.8rem;">Get notified when secret surplus drops happen near you.</p>
+      <form id="newsletterForm" style="display:flex; flex-direction:column; gap:0.6rem;">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email" required style="padding:0.65rem 1rem; border-radius:30px; border:1px solid var(--glass-border); outline:none; background:var(--card-bg); color:var(--dark);">
+        <button type="submit" class="btn btn-primary btn-sm">Subscribe Drop Alerts</button>
+      </form>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid var(--glass-border); margin-top:3rem; padding-top:1.5rem; text-align:center; font-size:0.85rem; color:var(--gray);">
+    <p>&copy; 2025–2026 Cravely Inc. All rights reserved. • Dedicated to zero food waste and zero hunger in India.</p>
+  </div>
+</footer>
+
+<!-- BACK TO TOP BUTTON -->
+<button class="back-to-top" id="backToTopBtn" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- RESERVATION & UPI CHECKOUT MODAL -->
+<div class="modal-backdrop" id="reserveModalBackdrop">
+  <div class="modal-dialog">
+    <button class="modal-close" id="closeReserveModal"><i class="fas fa-times"></i></button>
+
+    <div id="modalStep1">
+      <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1.2rem;">
+        <img id="modalFoodImg" src="" style="width:75px; height:75px; border-radius:18px; object-fit:cover;">
+        <div>
+          <span class="food-city-tag" id="modalFoodCity">MUMBAI</span>
+          <h3 style="font-size:1.25rem; font-weight:800;" id="modalFoodTitle">Paneer Biryani</h3>
+          <div style="font-size:0.85rem; color:var(--gray);" id="modalRestName">Spice Bites</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Select Quantity (Meals to Rescue):</label>
+        <div class="qty-control">
+          <button class="qty-btn" id="qtyMinus">-</button>
+          <span style="font-size:1.2rem; font-weight:800;" id="modalQty">1</span>
+          <button class="qty-btn" id="qtyPlus">+</button>
+          <span style="font-size:0.85rem; color:var(--gray);" id="modalStockStatus">(Max 3 available)</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Choose Pickup Time Window:</label>
+        <select id="modalPickupSlot">
+          <option value="within-30">Immediate Pickup (Next 30 Mins)</option>
+          <option value="evening-slot">Evening Window (8:00 PM – 9:00 PM)</option>
+          <option value="late-slot">Late Night Window (10:00 PM – 11:15 PM)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Select Payment Method:</label>
+        <div class="payment-options">
+          <div class="payment-pill selected" data-method="gpay"><i class="fab fa-google-pay" style="font-size:1.2rem;"></i><br>GPay / UPI</div>
+          <div class="payment-pill" data-method="phonepe"><i class="fas fa-mobile-screen"></i><br>PhonePe</div>
+          <div class="payment-pill" data-method="counter"><i class="fas fa-store"></i><br>Pay at Counter</div>
+        </div>
+      </div>
+
+      <div style="background:var(--card-bg); padding:1rem; border-radius:18px; border:1px solid var(--glass-border); margin:1.2rem 0;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:0.3rem;">
+          <span style="color:var(--gray); font-size:0.9rem;">Discounted Total:</span>
+          <span style="font-weight:800; font-size:1.2rem; color:var(--soft-orange);" id="modalTotalPay">₹99</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:var(--sage-dark); font-weight:700;">
+          <span>🌱 CO₂ Emissions Saved:</span>
+          <span id="modalCO2Gain">0.8 kg</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%;" id="confirmReserveBtn">
+        <i class="fas fa-bolt"></i> Complete Reservation & Pay
+      </button>
+    </div>
+
+    <!-- Confirmation / Success Screen in Modal -->
+    <div id="modalStepSuccess" style="display:none; text-align:center; padding:1rem 0;">
+      <div style="width:70px; height:70px; border-radius:50%; background:rgba(143,191,159,0.2); color:var(--sage-dark); font-size:2rem; display:flex; align-items:center; justify-content:center; margin:0 auto 1.2rem;">
+        <i class="fas fa-check"></i>
+      </div>
+      <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:0.4rem;">Meal Reserved Successfully!</h3>
+      <p style="color:var(--gray); font-size:0.9rem; margin-bottom:1.5rem;">
+        Show this pickup code at the restaurant counter to collect your food.
+      </p>
+
+      <div style="background:var(--card-bg); border:2px dashed var(--sage); padding:1.5rem; border-radius:24px; margin-bottom:1.5rem;">
+        <div style="font-size:0.8rem; font-weight:700; color:var(--gray);">YOUR PICKUP CODE</div>
+        <div style="font-size:2rem; font-weight:900; letter-spacing:4px; color:var(--soft-orange); margin:0.4rem 0;" id="successPickupCode">CRV-8942</div>
+        <div style="font-size:0.85rem; font-weight:600; color:var(--dark);" id="successDetailsText">Paneer Biryani • 1 Meal</div>
+        <div style="font-size:0.8rem; color:var(--gray); margin-top:0.3rem;"><i class="fas fa-clock"></i> Pickup: Next 30 Mins</div>
+      </div>
+
+      <button class="btn btn-dark" style="width:100%;" id="finishOrderBtn">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- NGO FOOD DISPATCH / DONATION MODAL -->
+<div class="modal-backdrop" id="ngoModalBackdrop">
+  <div class="modal-dialog">
+    <button class="modal-close" id="closeNgoModal"><i class="fas fa-times"></i></button>
+
+    <div id="ngoDispatchFormStep">
+      <div style="text-align:center; margin-bottom:1.4rem;">
+        <span class="section-tag ngo-tag"><i class="fas fa-truck-fast"></i> NGO Food Connect</span>
+        <h3 style="font-size:1.4rem; font-weight:800;">Dispatch Remaining Food to NGO</h3>
+        <p style="color:var(--gray); font-size:0.88rem;">Have unsold food at day's end? Request a volunteer pickup in 1 click.</p>
+      </div>
+
+      <form id="ngoDispatchForm">
+        <div class="form-group">
+          <label>Restaurant / Kitchen Name:</label>
+          <input type="text" id="ngoRestName" placeholder="e.g. Spice Bites Virar / Royal Kitchen" required>
+        </div>
+
+        <div class="form-group">
+          <label>Location & Pickup Address:</label>
+          <input type="text" id="ngoAddress" placeholder="e.g. Shop 12, Station Road, Bandra West" required>
+        </div>
+
+        <div class="form-group" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+          <div>
+            <label>Estimated Food Quantity:</label>
+            <input type="text" id="ngoQuantity" placeholder="e.g. 15 meal boxes / 8 kg" required>
+          </div>
+          <div>
+            <label>Food Category:</label>
+            <select id="ngoFoodType">
+              <option value="Cooked Meals">Fresh Cooked Meals</option>
+              <option value="Bakery">Bakery & Breads</option>
+              <option value="Combos">Mixed Combos / Gravies</option>
+              <option value="Dry/Packaged">Packaged Edibles</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Select Preferred NGO Partner:</label>
+          <select id="ngoPartnerChoice">
+            <option value="Auto">⚡ Auto-match Nearest Available NGO Volunteer</option>
+            <option value="Robin Hood Army">Robin Hood Army (Volunteer Network)</option>
+            <option value="Feeding India">Feeding India by Zomato</option>
+            <option value="Mumbai Roti Bank">Mumbai Roti Bank</option>
+            <option value="Akshaya Patra">Akshaya Patra Foundation</option>
+          </select>
+        </div>
+
+        <div style="background:var(--ngo-light); border:1px solid rgba(59,130,246,0.3); padding:0.9rem 1.1rem; border-radius:18px; margin-bottom:1.2rem; font-size:0.85rem;">
+          <div style="font-weight:700; color:#2563eb; margin-bottom:0.2rem;"><i class="fas fa-certificate"></i> 80G Tax Exemption & CSR Certificate</div>
+          <p style="color:var(--gray); margin:0;">Digital certificate will be sent immediately upon volunteer food collection.</p>
+        </div>
+
+        <button type="submit" class="btn btn-ngo" style="width:100%;" id="ngoSubmitBtn">
+          <i class="fas fa-hand-holding-heart"></i> Dispatch NGO Pickup (Free)
+        </button>
+      </form>
+    </div>
+
+    <!-- NGO Dispatch Success Screen -->
+    <div id="ngoDispatchSuccessStep" style="display:none; text-align:center; padding:1rem 0;">
+      <div style="width:70px; height:70px; border-radius:50%; background:rgba(59,130,246,0.2); color:#2563eb; font-size:2rem; display:flex; align-items:center; justify-content:center; margin:0 auto 1.2rem;">
+        <i class="fas fa-truck-fast"></i>
+      </div>
+      <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:0.4rem;">NGO Volunteer Dispatched!</h3>
+      <p style="color:var(--gray); font-size:0.9rem; margin-bottom:1.5rem;">
+        A nearby volunteer is en route to collect your surplus food for shelter distribution.
+      </p>
+
+      <div style="background:var(--card-bg); border:2px dashed #2563eb; padding:1.5rem; border-radius:24px; margin-bottom:1.5rem; text-align:left;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+          <span style="font-size:0.8rem; font-weight:700; color:var(--gray);">DISPATCH TICKET</span>
+          <span style="background:#2563eb; color:white; font-size:0.75rem; font-weight:800; padding:2px 8px; border-radius:12px;">ACTIVE</span>
+        </div>
+        <div style="font-size:1.5rem; font-weight:900; color:#2563eb; margin-bottom:0.4rem;" id="ngoDispatchCode">NGO-7821</div>
+        <div style="font-size:0.9rem; font-weight:700; color:var(--dark);" id="ngoVolunteerInfo">Matched: Robin Hood Army (Rahul S.)</div>
+        <div style="font-size:0.85rem; color:var(--gray); margin-top:0.3rem;"><i class="fas fa-clock" style="color:#2563eb;"></i> Estimated Arrival: 18–25 Mins</div>
+        <div style="font-size:0.85rem; color:var(--sage-dark); font-weight:700; margin-top:0.4rem;"><i class="fas fa-check-double"></i> 80G Tax Exemption Receipt generated</div>
+      </div>
+
+      <button class="btn btn-dark" style="width:100%;" id="finishNgoBtn">Back to Dashboard</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESTAURANT / NGO PARTNER ONBOARDING MODAL -->
+<div class="modal-backdrop" id="partnerModalBackdrop">
+  <div class="modal-dialog">
+    <button class="modal-close" id="closePartnerModal"><i class="fas fa-times"></i></button>
+    <div style="text-align:center; margin-bottom:1.5rem;">
+      <span class="section-tag" id="partnerModalTag"><i class="fas fa-store"></i> Partner Registration</span>
+      <h3 style="font-size:1.5rem; font-weight:800;" id="partnerModalTitle">Join Cravely Network</h3>
+      <p style="color:var(--gray); font-size:0.9rem;" id="partnerModalSub">Choose whether you are registering as a Restaurant or an NGO Recipient.</p>
+    </div>
+
+    <form id="partnerForm">
+      <div class="form-group">
+        <label>Organization Type:</label>
+        <select id="partnerTypeSelect">
+          <option value="Restaurant / Cafe">Restaurant / Cafe / Bakery (Surplus Food Provider)</option>
+          <option value="NGO / Shelter">NGO / Food Bank / Shelter Home (Recipient Partner)</option>
+          <option value="Cloud Kitchen">Cloud Kitchen / Catering Service</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Organization Name:</label>
+        <input type="text" id="partnerRestName" placeholder="e.g. Spice Garden Cafe / City Shelter NGO" required>
+      </div>
+      <div class="form-group">
+        <label>City & Neighborhood:</label>
+        <input type="text" id="partnerCity" placeholder="e.g. Bandra West, Mumbai" required>
+      </div>
+      <div class="form-group">
+        <label>Contact Person & Phone Number:</label>
+        <input type="tel" id="partnerPhone" placeholder="e.g. 9876543210" required>
+      </div>
+      <div class="form-group">
+        <label>Estimated Daily Surplus Volume:</label>
+        <select id="partnerSurplusRange">
+          <option value="5-15">5 – 15 meals / day (Est. ₹18k/mo extra)</option>
+          <option value="15-40">15 – 40 meals / day (Est. ₹45k/mo extra)</option>
+          <option value="40+">40+ meals / day (Est. ₹90k+/mo extra + NGO bulk)</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; margin-top:0.5rem;">
+        <i class="fas fa-paper-plane"></i> Submit Application
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- JAVASCRIPT LOGIC -->
+<script>
+  // Sample Live Deals Dataset
+  const dealsData = [
+    {
+      id: 1,
+      title: "Royal Paneer Dum Biryani",
+      restaurant: "Spice Bites",
+      city: "Virar",
+      category: "veg",
+      type: "veg",
+      priceOriginal: 299,
+      priceDiscount: 99,
+      discountPct: 67,
+      stock: 4,
+      image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 1540
+    },
+    {
+      id: 2,
+      title: "Crispy Masala Dosa Combo",
+      restaurant: "South Tiffin House",
+      city: "Bengaluru",
+      category: "veg",
+      type: "veg",
+      priceOriginal: 180,
+      priceDiscount: 69,
+      discountPct: 62,
+      stock: 5,
+      image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 2100
+    },
+    {
+      id: 3,
+      title: "Mumbai Butter Pav Bhaji Mega",
+      restaurant: "Mumbai Munch Corner",
+      city: "Mumbai",
+      category: "fast-food",
+      type: "veg",
+      priceOriginal: 220,
+      priceDiscount: 89,
+      discountPct: 60,
+      stock: 3,
+      image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 980
+    },
+    {
+      id: 4,
+      title: "Delhi Butter Chicken Feast",
+      restaurant: "Punjab Heritage Grill",
+      city: "Delhi",
+      category: "non-veg",
+      type: "non-veg",
+      priceOriginal: 499,
+      priceDiscount: 199,
+      discountPct: 60,
+      stock: 2,
+      image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 1250
+    },
+    {
+      id: 5,
+      title: "Belgian Chocolate Pastry Box (2pc)",
+      restaurant: "The Artisanal Dessert Studio",
+      city: "Pune",
+      category: "dessert",
+      type: "veg",
+      priceOriginal: 450,
+      priceDiscount: 149,
+      discountPct: 67,
+      stock: 6,
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 3400
+    },
+    {
+      id: 6,
+      title: "Peri Peri Chicken Burger & Fries",
+      restaurant: "The Bunkers Cafe",
+      city: "Mumbai",
+      category: "fast-food",
+      type: "non-veg",
+      priceOriginal: 340,
+      priceDiscount: 129,
+      discountPct: 62,
+      stock: 3,
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 1800
+    }
+  ];
+
+  let selectedCity = 'all';
+  let selectedCategory = 'all';
+  let searchQuery = '';
+  let activeSelectedDeal = null;
+  let currentModalQty = 1;
+  let savedMealCount = 0;
+  let ngoMealsDonated = 5600;
+
+  // Loader dismiss
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      if(loader) loader.classList.add('hide');
+    }, 800);
+  });
+
+  // Dark Mode with localStorage persistence
+  const darkToggle = document.getElementById('darkModeToggle');
+  if (localStorage.getItem('cravely_theme') === 'dark') {
+    document.body.classList.add('dark');
+    updateDarkToggleText();
+  }
+
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    localStorage.setItem('cravely_theme', isDark ? 'dark' : 'light');
+    updateDarkToggleText();
+    showToast(isDark ? '🌙 Dark mode enabled' : '☀️ Light mode enabled');
+  });
+
+  function updateDarkToggleText() {
+    const isDark = document.body.classList.contains('dark');
+    darkToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i> <span>Light</span>' : '<i class="fas fa-moon"></i> <span>Dark</span>';
+  }
+
+  // Mobile menu toggle
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+  mobileBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+  // Render Deals
+  function renderDeals() {
+    const container = document.getElementById('dealsContainer');
+    if (!container) return;
+
+    const filtered = dealsData.filter(item => {
+      const matchCity = selectedCity === 'all' || item.city.toLowerCase() === selectedCity.toLowerCase();
+      const matchCat = selectedCategory === 'all' || item.category === selectedCategory || (selectedCategory === 'veg' && item.type === 'veg') || (selectedCategory === 'non-veg' && item.type === 'non-veg');
+      const matchSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || item.restaurant.toLowerCase().includes(searchQuery.toLowerCase()) || item.city.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchCity && matchCat && matchSearch;
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align:center; padding: 3rem; background: var(--card-bg); border-radius: 24px;">
+          <i class="fas fa-utensils" style="font-size:2.5rem; color:var(--gray); margin-bottom:1rem;"></i>
+          <h3>No live deals found matching your filter</h3>
+          <p style="color:var(--gray); margin-top:0.4rem;">Try choosing "All Cities" or another category.</p>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = filtered.map(item => {
+      const minutes = Math.floor(item.timerSeconds / 60);
+      const seconds = item.timerSeconds % 60;
+      const timeStr = `${minutes}m ${seconds < 10 ? '0' : ''}${seconds}s`;
+
+      return `
+        <div class="food-card">
+          <div class="food-image-wrap">
+            <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <span class="diet-badge ${item.type}">
+              <span class="diet-dot"></span>
+              ${item.type === 'veg' ? 'Pure Veg' : 'Non-Veg'}
+            </span>
+            <span class="food-timer-badge" id="timer-${item.id}">
+              <i class="fas fa-clock"></i> <span>${timeStr}</span>
+            </span>
+          </div>
+
+          <div class="food-card-body">
+            <div>
+              <div class="food-city-tag"><i class="fas fa-location-dot"></i> ${item.city}</div>
+              <h3 class="food-title">${item.title}</h3>
+              <div class="restaurant-name"><i class="fas fa-store"></i> ${item.restaurant}</div>
+            </div>
+
+            <div>
+              <div class="food-meta">
+                <div class="pricing">
+                  <span class="price-discount">₹${item.priceDiscount}</span>
+                  <span class="price-original">₹${item.priceOriginal}</span>
+                  <span class="discount-tag">${item.discountPct}% OFF</span>
+                </div>
+                <div class="stock-left">
+                  <i class="fas fa-fire"></i> ${item.stock} left
+                </div>
+              </div>
+
+              <button class="btn btn-primary ripple-btn" style="width:100%;" onclick="openReservationModal(${item.id})">
+                <i class="fas fa-bag-shopping"></i> Save Meal (₹${item.priceDiscount})
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Countdown timer ticker
+  setInterval(() => {
+    dealsData.forEach(item => {
+      if (item.timerSeconds > 0) {
+        item.timerSeconds--;
+        const timerEl = document.getElementById(`timer-${item.id}`);
+        if (timerEl) {
+          const m = Math.floor(item.timerSeconds / 60);
+          const s = item.timerSeconds % 60;
+          timerEl.querySelector('span').innerText = `${m}m ${s < 10 ? '0' : ''}${s}s`;
+        }
+      }
+    });
+  }, 1000);
+
+  // Filter Event Listeners
+  document.querySelectorAll('#cityFilter .filter-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#cityFilter .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedCity = btn.getAttribute('data-city');
+      renderDeals();
+    });
+  });
+
+  function selectCity(cityName) {
+    selectedCity = cityName;
+    document.querySelectorAll('#cityFilter .filter-pill').forEach(b => {
+      b.classList.toggle('active', b.getAttribute('data-city').toLowerCase() === cityName.toLowerCase());
+    });
+    renderDeals();
+  }
+
+  document.querySelectorAll('#categoryFilter .filter-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#categoryFilter .filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedCategory = btn.getAttribute('data-category');
+      renderDeals();
+    });
+  });
+
+  const searchInput = document.getElementById('dealSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderDeals();
+    });
+  }
+
+  // Reservation Modal Logic
+  const reserveModal = document.getElementById('reserveModalBackdrop');
+  const closeReserveBtn = document.getElementById('closeReserveModal');
+  const finishOrderBtn = document.getElementById('finishOrderBtn');
+
+  window.openReservationModal = function(dealId) {
+    activeSelectedDeal = dealsData.find(d => d.id === dealId);
+    if (!activeSelectedDeal) return;
+
+    currentModalQty = 1;
+    document.getElementById('modalFoodImg').src = activeSelectedDeal.image;
+    document.getElementById('modalFoodTitle').innerText = activeSelectedDeal.title;
+    document.getElementById('modalFoodCity').innerText = activeSelectedDeal.city.toUpperCase();
+    document.getElementById('modalRestName').innerText = activeSelectedDeal.restaurant;
+    document.getElementById('modalStockStatus').innerText = `(Max ${activeSelectedDeal.stock} available)`;
+
+    document.getElementById('modalStep1').style.display = 'block';
+    document.getElementById('modalStepSuccess').style.display = 'none';
+
+    updateModalPricing();
+    reserveModal.classList.add('active');
+  };
+
+  function updateModalPricing() {
+    if (!activeSelectedDeal) return;
+    document.getElementById('modalQty').innerText = currentModalQty;
+    const total = activeSelectedDeal.priceDiscount * currentModalQty;
+    document.getElementById('modalTotalPay').innerText = `₹${total}`;
+    document.getElementById('modalCO2Gain').innerText = `${(currentModalQty * 0.85).toFixed(1)} kg`;
+  }
+
+  document.getElementById('qtyMinus')?.addEventListener('click', () => {
+    if (currentModalQty > 1) {
+      currentModalQty--;
+      updateModalPricing();
+    }
+  });
+
+  document.getElementById('qtyPlus')?.addEventListener('click', () => {
+    if (activeSelectedDeal && currentModalQty < activeSelectedDeal.stock) {
+      currentModalQty++;
+      updateModalPricing();
+    } else {
+      showToast('⚠️ Maximum available stock reached for this meal');
+    }
+  });
+
+  // Payment Option selector
+  document.querySelectorAll('.payment-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.payment-pill').forEach(p => p.classList.remove('selected'));
+      pill.classList.add('selected');
+    });
+  });
+
+  // Confirm Reservation
+  document.getElementById('confirmReserveBtn')?.addEventListener('click', () => {
+    const btn = document.getElementById('confirmReserveBtn');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing UPI...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-bolt"></i> Complete Reservation & Pay';
+      btn.disabled = false;
+
+      // Update counters
+      savedMealCount += currentModalQty;
+      document.getElementById('cartCount').innerText = savedMealCount;
+
+      const randomCode = 'CRV-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('successPickupCode').innerText = randomCode;
+      document.getElementById('successDetailsText').innerText = `${activeSelectedDeal.title} • ${currentModalQty} Meal(s)`;
+
+      document.getElementById('modalStep1').style.display = 'none';
+      document.getElementById('modalStepSuccess').style.display = 'block';
+
+      // Confetti effect celebration!
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+
+      showToast(`🎉 Order reserved! Pickup Code: ${randomCode}`);
+    }, 900);
+  });
+
+  closeReserveBtn?.addEventListener('click', () => reserveModal.classList.remove('active'));
+  finishOrderBtn?.addEventListener('click', () => reserveModal.classList.remove('active'));
+  reserveModal?.addEventListener('click', (e) => {
+    if (e.target === reserveModal) reserveModal.classList.remove('active');
+  });
+
+  // NGO FOOD DISPATCH MODAL LOGIC
+  const ngoModal = document.getElementById('ngoModalBackdrop');
+  const closeNgoBtn = document.getElementById('closeNgoModal');
+  const openNgoDonateBtn = document.getElementById('openNgoDonateBtn');
+  const openNgoHeroBtn = document.getElementById('openNgoHeroBtn');
+  const openNgoFromBusinessBtn = document.getElementById('openNgoFromBusinessBtn');
+  const finishNgoBtn = document.getElementById('finishNgoBtn');
+
+  function openNgoModal() {
+    document.getElementById('ngoDispatchFormStep').style.display = 'block';
+    document.getElementById('ngoDispatchSuccessStep').style.display = 'none';
+    ngoModal.classList.add('active');
+  }
+
+  openNgoDonateBtn?.addEventListener('click', openNgoModal);
+  openNgoHeroBtn?.addEventListener('click', openNgoModal);
+  openNgoFromBusinessBtn?.addEventListener('click', openNgoModal);
+  closeNgoBtn?.addEventListener('click', () => ngoModal.classList.remove('active'));
+  finishNgoBtn?.addEventListener('click', () => ngoModal.classList.remove('active'));
+  ngoModal?.addEventListener('click', (e) => {
+    if (e.target === ngoModal) ngoModal.classList.remove('active');
+  });
+
+  document.getElementById('ngoDispatchForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const restName = document.getElementById('ngoRestName').value;
+    const qty = document.getElementById('ngoQuantity').value;
+    const partnerChoice = document.getElementById('ngoPartnerChoice').value;
+    const btn = document.getElementById('ngoSubmitBtn');
+
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Alerting NGO Volunteers...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-hand-holding-heart"></i> Dispatch NGO Pickup (Free)';
+      btn.disabled = false;
+
+      const randomCode = 'NGO-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('ngoDispatchCode').innerText = randomCode;
+
+      const assignedNgo = partnerChoice === 'Auto' ? 'Robin Hood Army (Volunteer Rahul S.)' : `${partnerChoice} (Volunteer Team Assigned)`;
+      document.getElementById('ngoVolunteerInfo').innerText = `Matched: ${assignedNgo} • ${qty}`;
+
+      document.getElementById('ngoDispatchFormStep').style.display = 'none';
+      document.getElementById('ngoDispatchSuccessStep').style.display = 'block';
+
+      // Increment NGO counter
+      ngoMealsDonated += 15;
+      const ngoCountEl = document.getElementById('ngoMealsCount');
+      if (ngoCountEl) ngoCountEl.innerText = ngoMealsDonated.toLocaleString('en-IN');
+
+      // Confetti celebration
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 100,
+          spread: 80,
+          origin: { y: 0.5 }
+        });
+      }
+
+      showToast(`🍲 NGO Dispatch Dispatched! Ticket: ${randomCode}`, true);
+      document.getElementById('ngoDispatchForm').reset();
+    }, 1000);
+  });
+
+  // Partner Modal (Business & NGO Recipient)
+  const partnerModal = document.getElementById('partnerModalBackdrop');
+  const closePartnerBtn = document.getElementById('closePartnerModal');
+  const openPartnerBtn = document.getElementById('openPartnerModalBtn');
+  const openPartnerHero = document.getElementById('openPartnerHeroBtn');
+  const openNgoPartnerBtn = document.getElementById('openNgoPartnerBtn');
+
+  function openPartner(isNgo = false) {
+    const typeSelect = document.getElementById('partnerTypeSelect');
+    if (typeSelect) {
+      typeSelect.value = isNgo ? "NGO / Shelter" : "Restaurant / Cafe";
+    }
+    partnerModal.classList.add('active');
+  }
+
+  function openNgoRecipientModal() {
+    openPartner(true);
+  }
+
+  openPartnerBtn?.addEventListener('click', () => openPartner(false));
+  openPartnerHero?.addEventListener('click', () => openPartner(false));
+  openNgoPartnerBtn?.addEventListener('click', () => openPartner(true));
+  closePartnerBtn?.addEventListener('click', () => partnerModal.classList.remove('active'));
+  partnerModal?.addEventListener('click', (e) => {
+    if (e.target === partnerModal) partnerModal.classList.remove('active');
+  });
+
+  document.getElementById('partnerForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('partnerRestName').value;
+    const type = document.getElementById('partnerTypeSelect').value;
+    partnerModal.classList.remove('active');
+    showToast(`✅ Thanks ${name}! Our ${type.includes('NGO') ? 'NGO coordinator' : 'partner team'} will reach out within 24 hours.`);
+    document.getElementById('partnerForm').reset();
+  });
+
+  // Newsletter Form
+  document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('newsletterEmail').value;
+    showToast(`📬 Subscribed! Secret drop alerts will be sent to ${email}`);
+    document.getElementById('newsletterForm').reset();
+  });
+
+  // Toast System
+  function showToast(message, isNgo = false) {
+    const container = document.getElementById('toastContainer');
+    if (!container) return;
+    const toast = document.createElement('div');
+    toast.className = `toast ${isNgo ? 'ngo-toast' : ''}`;
+    toast.innerHTML = `<i class="fas ${isNgo ? 'fa-hand-holding-heart' : 'fa-bell'}" style="color:${isNgo ? '#2563eb' : 'var(--soft-orange)'}"></i> <span>${message}</span>`;
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateX(100%)';
+      toast.style.transition = 'all 0.4s ease';
+      setTimeout(() => toast.remove(), 400);
+    }, 3800);
+  }
+
+  // Interactive Impact Calculator
+  const mealsSlider = document.getElementById('mealsSlider');
+  const sliderText = document.getElementById('sliderValueText');
+  const calcMoney = document.getElementById('calcMoneySaved');
+  const calcCO2 = document.getElementById('calcCO2Saved');
+  const calcWater = document.getElementById('calcWaterSaved');
+  const calcMealsYear = document.getElementById('calcMealsYear');
+
+  function updateCalculator() {
+    if (!mealsSlider) return;
+    const val = parseInt(mealsSlider.value);
+    sliderText.innerText = `${val} ${val === 1 ? 'meal' : 'meals'}`;
+    const annualMeals = val * 52;
+    const moneySaved = annualMeals * 120; // Avg savings ₹120 per meal
+    const co2Saved = Math.round(annualMeals * 2.5); // 2.5kg CO2 per meal
+    const waterSaved = annualMeals * 100; // 100L water
+
+    calcMoney.innerText = `₹${moneySaved.toLocaleString('en-IN')}`;
+    calcCO2.innerText = `${co2Saved} kg`;
+    calcWater.innerText = `${waterSaved.toLocaleString('en-IN')} L`;
+    calcMealsYear.innerText = `${annualMeals}`;
+  }
+  mealsSlider?.addEventListener('input', updateCalculator);
+
+  // Counter animation on scroll
+  const counters = document.querySelectorAll('.stat-number');
+  let counted = false;
+  function animateCounters() {
+    if (counted) return;
+    counters.forEach(c => {
+      const target = parseFloat(c.getAttribute('data-count'));
+      let current = 0;
+      const step = target / 40;
+      const updateCounter = () => {
+        current += step;
+        if (current < target) {
+          c.innerText = Math.ceil(current);
+          requestAnimationFrame(updateCounter);
+        } else {
+          c.innerText = target.toLocaleString('en-IN');
+        }
+      };
+      updateCounter();
+    });
+    counted = true;
+  }
+
+  // Intersection Observer for Reveal & Counters
+  const reveals = document.querySelectorAll('.reveal');
+  const statsSection = document.getElementById('statsSection');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        if (statsSection && (entry.target === statsSection || statsSection.contains(entry.target))) {
+          animateCounters();
+        }
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(el => observer.observe(el));
+  if (statsSection) observer.observe(statsSection);
+
+  // Ripple effect
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.ripple-btn');
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+
+  // FAQ Accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-question');
+    q.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
+
+  // Floating background particles canvas
+  const canvas = document.createElement('canvas');
+  canvas.id = 'particles-canvas';
+  document.body.prepend(canvas);
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 2.5 + 1,
+      alpha: Math.random() * 0.4 + 0.1,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.2
+    });
+  }
+
+  function drawParticles() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(143, 191, 159, ${p.alpha})`;
+      ctx.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+
+  // Back to top button & nav active link highlighting
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backToTopBtn?.classList.add('show');
+    } else {
+      backToTopBtn?.classList.remove('show');
+    }
+
+    // Active link highlighting
+    const sections = document.querySelectorAll('section[id]');
+    let currentId = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 120;
+      if (window.scrollY >= top) {
+        currentId = sec.getAttribute('id');
+      }
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === `#${currentId}`);
+    });
+  });
+
+  backToTopBtn?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Cart button click shows toast of saved meals
+  document.getElementById('cartBtn')?.addEventListener('click', () => {
+    if (savedMealCount === 0) {
+      showToast('🛒 You haven\'t reserved any meals yet. Grab a live deal!');
+    } else {
+      showToast(`🛒 You have ${savedMealCount} meal(s) reserved. Enjoy your food rescue!`);
+    }
+  });
+
+  // Initialize
+  renderDeals();
+  updateCalculator();
+</script>
+</body>
+</html>
