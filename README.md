@@ -13,12 +13,14 @@
 - **Dynamic Countdown Timers** showing real-time pickup windows for each deal.
 - **Dietary & City Filters**: Filter by Pure Veg 🌱, Non-Veg 🍗, Bakery & Desserts 🍰, and Combos 🥪.
 
-### 2. ⚡ Instant Reservation & UPI Checkout Flow
-- Interactive reservation modal with quantity limits and stock tracking.
-- Pickup slot selection (Immediate, Evening, Late Night).
-- Simulated **Instant UPI payment** (Google Pay, PhonePe, Paytm, QR) with celebratory confetti and real-time pickup code generation (`CRV-XXXX`).
+### 2. ⚡ Instant Reservation with Customer Details & UPI Checkout *(NEW)*
+- **Customer Verification**: Automatically asks for customer's **Full Name**, **Mobile Number** (for SMS / OTP pickup verification), **Email**, and optional **Pickup Notes**.
+- **Smart Auto-Fill**: Remembers customer info in `localStorage` for 1-tap subsequent meal rescues.
+- **Pickup Time Slots**: Flexible collection windows (Next 30 Mins, Evening, Late Night).
+- **Simulated Instant UPI Payment**: Google Pay, PhonePe, Paytm, and Pay-at-Counter.
+- **Customized Pickup Ticket**: Generates instant unique pickup code (`CRV-XXXX`) linked with customer name, phone, item details, and pickup notes with confetti celebration.
 
-### 3. 🤝 100% Zero-Waste NGO Redistribution Network *(NEW)*
+### 3. 🤝 100% Zero-Waste NGO Redistribution Network
 - **End-of-Day Surplus Connect**: If prepared food is still remaining at restaurants after discounted customer windows close, restaurants can request a volunteer pickup in 1 click.
 - **Verified NGO Partnerships**: Integrated with **Robin Hood Army, Feeding India (Zomato), Mumbai Roti Bank, Akshaya Patra**, and local night shelters.
 - **Instant Dispatch Tracker**: Generates live volunteer assignment tickets (`NGO-XXXX`) with volunteer ETA and location routing.
@@ -48,7 +50,7 @@
 ```mermaid
 graph TD
     A[Restaurant Lists Surplus Food] --> B{Sold to Customers at 50-70% OFF?}
-    B -->|Yes| C[Customer Collects via Instant UPI & QR Code]
+    B -->|Yes| C[Customer Enters Name & Phone -> Instant UPI -> Pickup Ticket]
     B -->|No / Unsold at Closing| D[1-Click NGO Dispatch Triggered in Cravely App]
     D --> E[Nearest NGO Volunteer Alerted - Robin Hood Army / Feeding India]
     E --> F[Refrigerated / Rapid Collection from Restaurant Counter]
