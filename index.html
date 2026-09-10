@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Cravely | Crave More. Waste Less.</title>
+  <title>Cravely Mumbai | Crave More. Waste Less.</title>
   <!-- Google Fonts + Font Awesome + Canvas Confetti -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -167,6 +167,16 @@
       background-clip: text;
       color: transparent;
       letter-spacing: -0.5px;
+    }
+    .mumbai-badge {
+      background: rgba(255, 159, 110, 0.2);
+      color: #e06c30;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+      margin-left: 0.3rem;
+      border: 1px solid rgba(255, 159, 110, 0.35);
     }
     .nav-links {
       display: flex;
@@ -478,13 +488,13 @@
     .card-1 {
       top: 6%;
       left: 4%;
-      width: 220px;
+      width: 230px;
       animation: floatSlow 6s infinite ease-in-out;
     }
     .card-2 {
       top: 36%;
       right: 3%;
-      width: 210px;
+      width: 220px;
       animation: floatSlow 5.5s infinite ease-in-out 0.8s;
     }
     .card-3 {
@@ -496,7 +506,7 @@
     .card-center {
       top: 25%;
       left: 26%;
-      width: 230px;
+      width: 240px;
       background: linear-gradient(145deg, rgba(255, 159, 110, 0.2), var(--card-bg));
       border: 2px solid var(--soft-orange);
       z-index: 3;
@@ -712,6 +722,9 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
     }
     .food-title {
       font-size: 1.25rem;
@@ -1272,15 +1285,15 @@
 <!-- LOADER -->
 <div class="loader" id="loader">
   <div class="loader-logo">
-    <span>🍽️</span> Cravely
+    <span>🍽️</span> Cravely Mumbai
   </div>
-  <div class="loader-tagline">Crave More. Waste Less.</div>
+  <div class="loader-tagline">Save Mumbai's Food. Save Money.</div>
 </div>
 
 <!-- LIVE IMPACT TICKER -->
 <div class="live-ticker">
   <span class="pulse-dot"></span>
-  <span id="liveTickerText">⚡ Live: 14 meals rescued + 6 surplus boxes donated to Feeding India NGO in Mumbai & Delhi!</span>
+  <span id="liveTickerText">⚡ Live in Mumbai: 18 meals rescued + 8 surplus boxes dispatched to Mumbai Roti Bank across Bandra & Ghatkopar!</span>
 </div>
 
 <!-- STICKY NAVIGATION -->
@@ -1288,6 +1301,7 @@
   <a href="#home" class="logo-container">
     <span class="logo-icon">🌿</span>
     <span class="logo">Cravely</span>
+    <span class="mumbai-badge"><i class="fas fa-location-dot"></i> Mumbai</span>
   </a>
 
   <div class="mobile-menu" id="mobileMenuBtn" aria-label="Toggle Navigation">
@@ -1296,10 +1310,10 @@
 
   <div class="nav-links" id="navLinks">
     <a href="#home" class="active">Home</a>
-    <a href="#deals">Live Deals</a>
-    <a href="#ngo-network">NGO Network <span class="ngo-link-badge">100% Zero Waste</span></a>
+    <a href="#deals">Mumbai Deals</a>
+    <a href="#ngo-network">NGO Network <span class="ngo-link-badge">Zero Waste</span></a>
     <a href="#how-it-works">How It Works</a>
-    <a href="#calculator">Impact Calculator</a>
+    <a href="#calculator">Savings Calc</a>
     <a href="#business">For Restaurants</a>
     <a href="#faq">FAQs</a>
   </div>
@@ -1320,16 +1334,16 @@
   <section id="home" class="container hero">
     <div class="hero-grid">
       <div class="hero-text reveal">
-        <span class="section-tag"><i class="fas fa-seedling"></i> India's #1 Surplus Food Rescue & NGO Network</span>
+        <span class="section-tag"><i class="fas fa-city"></i> Mumbai's #1 Surplus Food Rescue Network</span>
         <h1 class="hero-title">
-          Rescue Delicious Food Before It Goes To <span>Waste</span>
+          Rescue Mumbai's Delicious Food At <span>50–70% OFF</span>
         </h1>
         <p class="hero-desc">
-          Get fresh meals at <strong>50% to 70% OFF</strong> from top restaurants. If any food is still remaining at closing time, restaurants seamlessly connect with verified <strong>NGOs & shelters</strong> for 100% zero-waste redistribution.
+          Get fresh, delicious surplus meals from top eateries across <strong>Bandra, Andheri, Ghatkopar, Grant Road & Vasai</strong>. If anything remains unsold at closing, restaurants connect with <strong>Mumbai NGOs</strong> for 100% zero-waste redistribution.
         </p>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
           <a href="#deals" class="btn btn-primary ripple-btn">
-            <i class="fas fa-fire"></i> Explore Live Deals
+            <i class="fas fa-fire"></i> Explore Mumbai Deals
           </a>
           <button class="btn btn-ngo ripple-btn" id="openNgoHeroBtn">
             <i class="fas fa-hand-holding-heart"></i> Dispatch to NGO
@@ -1340,36 +1354,36 @@
         </div>
         <div class="hero-badges">
           <span class="badge"><i class="fas fa-tag" style="color:var(--soft-orange)"></i> 50–70% OFF</span>
-          <span class="badge"><i class="fas fa-hand-holding-heart" style="color:#2563eb"></i> NGO Food Connect</span>
-          <span class="badge"><i class="fas fa-leaf" style="color:var(--sage-dark)"></i> 100% Zero Waste</span>
-          <span class="badge"><i class="fas fa-shield-check" style="color:#3b82f6"></i> Verified Safety</span>
+          <span class="badge"><i class="fas fa-map-pin" style="color:#ef4444"></i> Bandra • Andheri • Ghatkopar</span>
+          <span class="badge"><i class="fas fa-hand-holding-heart" style="color:#2563eb"></i> Mumbai Roti Bank Connect</span>
+          <span class="badge"><i class="fas fa-leaf" style="color:var(--sage-dark)"></i> 100% Zero Food Waste</span>
         </div>
       </div>
 
       <div class="floating-cards">
         <div class="mock-card card-1">
-          <div style="font-size:0.8rem; color:var(--sage-dark); font-weight:700;">🔥 POPULAR DEAL</div>
-          <div style="font-weight:700; font-size:1.05rem;">Paneer Dum Biryani</div>
-          <div style="font-size:0.85rem; color:var(--gray);">Spice Bites, Virar</div>
-          <div style="margin-top:0.4rem;"><strong style="color:var(--soft-orange)">₹99</strong> <span style="text-decoration:line-through; font-size:0.8rem; color:var(--gray);">₹299</span></div>
+          <div style="font-size:0.8rem; color:var(--sage-dark); font-weight:700;">🔥 BANDRA WEST</div>
+          <div style="font-weight:700; font-size:1.05rem;">Butter Chicken & Naan</div>
+          <div style="font-size:0.85rem; color:var(--gray);">Lucky Restaurant, Bandra</div>
+          <div style="margin-top:0.4rem;"><strong style="color:var(--soft-orange)">₹149</strong> <span style="text-decoration:line-through; font-size:0.8rem; color:var(--gray);">₹380</span></div>
         </div>
 
         <div class="mock-card card-center">
           <div style="display:flex; justify-content:space-between; align-items:center;">
-            <span style="font-weight:800; font-size:1.1rem;">⚡ Flash Drop</span>
-            <span style="background:#ef4444; color:white; font-size:0.7rem; font-weight:800; padding:2px 8px; border-radius:12px;">3 Left</span>
+            <span style="font-weight:800; font-size:1.1rem;">⚡ Grant Road Irani Drop</span>
+            <span style="background:#ef4444; color:white; font-size:0.7rem; font-weight:800; padding:2px 8px; border-radius:12px;">2 Left</span>
           </div>
-          <div style="margin:0.5rem 0; font-size:0.9rem;">Belgian Truffle Pastry</div>
-          <div style="font-size:0.8rem; color:var(--gray);"><i class="fas fa-clock"></i> Pickup in 25 mins</div>
-          <div style="font-weight:800; color:var(--soft-orange); font-size:1.2rem; margin-top:0.3rem;">₹79 <span style="font-size:0.8rem; text-decoration:line-through; color:var(--gray);">₹220</span></div>
+          <div style="margin:0.5rem 0; font-size:0.9rem;">Fresh Mawa Cake Box (4pc)</div>
+          <div style="font-size:0.8rem; color:var(--gray);"><i class="fas fa-clock"></i> Pickup in 20 mins</div>
+          <div style="font-weight:800; color:var(--soft-orange); font-size:1.2rem; margin-top:0.3rem;">₹69 <span style="font-size:0.8rem; text-decoration:line-through; color:var(--gray);">₹180</span></div>
         </div>
 
         <div class="mock-card card-2">
           <div style="display:flex; align-items:center; gap:0.5rem;">
             <i class="fas fa-hand-holding-heart" style="font-size:1.4rem; color:#2563eb;"></i>
             <div>
-              <div style="font-weight:700; font-size:0.95rem;">NGO Pickup Ready</div>
-              <div style="font-size:0.8rem; color:var(--gray);">Robin Hood Army & Feeding India</div>
+              <div style="font-weight:700; font-size:0.95rem;">Mumbai Roti Bank</div>
+              <div style="font-size:0.8rem; color:var(--gray);">Surplus Feed in Ghatkopar</div>
             </div>
           </div>
           <div style="font-size:0.75rem; color:#2563eb; font-weight:700; margin-top:0.4rem;">✓ 1-Click NGO Dispatch</div>
@@ -1377,10 +1391,10 @@
 
         <div class="mock-card card-3">
           <div style="display:flex; align-items:center; gap:0.5rem;">
-            <i class="fas fa-earth-asia" style="font-size:1.3rem; color:var(--sage-dark);"></i>
+            <i class="fas fa-train-subway" style="font-size:1.3rem; color:var(--sage-dark);"></i>
             <div>
-              <div style="font-weight:700; font-size:0.9rem;">Total Climate Impact</div>
-              <div style="font-size:0.78rem; color:var(--gray);">5,400+ Meals Fed to Shelters</div>
+              <div style="font-weight:700; font-size:0.9rem;">Mumbai Local Network</div>
+              <div style="font-size:0.78rem; color:var(--gray);">7,200+ Meals Saved Across MMR</div>
             </div>
           </div>
         </div>
@@ -1394,42 +1408,42 @@
       <div class="stats-grid" id="statsSection">
         <div class="stat-card reveal">
           <div class="stat-number-wrap">
-            <span class="stat-number" data-count="14850">0</span>
+            <span class="stat-number" data-count="18400">0</span>
             <span class="stat-suffix">+</span>
           </div>
-          <div class="stat-label">Meals Rescued by Users</div>
+          <div class="stat-label">Meals Rescued in Mumbai</div>
         </div>
         <div class="stat-card reveal">
           <div class="stat-number-wrap">
-            <span class="stat-number ngo-stat" data-count="5600" id="ngoMealsCount">0</span>
+            <span class="stat-number ngo-stat" data-count="6200" id="ngoMealsCount">0</span>
             <span class="stat-suffix" style="color:#2563eb;">+</span>
           </div>
-          <div class="stat-label">Meals Donated to NGOs</div>
+          <div class="stat-label">Meals Donated to Mumbai NGOs</div>
         </div>
         <div class="stat-card reveal">
           <div class="stat-number-wrap">
-            <span class="stat-number" data-count="620">0</span>
+            <span class="stat-number" data-count="480">0</span>
             <span class="stat-suffix">+</span>
           </div>
-          <div class="stat-label">Partner Restaurants</div>
+          <div class="stat-label">Mumbai Partner Eateries</div>
         </div>
         <div class="stat-card reveal">
           <div class="stat-number-wrap">
-            <span class="stat-number" data-count="18">0</span>
-            <span class="stat-suffix">.5T</span>
+            <span class="stat-number" data-count="24">0</span>
+            <span class="stat-suffix">.2T</span>
           </div>
-          <div class="stat-label">CO₂ Averted</div>
+          <div class="stat-label">Mumbai CO₂ Averted</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- LIVE FOOD DEALS WITH FILTERS -->
+  <!-- LIVE FOOD DEALS WITH MUMBAI LOCATION FILTERS -->
   <section id="deals" class="container reveal">
     <div class="section-header">
-      <span class="section-tag"><i class="fas fa-bolt"></i> Surplus Drops</span>
-      <h2 class="section-title">🔥 Live Food Deals Near You</h2>
-      <p class="section-desc">Limited surplus stock from top eateries. Grab your meal before the timer runs out!</p>
+      <span class="section-tag"><i class="fas fa-bolt"></i> Mumbai Flash Drops</span>
+      <h2 class="section-title">🔥 Live Food Deals in Mumbai</h2>
+      <p class="section-desc">Limited surplus portions from top restaurants in Bandra, Andheri, Ghatkopar, Grant Road & Vasai. Grab your meal before pickup closes!</p>
     </div>
 
     <!-- Filter & Search Controls -->
@@ -1437,24 +1451,24 @@
       <div class="search-city-row">
         <div class="search-input-box">
           <i class="fas fa-search"></i>
-          <input type="text" id="dealSearchInput" placeholder="Search biryani, pizza, dosa, restaurant name...">
+          <input type="text" id="dealSearchInput" placeholder="Search biryani, pav bhaji, rolls, mawa cake, restaurant or area...">
         </div>
         <div class="city-pills" id="cityFilter">
-          <button class="filter-pill active" data-city="all">All Cities</button>
-          <button class="filter-pill" data-city="Mumbai">Mumbai</button>
-          <button class="filter-pill" data-city="Pune">Pune</button>
-          <button class="filter-pill" data-city="Bengaluru">Bengaluru</button>
-          <button class="filter-pill" data-city="Delhi">Delhi</button>
-          <button class="filter-pill" data-city="Virar">Virar</button>
+          <button class="filter-pill active" data-city="all">All Mumbai</button>
+          <button class="filter-pill" data-city="Bandra">Bandra</button>
+          <button class="filter-pill" data-city="Andheri">Andheri</button>
+          <button class="filter-pill" data-city="Ghatkopar">Ghatkopar</button>
+          <button class="filter-pill" data-city="Grant Road">Grant Road</button>
+          <button class="filter-pill" data-city="Vasai">Vasai</button>
         </div>
       </div>
 
       <div class="category-pills" id="categoryFilter">
-        <button class="filter-pill active" data-category="all">All Categories</button>
+        <button class="filter-pill active" data-category="all">All Food</button>
         <button class="filter-pill" data-category="veg">🌱 Pure Veg</button>
         <button class="filter-pill" data-category="non-veg">🍗 Non-Veg</button>
         <button class="filter-pill" data-category="dessert">🍰 Desserts & Bakery</button>
-        <button class="filter-pill" data-category="fast-food">🥪 Fast Food & Combos</button>
+        <button class="filter-pill" data-category="fast-food">🥪 Street Food & Combos</button>
       </div>
     </div>
 
@@ -1468,10 +1482,10 @@
   <section id="ngo-network" class="container reveal">
     <div class="ngo-section-card">
       <div class="section-header" style="margin-bottom:1.5rem;">
-        <span class="section-tag ngo-tag"><i class="fas fa-hand-holding-heart"></i> Zero Food Waste Guarantee</span>
-        <h2 class="section-title">Remaining Food? Donate to Verified NGOs in 1-Click</h2>
+        <span class="section-tag ngo-tag"><i class="fas fa-hand-holding-heart"></i> Mumbai Zero Food Waste Network</span>
+        <h2 class="section-title">Surplus Food Left at Night? Donate to Mumbai NGOs in 1-Click</h2>
         <p class="section-desc">
-          When the discounted customer pickup window closes, no food is thrown away. Partner restaurants use Cravely to instantly dispatch unsold surplus meals to nearby verified NGOs, community kitchens, and homeless shelters.
+          When Mumbai restaurants close, no food goes to waste. Eateries across Bandra, Andheri, Ghatkopar, and South Mumbai use Cravely to instantly dispatch unsold surplus meals to verified local NGOs, shelter homes, and community food drives.
         </p>
       </div>
 
@@ -1480,23 +1494,23 @@
           <div class="ngo-step-num">1</div>
           <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-bell" style="color:#2563eb;"></i> End-of-Day Alert</h3>
           <p style="color:var(--gray); font-size:0.9rem;">
-            Restaurants receive a prompt 45 mins before kitchen closing showing any remaining unsold portions with instant donation options.
+            Mumbai restaurants receive a notification 45 mins before kitchen closing showing unsold portions with instant free donation options.
           </p>
         </div>
 
         <div class="ngo-step-card">
           <div class="ngo-step-num">2</div>
-          <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-truck-fast" style="color:#2563eb;"></i> Volunteer Dispatch</h3>
+          <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-truck-fast" style="color:#2563eb;"></i> Local Volunteer Dispatch</h3>
           <p style="color:var(--gray); font-size:0.9rem;">
-            Cravely matches the surplus with nearest active NGO volunteer teams (Robin Hood Army, Feeding India, Roti Bank) for quick pickup.
+            Cravely matches the food with nearest active Mumbai volunteers (Mumbai Roti Bank, Robin Hood Army Mumbai, Feeding India) for pickup.
           </p>
         </div>
 
         <div class="ngo-step-card">
           <div class="ngo-step-num">3</div>
-          <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-bowl-rice" style="color:#2563eb;"></i> Direct Shelter Feeding</h3>
+          <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-bowl-rice" style="color:#2563eb;"></i> Direct Mumbai Shelter Feeding</h3>
           <p style="color:var(--gray); font-size:0.9rem;">
-            Surplus food is safely transported and distributed to local night shelters, orphanages, and children in need on the same night.
+            Surplus food is safely transported and distributed to local night shelters, railway station community shelters, and orphanages in Mumbai.
           </p>
         </div>
 
@@ -1504,27 +1518,27 @@
           <div class="ngo-step-num">4</div>
           <h3 style="font-size:1.15rem; font-weight:700; margin-bottom:0.5rem;"><i class="fas fa-file-invoice-dollar" style="color:#2563eb;"></i> 80G Tax & CSR Credit</h3>
           <p style="color:var(--gray); font-size:0.9rem;">
-            Donating restaurants receive verified food donation certificates eligible for 80G tax deductions and sustainability CSR badges.
+            Donating Mumbai restaurants receive verified food donation certificates eligible for 80G tax deductions and sustainability CSR badges.
           </p>
         </div>
       </div>
 
       <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-bottom:2rem;">
         <button class="btn btn-ngo ripple-btn" id="openNgoDonateBtn">
-          <i class="fas fa-truck-fast"></i> Request Instant NGO Food Pickup
+          <i class="fas fa-truck-fast"></i> Request Mumbai NGO Food Pickup
         </button>
         <button class="btn btn-outline" id="openNgoPartnerBtn">
-          <i class="fas fa-handshake-angle"></i> Register as an NGO Recipient
+          <i class="fas fa-handshake-angle"></i> Register as a Mumbai NGO Recipient
         </button>
       </div>
 
       <div class="ngo-partners-banner">
-        <span style="font-weight:700; font-size:0.9rem; color:var(--gray);">Verified NGO Rescue Partners:</span>
-        <div class="ngo-pill"><i class="fas fa-shield-heart" style="color:#ef4444;"></i> Robin Hood Army</div>
-        <div class="ngo-pill"><i class="fas fa-utensils" style="color:#f59e0b;"></i> Feeding India (Zomato)</div>
+        <span style="font-weight:700; font-size:0.9rem; color:var(--gray);">Verified Mumbai Rescue Partners:</span>
         <div class="ngo-pill"><i class="fas fa-bread-slice" style="color:#10b981;"></i> Mumbai Roti Bank</div>
-        <div class="ngo-pill"><i class="fas fa-hands-holding-child" style="color:#3b82f6;"></i> Akshaya Patra</div>
-        <div class="ngo-pill"><i class="fas fa-house-chimney-user" style="color:#8b5cf6;"></i> Local Night Shelters</div>
+        <div class="ngo-pill"><i class="fas fa-shield-heart" style="color:#ef4444;"></i> Robin Hood Army (Mumbai Chapter)</div>
+        <div class="ngo-pill"><i class="fas fa-utensils" style="color:#f59e0b;"></i> Feeding India Mumbai</div>
+        <div class="ngo-pill"><i class="fas fa-hands-holding-child" style="color:#3b82f6;"></i> Akshaya Patra Mumbai</div>
+        <div class="ngo-pill"><i class="fas fa-house-chimney-user" style="color:#8b5cf6;"></i> Mumbai Night Shelters</div>
       </div>
     </div>
   </section>
@@ -1533,8 +1547,8 @@
   <section id="how-it-works" class="container reveal">
     <div class="section-header">
       <span class="section-tag"><i class="fas fa-circle-question"></i> Simple Process</span>
-      <h2 class="section-title">How Cravely Works</h2>
-      <p class="section-desc">Rescue fresh food in three frictionless steps and save up to 70% every day.</p>
+      <h2 class="section-title">How Cravely Works in Mumbai</h2>
+      <p class="section-desc">Rescue fresh Mumbai food in three frictionless steps and save up to 70% every day.</p>
     </div>
 
     <div class="deals-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
@@ -1542,24 +1556,24 @@
         <div style="width:70px; height:70px; border-radius:50%; background:rgba(255,159,110,0.15); color:var(--soft-orange); display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; font-size:1.8rem;">
           <i class="fas fa-map-location-dot"></i>
         </div>
-        <h3 style="font-size:1.3rem; margin-bottom:0.6rem;">1. Discover Surplus</h3>
-        <p style="color:var(--gray); font-size:0.95rem;">Browse surplus surprise meals, pastries and combos from verified eateries near your current location.</p>
+        <h3 style="font-size:1.3rem; margin-bottom:0.6rem;">1. Discover Surplus Near You</h3>
+        <p style="color:var(--gray); font-size:0.95rem;">Browse surplus surprise meals, pastries, and combos from verified eateries across Bandra, Andheri, Ghatkopar, Grant Road & Vasai.</p>
       </div>
 
       <div class="mock-card" style="position:relative; width:auto; text-align:center; padding:2.5rem 1.8rem;">
         <div style="width:70px; height:70px; border-radius:50%; background:rgba(143,191,159,0.2); color:var(--sage-dark); display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; font-size:1.8rem;">
           <i class="fas fa-hand-holding-dollar"></i>
         </div>
-        <h3 style="font-size:1.3rem; margin-bottom:0.6rem;">2. Reserve & Pay UPI</h3>
-        <p style="color:var(--gray); font-size:0.95rem;">Enter your basic details, lock your meal with instant UPI, and get your instant pickup code.</p>
+        <h3 style="font-size:1.3rem; margin-bottom:0.6rem;">2. Enter Details & Pay UPI</h3>
+        <p style="color:var(--gray); font-size:0.95rem;">Enter your name and phone, lock your meal with instant UPI (GPay/PhonePe/Paytm), and get your instant pickup code.</p>
       </div>
 
       <div class="mock-card" style="position:relative; width:auto; text-align:center; padding:2.5rem 1.8rem;">
         <div style="width:70px; height:70px; border-radius:50%; background:rgba(59,130,246,0.15); color:#3b82f6; display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem; font-size:1.8rem;">
           <i class="fas fa-person-walking-luggage"></i>
         </div>
-        <h3 style="font-size:1.3rem; margin-bottom:0.6rem;">3. Pickup & Relish</h3>
-        <p style="color:var(--gray); font-size:0.95rem;">Show your pickup QR at the restaurant during the collection window, take your food, and save the planet!</p>
+        <h3 style="font-size:1.3rem; margin-bottom:0.6rem;">3. Pickup & Enjoy</h3>
+        <p style="color:var(--gray); font-size:0.95rem;">Show your pickup code at the restaurant counter during the collection window, take your food, and save Mumbai's food!</p>
       </div>
     </div>
   </section>
@@ -1568,14 +1582,14 @@
   <section id="calculator" class="container reveal">
     <div class="section-header">
       <span class="section-tag"><i class="fas fa-calculator"></i> Impact Estimator</span>
-      <h2 class="section-title">Calculate Your Savings & Climate Impact</h2>
-      <p class="section-desc">See how much money and carbon emissions you save when you rescue surplus food with Cravely.</p>
+      <h2 class="section-title">Calculate Your Mumbai Dining Savings</h2>
+      <p class="section-desc">See how much money and carbon emissions you save when you rescue surplus food in Mumbai with Cravely.</p>
     </div>
 
     <div class="calc-card">
       <div>
-        <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:0.8rem;">Your Weekly Rescue Habit</h3>
-        <p style="color:var(--gray); font-size:0.95rem;">Adjust how many meals you or your family rescue per week to see your projected annual impact.</p>
+        <h3 style="font-size:1.6rem; font-weight:800; margin-bottom:0.8rem;">Your Weekly Mumbai Rescue Habit</h3>
+        <p style="color:var(--gray); font-size:0.95rem;">Adjust how many meals you rescue per week across Mumbai eateries to see your projected annual savings.</p>
 
         <div class="slider-container">
           <div class="slider-header">
@@ -1587,14 +1601,14 @@
 
         <div style="display:flex; gap:0.8rem; align-items:center; margin-top:1.5rem;">
           <i class="fas fa-circle-check" style="color:var(--sage-dark)"></i>
-          <span style="font-size:0.9rem; color:var(--gray);">Calculated based on avg. ₹120 savings per meal</span>
+          <span style="font-size:0.9rem; color:var(--gray);">Calculated based on avg. ₹130 Mumbai savings per meal</span>
         </div>
       </div>
 
       <div class="calc-metrics">
         <div class="calc-metric-box">
           <i class="fas fa-wallet" style="font-size:1.8rem; color:var(--soft-orange);"></i>
-          <div class="calc-metric-num" id="calcMoneySaved">₹18,720</div>
+          <div class="calc-metric-num" id="calcMoneySaved">₹20,280</div>
           <div style="font-size:0.85rem; color:var(--gray); font-weight:600;">Annual ₹ Saved</div>
         </div>
         <div class="calc-metric-box">
@@ -1605,7 +1619,7 @@
         <div class="calc-metric-box">
           <i class="fas fa-droplet" style="font-size:1.8rem; color:#3b82f6;"></i>
           <div class="calc-metric-num" id="calcWaterSaved">15,600 L</div>
-          <div style="font-size:0.85rem; color:var(--gray); font-weight:600;">Water Footprint Saved</div>
+          <div style="font-size:0.85rem; color:var(--gray); font-weight:600;">Water Conserved</div>
         </div>
         <div class="calc-metric-box">
           <i class="fas fa-utensils" style="font-size:1.8rem; color:#a855f7;"></i>
@@ -1620,14 +1634,14 @@
   <section id="business" class="container reveal">
     <div class="business-banner">
       <div>
-        <span class="section-tag" style="background:rgba(255,255,255,0.4);"><i class="fas fa-shop"></i> Restaurant Partners</span>
-        <h2 style="font-size:clamp(1.8rem, 3vw, 2.5rem); font-weight:800; margin:0.8rem 0;">Turn Unsold Surplus Food Into Net Revenue & Social Good</h2>
+        <span class="section-tag" style="background:rgba(255,255,255,0.4);"><i class="fas fa-shop"></i> Mumbai Restaurant Partners</span>
+        <h2 style="font-size:clamp(1.8rem, 3vw, 2.5rem); font-weight:800; margin:0.8rem 0;">Turn Unsold Surplus Food Into Extra Revenue & Community Good</h2>
         <p style="color:var(--gray); font-size:1rem; margin-bottom:1.5rem;">
-          Over 600+ restaurants, cafes, and bakeries in India use Cravely to recover food costs through flash discounts and connect directly with NGOs for any remaining food at day's end.
+          Over 480+ restaurants, cafes, and bakeries in Mumbai recover food costs through flash discounts and connect directly with Mumbai Roti Bank and NGOs for any remaining food at day's end.
         </p>
         <div style="display:flex; gap:1rem; flex-wrap:wrap;">
           <button class="btn btn-primary ripple-btn" id="openPartnerModalBtn">
-            <i class="fas fa-handshake"></i> Register Your Restaurant
+            <i class="fas fa-handshake"></i> Register Your Mumbai Restaurant
           </button>
           <button class="btn btn-ngo ripple-btn" id="openNgoFromBusinessBtn">
             <i class="fas fa-hand-holding-heart"></i> Dispatch Remaining to NGO
@@ -1636,17 +1650,17 @@
       </div>
 
       <div class="mock-card" style="position:relative; width:auto; padding:2rem;">
-        <h4 style="font-weight:800; margin-bottom:1rem;"><i class="fas fa-chart-line" style="color:var(--sage-dark)"></i> Partner ROI & Impact</h4>
+        <h4 style="font-weight:800; margin-bottom:1rem;"><i class="fas fa-chart-line" style="color:var(--sage-dark)"></i> Mumbai Partner Snapshot</h4>
         <div style="margin-bottom:1rem; border-bottom:1px solid var(--glass-border); padding-bottom:0.8rem;">
           <div style="font-size:0.85rem; color:var(--gray);">Average Extra Monthly Revenue</div>
-          <div style="font-size:1.6rem; font-weight:800; color:var(--soft-orange);">₹35,000 – ₹75,000</div>
+          <div style="font-size:1.6rem; font-weight:800; color:var(--soft-orange);">₹42,000 – ₹85,000</div>
         </div>
         <div style="margin-bottom:1rem; border-bottom:1px solid var(--glass-border); padding-bottom:0.8rem;">
-          <div style="font-size:0.85rem; color:var(--gray);">100% Zero Food Waste</div>
+          <div style="font-size:0.85rem; color:var(--gray);">100% Zero Food Waste in Mumbai</div>
           <div style="font-size:1.3rem; font-weight:800; color:#2563eb;">Unsold Food → Free NGO Feed</div>
         </div>
         <div style="font-size:0.85rem; color:var(--gray);">
-          <i class="fas fa-check-circle" style="color:var(--sage-dark)"></i> Zero listing fees • 80G Tax Certificates
+          <i class="fas fa-check-circle" style="color:var(--sage-dark)"></i> Zero listing fees • 80G Tax Exemption
         </div>
       </div>
     </div>
@@ -1655,9 +1669,9 @@
   <!-- TESTIMONIALS -->
   <section class="container reveal">
     <div class="section-header">
-      <span class="section-tag"><i class="fas fa-heart"></i> Verified Reviews</span>
-      <h2 class="section-title">Loved by Foodies, Restaurants & NGO Volunteers</h2>
-      <p class="section-desc">Hear how Cravely is transforming everyday dining and hunger alleviation across India.</p>
+      <span class="section-tag"><i class="fas fa-heart"></i> Mumbaikar Reviews</span>
+      <h2 class="section-title">Loved by Foodies, Cafes & Volunteers in Mumbai</h2>
+      <p class="section-desc">Hear how Cravely is transforming everyday dining and zero-waste culture across Mumbai.</p>
     </div>
 
     <div class="deals-grid" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));">
@@ -1666,13 +1680,13 @@
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
         <p style="font-size:0.95rem; color:var(--dark); margin-bottom:1.2rem; font-style:italic;">
-          "Cravely saved me ₹2,400 on lunch expenses last month! I get hot Paneer Biryani and Dosa combos right after college at insane discounts."
+          "Cravely saved me ₹2,800 on lunch expenses in Bandra! I get hot Butter Chicken combos and artisan bakery boxes right after work at crazy discounts."
         </p>
         <div style="display:flex; align-items:center; gap:0.8rem;">
           <div style="width:40px; height:40px; border-radius:50%; background:var(--soft-orange); display:flex; align-items:center; justify-content:center; font-weight:800; color:white;">A</div>
           <div>
             <div style="font-weight:700; font-size:0.95rem;">Anjali Sharma</div>
-            <div style="font-size:0.8rem; color:var(--gray);">Student, Mumbai University</div>
+            <div style="font-size:0.8rem; color:var(--gray);">Media Professional, Bandra West</div>
           </div>
         </div>
       </div>
@@ -1682,13 +1696,13 @@
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
         <p style="font-size:0.95rem; color:var(--dark); margin-bottom:1.2rem; font-style:italic;">
-          "The 1-click NGO pickup feature is incredible. Whatever surplus meals aren't bought by customers are collected by Robin Hood Army in 30 mins to feed a local orphanage. Zero waste, pure blessings!"
+          "As a restaurant owner in Ghatkopar, surplus food was pure loss. Cravely helped us recover ₹48,000 extra monthly, and whatever is left goes to Mumbai Roti Bank in 20 mins. Zero food waste!"
         </p>
         <div style="display:flex; align-items:center; gap:0.8rem;">
           <div style="width:40px; height:40px; border-radius:50%; background:var(--sage-dark); display:flex; align-items:center; justify-content:center; font-weight:800; color:white;">R</div>
           <div>
-            <div style="font-weight:700; font-size:0.95rem;">Rajesh Deshmukh</div>
-            <div style="font-size:0.8rem; color:var(--gray);">Owner, Flavours of Deccan (Pune)</div>
+            <div style="font-weight:700; font-size:0.95rem;">Rajesh Shah</div>
+            <div style="font-size:0.8rem; color:var(--gray);">Owner, Khau Galli Treats (Ghatkopar)</div>
           </div>
         </div>
       </div>
@@ -1698,13 +1712,13 @@
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
         <p style="font-size:0.95rem; color:var(--dark); margin-bottom:1.2rem; font-style:italic;">
-          "As an NGO volunteer coordinator, Cravely's real-time surplus dispatch notifications help our team distribute 150+ fresh, hot restaurant meals every single evening."
+          "Living in Andheri Lokhandwala, the live surplus deals are unbelievable. Entering my name & phone once auto-saves everything for quick 1-tap pickups on my way home."
         </p>
         <div style="display:flex; align-items:center; gap:0.8rem;">
-          <div style="width:40px; height:40px; border-radius:50%; background:#2563eb; display:flex; align-items:center; justify-content:center; font-weight:800; color:white;">P</div>
+          <div style="width:40px; height:40px; border-radius:50%; background:#2563eb; display:flex; align-items:center; justify-content:center; font-weight:800; color:white;">V</div>
           <div>
-            <div style="font-weight:700; font-size:0.95rem;">Pooja Nair</div>
-            <div style="font-size:0.8rem; color:var(--gray);">NGO Volunteer Lead, Bengaluru</div>
+            <div style="font-weight:700; font-size:0.95rem;">Varun Mehta</div>
+            <div style="font-size:0.8rem; color:var(--gray);">Resident, Andheri West</div>
           </div>
         </div>
       </div>
@@ -1716,13 +1730,23 @@
     <div class="section-header">
       <span class="section-tag"><i class="fas fa-circle-info"></i> Got Questions?</span>
       <h2 class="section-title">Frequently Asked Questions</h2>
-      <p class="section-desc">Everything you need to know about food safety, customer reservations, and NGO food donations.</p>
+      <p class="section-desc">Everything you need to know about food safety, reservations, and Mumbai NGO food donations.</p>
     </div>
 
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-question">
-          <span>What information is required when reserving a meal?</span>
+          <span>Which locations in Mumbai are currently active on Cravely?</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Cravely is currently active across major Mumbai neighborhoods including Bandra, Andheri, Ghatkopar, Grant Road / South Mumbai, and Vasai-Virar, with new partner restaurants joining daily.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>What information is required when reserving a meal in Mumbai?</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
@@ -1732,11 +1756,11 @@
 
       <div class="faq-item">
         <div class="faq-question">
-          <span>What happens if surplus food is still remaining at the end of the day?</span>
+          <span>What happens if surplus food is still remaining at night?</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
-          Restaurants never have to throw away edible food! Cravely has an integrated NGO Dispatch network (Robin Hood Army, Feeding India, Roti Bank). With one click on the restaurant app, nearby NGO volunteers are notified to pick up remaining portions and distribute them to local shelters.
+          Mumbai restaurants never have to throw away edible food! Cravely connects with verified Mumbai NGOs (Mumbai Roti Bank, Robin Hood Army Mumbai, Feeding India). With one click, nearby volunteers pick up remaining portions and distribute them to local shelters.
         </div>
       </div>
 
@@ -1762,17 +1786,7 @@
 
       <div class="faq-item">
         <div class="faq-question">
-          <span>Can NGOs register to receive surplus food donations?</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="faq-answer">
-          Yes! Registered charities, community food banks, and shelter homes can join Cravely's verified NGO Rescue Network with zero cost. You will receive real-time surplus dispatch pings based on your volunteer coverage areas.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-question">
-          <span>Do restaurants get tax benefits for NGO donations?</span>
+          <span>Do Mumbai restaurants get tax benefits for NGO donations?</span>
           <i class="fas fa-chevron-down"></i>
         </div>
         <div class="faq-answer">
@@ -1790,9 +1804,10 @@
       <div class="logo-container" style="margin-bottom:0.8rem;">
         <span class="logo-icon">🌿</span>
         <span class="logo">Cravely</span>
+        <span class="mumbai-badge">Mumbai</span>
       </div>
       <p style="color:var(--gray); font-size:0.95rem; max-width:320px;">
-        India's mission-driven platform connecting hungry food lovers with surplus restaurant food at 50–70% discounts, with 100% zero-waste NGO backup.
+        Mumbai's mission-driven platform connecting hungry food lovers with surplus restaurant food at 50–70% discounts, with 100% zero-waste NGO backup across MMR.
       </p>
       <div class="social-links">
         <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1805,40 +1820,40 @@
     <div class="footer-col">
       <h4>Platform</h4>
       <a href="#home">Home</a>
-      <a href="#deals">Live Food Drops</a>
+      <a href="#deals">Mumbai Food Drops</a>
       <a href="#ngo-network">NGO Food Network</a>
       <a href="#how-it-works">How It Works</a>
       <a href="#calculator">Impact Calculator</a>
     </div>
 
     <div class="footer-col">
-      <h4>Cities</h4>
-      <a href="#deals" onclick="selectCity('Mumbai')">Mumbai</a>
-      <a href="#deals" onclick="selectCity('Pune')">Pune</a>
-      <a href="#deals" onclick="selectCity('Bengaluru')">Bengaluru</a>
-      <a href="#deals" onclick="selectCity('Delhi')">Delhi</a>
-      <a href="#deals" onclick="selectCity('Virar')">Virar</a>
+      <h4>Mumbai Areas</h4>
+      <a href="#deals" onclick="selectCity('Bandra')">Bandra West & East</a>
+      <a href="#deals" onclick="selectCity('Andheri')">Andheri Lokhandwala</a>
+      <a href="#deals" onclick="selectCity('Ghatkopar')">Ghatkopar East & West</a>
+      <a href="#deals" onclick="selectCity('Grant Road')">Grant Road / SoBo</a>
+      <a href="#deals" onclick="selectCity('Vasai')">Vasai - Virar MMR</a>
     </div>
 
     <div class="footer-col">
       <h4>NGO & Partners</h4>
       <a href="javascript:void(0)" onclick="openNgoModal()">Dispatch Food to NGO</a>
-      <a href="javascript:void(0)" onclick="openPartner()">Restaurant Onboarding</a>
+      <a href="javascript:void(0)" onclick="openPartner()">Mumbai Restaurant Onboarding</a>
       <a href="javascript:void(0)" onclick="openNgoRecipientModal()">NGO Registration</a>
     </div>
 
     <div class="footer-col">
       <h4>Newsletter</h4>
-      <p style="font-size:0.85rem; color:var(--gray); margin-bottom:0.8rem;">Get notified when secret surplus drops happen near you.</p>
+      <p style="font-size:0.85rem; color:var(--gray); margin-bottom:0.8rem;">Get notified when secret surplus drops happen in your Mumbai neighborhood.</p>
       <form id="newsletterForm" style="display:flex; flex-direction:column; gap:0.6rem;">
         <input type="email" id="newsletterEmail" placeholder="Enter your email" required style="padding:0.65rem 1rem; border-radius:30px; border:1px solid var(--glass-border); outline:none; background:var(--card-bg); color:var(--dark);">
-        <button type="submit" class="btn btn-primary btn-sm">Subscribe Drop Alerts</button>
+        <button type="submit" class="btn btn-primary btn-sm">Subscribe Mumbai Drops</button>
       </form>
     </div>
   </div>
 
   <div style="border-top:1px solid var(--glass-border); margin-top:3rem; padding-top:1.5rem; text-align:center; font-size:0.85rem; color:var(--gray);">
-    <p>&copy; 2025–2026 Cravely Inc. All rights reserved. • Dedicated to zero food waste and zero hunger in India.</p>
+    <p>&copy; 2025–2026 Cravely Mumbai. All rights reserved. • Dedicated to zero food waste across Mumbai, Bandra, Andheri, Ghatkopar, Grant Road & Vasai.</p>
   </div>
 </footer>
 
@@ -1856,9 +1871,9 @@
       <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1.2rem;">
         <img id="modalFoodImg" src="" style="width:75px; height:75px; border-radius:18px; object-fit:cover;">
         <div>
-          <span class="food-city-tag" id="modalFoodCity">MUMBAI</span>
+          <span class="food-city-tag" id="modalFoodCity"><i class="fas fa-location-dot"></i> BANDRA, MUMBAI</span>
           <h3 style="font-size:1.25rem; font-weight:800;" id="modalFoodTitle">Paneer Biryani</h3>
-          <div style="font-size:0.85rem; color:var(--gray);" id="modalRestName">Spice Bites</div>
+          <div style="font-size:0.85rem; color:var(--gray);" id="modalRestName">Lucky Restaurant</div>
         </div>
       </div>
 
@@ -1936,7 +1951,7 @@
       </div>
       <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:0.4rem;">Meal Reserved Successfully!</h3>
       <p style="color:var(--gray); font-size:0.9rem; margin-bottom:1.5rem;">
-        Show this pickup code at the restaurant counter to collect your food.
+        Show this pickup code at the Mumbai eatery counter to collect your food.
       </p>
 
       <div style="background:var(--card-bg); border:2px dashed var(--sage); padding:1.5rem; border-radius:24px; margin-bottom:1.5rem; text-align:left;">
@@ -1967,20 +1982,20 @@
 
     <div id="ngoDispatchFormStep">
       <div style="text-align:center; margin-bottom:1.4rem;">
-        <span class="section-tag ngo-tag"><i class="fas fa-truck-fast"></i> NGO Food Connect</span>
-        <h3 style="font-size:1.4rem; font-weight:800;">Dispatch Remaining Food to NGO</h3>
-        <p style="color:var(--gray); font-size:0.88rem;">Have unsold food at day's end? Request a volunteer pickup in 1 click.</p>
+        <span class="section-tag ngo-tag"><i class="fas fa-truck-fast"></i> Mumbai NGO Food Connect</span>
+        <h3 style="font-size:1.4rem; font-weight:800;">Dispatch Remaining Food to Mumbai NGOs</h3>
+        <p style="color:var(--gray); font-size:0.88rem;">Have unsold food at night? Request a volunteer pickup across Mumbai in 1 click.</p>
       </div>
 
       <form id="ngoDispatchForm">
         <div class="form-group">
           <label>Restaurant / Kitchen Name:</label>
-          <input type="text" id="ngoRestName" placeholder="e.g. Spice Bites Virar / Royal Kitchen" required>
+          <input type="text" id="ngoRestName" placeholder="e.g. Lucky Restaurant Bandra / Achija Ghatkopar" required>
         </div>
 
         <div class="form-group">
-          <label>Location & Pickup Address:</label>
-          <input type="text" id="ngoAddress" placeholder="e.g. Shop 12, Station Road, Bandra West" required>
+          <label>Mumbai Location & Pickup Address:</label>
+          <input type="text" id="ngoAddress" placeholder="e.g. Hill Road, Bandra West / Tilak Road, Ghatkopar East" required>
         </div>
 
         <div class="form-group" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
@@ -2000,23 +2015,23 @@
         </div>
 
         <div class="form-group">
-          <label>Select Preferred NGO Partner:</label>
+          <label>Select Preferred Mumbai NGO Partner:</label>
           <select id="ngoPartnerChoice">
-            <option value="Auto">⚡ Auto-match Nearest Available NGO Volunteer</option>
-            <option value="Robin Hood Army">Robin Hood Army (Volunteer Network)</option>
-            <option value="Feeding India">Feeding India by Zomato</option>
-            <option value="Mumbai Roti Bank">Mumbai Roti Bank</option>
-            <option value="Akshaya Patra">Akshaya Patra Foundation</option>
+            <option value="Auto">⚡ Auto-match Nearest Available Mumbai Volunteer</option>
+            <option value="Mumbai Roti Bank">Mumbai Roti Bank (Mumbai MMR Van Network)</option>
+            <option value="Robin Hood Army">Robin Hood Army (Mumbai Chapters)</option>
+            <option value="Feeding India">Feeding India by Zomato (Mumbai)</option>
+            <option value="Akshaya Patra">Akshaya Patra Foundation Mumbai</option>
           </select>
         </div>
 
         <div style="background:var(--ngo-light); border:1px solid rgba(59,130,246,0.3); padding:0.9rem 1.1rem; border-radius:18px; margin-bottom:1.2rem; font-size:0.85rem;">
           <div style="font-weight:700; color:#2563eb; margin-bottom:0.2rem;"><i class="fas fa-certificate"></i> 80G Tax Exemption & CSR Certificate</div>
-          <p style="color:var(--gray); margin:0;">Digital certificate will be sent immediately upon volunteer food collection.</p>
+          <p style="color:var(--gray); margin:0;">Digital certificate will be sent immediately upon volunteer food collection in Mumbai.</p>
         </div>
 
         <button type="submit" class="btn btn-ngo" style="width:100%;" id="ngoSubmitBtn">
-          <i class="fas fa-hand-holding-heart"></i> Dispatch NGO Pickup (Free)
+          <i class="fas fa-hand-holding-heart"></i> Dispatch Mumbai NGO Pickup (Free)
         </button>
       </form>
     </div>
@@ -2026,19 +2041,19 @@
       <div style="width:70px; height:70px; border-radius:50%; background:rgba(59,130,246,0.2); color:#2563eb; font-size:2rem; display:flex; align-items:center; justify-content:center; margin:0 auto 1.2rem;">
         <i class="fas fa-truck-fast"></i>
       </div>
-      <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:0.4rem;">NGO Volunteer Dispatched!</h3>
+      <h3 style="font-size:1.5rem; font-weight:800; margin-bottom:0.4rem;">Mumbai NGO Volunteer Dispatched!</h3>
       <p style="color:var(--gray); font-size:0.9rem; margin-bottom:1.5rem;">
-        A nearby volunteer is en route to collect your surplus food for shelter distribution.
+        A nearby volunteer team is en route to collect your surplus food for Mumbai shelter distribution.
       </p>
 
       <div style="background:var(--card-bg); border:2px dashed #2563eb; padding:1.5rem; border-radius:24px; margin-bottom:1.5rem; text-align:left;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
-          <span style="font-size:0.8rem; font-weight:700; color:var(--gray);">DISPATCH TICKET</span>
+          <span style="font-size:0.8rem; font-weight:700; color:var(--gray);">MUMBAI DISPATCH TICKET</span>
           <span style="background:#2563eb; color:white; font-size:0.75rem; font-weight:800; padding:2px 8px; border-radius:12px;">ACTIVE</span>
         </div>
-        <div style="font-size:1.5rem; font-weight:900; color:#2563eb; margin-bottom:0.4rem;" id="ngoDispatchCode">NGO-7821</div>
-        <div style="font-size:0.9rem; font-weight:700; color:var(--dark);" id="ngoVolunteerInfo">Matched: Robin Hood Army (Rahul S.)</div>
-        <div style="font-size:0.85rem; color:var(--gray); margin-top:0.3rem;"><i class="fas fa-clock" style="color:#2563eb;"></i> Estimated Arrival: 18–25 Mins</div>
+        <div style="font-size:1.5rem; font-weight:900; color:#2563eb; margin-bottom:0.4rem;" id="ngoDispatchCode">MUM-NGO-8821</div>
+        <div style="font-size:0.9rem; font-weight:700; color:var(--dark);" id="ngoVolunteerInfo">Matched: Mumbai Roti Bank (Van #14)</div>
+        <div style="font-size:0.85rem; color:var(--gray); margin-top:0.3rem;"><i class="fas fa-clock" style="color:#2563eb;"></i> Estimated Arrival: 15–20 Mins</div>
         <div style="font-size:0.85rem; color:var(--sage-dark); font-weight:700; margin-top:0.4rem;"><i class="fas fa-check-double"></i> 80G Tax Exemption Receipt generated</div>
       </div>
 
@@ -2052,27 +2067,34 @@
   <div class="modal-dialog">
     <button class="modal-close" id="closePartnerModal"><i class="fas fa-times"></i></button>
     <div style="text-align:center; margin-bottom:1.5rem;">
-      <span class="section-tag" id="partnerModalTag"><i class="fas fa-store"></i> Partner Registration</span>
-      <h3 style="font-size:1.5rem; font-weight:800;" id="partnerModalTitle">Join Cravely Network</h3>
-      <p style="color:var(--gray); font-size:0.9rem;" id="partnerModalSub">Choose whether you are registering as a Restaurant or an NGO Recipient.</p>
+      <span class="section-tag" id="partnerModalTag"><i class="fas fa-store"></i> Mumbai Partner Registration</span>
+      <h3 style="font-size:1.5rem; font-weight:800;" id="partnerModalTitle">Join Cravely Mumbai Network</h3>
+      <p style="color:var(--gray); font-size:0.9rem;" id="partnerModalSub">Register your Mumbai restaurant or NGO recipient organization.</p>
     </div>
 
     <form id="partnerForm">
       <div class="form-group">
         <label>Organization Type:</label>
         <select id="partnerTypeSelect">
-          <option value="Restaurant / Cafe">Restaurant / Cafe / Bakery (Surplus Food Provider)</option>
-          <option value="NGO / Shelter">NGO / Food Bank / Shelter Home (Recipient Partner)</option>
-          <option value="Cloud Kitchen">Cloud Kitchen / Catering Service</option>
+          <option value="Restaurant / Cafe">Mumbai Restaurant / Cafe / Bakery (Surplus Food Provider)</option>
+          <option value="NGO / Shelter">Mumbai NGO / Food Bank / Shelter Home (Recipient Partner)</option>
+          <option value="Cloud Kitchen">Mumbai Cloud Kitchen / Caterer</option>
         </select>
       </div>
       <div class="form-group">
         <label>Organization Name:</label>
-        <input type="text" id="partnerRestName" placeholder="e.g. Spice Garden Cafe / City Shelter NGO" required>
+        <input type="text" id="partnerRestName" placeholder="e.g. Bandra Street Cafe / Ghatkopar Kitchen" required>
       </div>
       <div class="form-group">
-        <label>City & Neighborhood:</label>
-        <input type="text" id="partnerCity" placeholder="e.g. Bandra West, Mumbai" required>
+        <label>Mumbai Neighborhood / Area:</label>
+        <select id="partnerCitySelect">
+          <option value="Bandra">Bandra West / East</option>
+          <option value="Andheri">Andheri West / East (Lokhandwala, JB Nagar)</option>
+          <option value="Ghatkopar">Ghatkopar East / West</option>
+          <option value="Grant Road">Grant Road / Girgaon / SoBo</option>
+          <option value="Vasai">Vasai / Virar MMR</option>
+          <option value="Other Mumbai">Other Mumbai Location</option>
+        </select>
       </div>
       <div class="form-group">
         <label>Contact Person & Phone Number:</label>
@@ -2081,13 +2103,13 @@
       <div class="form-group">
         <label>Estimated Daily Surplus Volume:</label>
         <select id="partnerSurplusRange">
-          <option value="5-15">5 – 15 meals / day (Est. ₹18k/mo extra)</option>
-          <option value="15-40">15 – 40 meals / day (Est. ₹45k/mo extra)</option>
-          <option value="40+">40+ meals / day (Est. ₹90k+/mo extra + NGO bulk)</option>
+          <option value="5-15">5 – 15 meals / day (Est. ₹20k/mo extra)</option>
+          <option value="15-40">15 – 40 meals / day (Est. ₹50k/mo extra)</option>
+          <option value="40+">40+ meals / day (Est. ₹95k+/mo extra + Mumbai NGO bulk)</option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary" style="width:100%; margin-top:0.5rem;">
-        <i class="fas fa-paper-plane"></i> Submit Application
+        <i class="fas fa-paper-plane"></i> Submit Mumbai Application
       </button>
     </form>
   </div>
@@ -2098,91 +2120,127 @@
 
 <!-- JAVASCRIPT LOGIC -->
 <script>
-  // Sample Live Deals Dataset
+  // Exclusively Mumbai Locations Dataset
   const dealsData = [
     {
       id: 1,
       title: "Royal Paneer Dum Biryani",
-      restaurant: "Spice Bites",
-      city: "Virar",
+      restaurant: "Lucky Restaurant & Grill",
+      city: "Bandra",
+      area: "Bandra West (Hill Road)",
       category: "veg",
       type: "veg",
-      priceOriginal: 299,
-      priceDiscount: 99,
-      discountPct: 67,
+      priceOriginal: 320,
+      priceDiscount: 119,
+      discountPct: 63,
       stock: 4,
       image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&auto=format&fit=crop&q=60",
       timerSeconds: 1540
     },
     {
       id: 2,
-      title: "Crispy Masala Dosa Combo",
-      restaurant: "South Tiffin House",
-      city: "Bengaluru",
+      title: "Special Mysore Masala Dosa Feast",
+      restaurant: "South Tiffin Express",
+      city: "Andheri",
+      area: "Andheri West (Lokhandwala)",
       category: "veg",
       type: "veg",
-      priceOriginal: 180,
+      priceOriginal: 190,
       priceDiscount: 69,
-      discountPct: 62,
+      discountPct: 64,
       stock: 5,
       image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60",
       timerSeconds: 2100
     },
     {
       id: 3,
-      title: "Mumbai Butter Pav Bhaji Mega",
-      restaurant: "Mumbai Munch Corner",
-      city: "Mumbai",
+      title: "Mumbai Cheese Pav Bhaji Mega",
+      restaurant: "Achija Khau Galli Corner",
+      city: "Ghatkopar",
+      area: "Ghatkopar East (Khau Galli)",
       category: "fast-food",
       type: "veg",
-      priceOriginal: 220,
+      priceOriginal: 240,
       priceDiscount: 89,
-      discountPct: 60,
+      discountPct: 63,
       stock: 3,
       image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=60",
       timerSeconds: 980
     },
     {
       id: 4,
-      title: "Delhi Butter Chicken Feast",
-      restaurant: "Punjab Heritage Grill",
-      city: "Delhi",
-      category: "non-veg",
-      type: "non-veg",
-      priceOriginal: 499,
-      priceDiscount: 199,
-      discountPct: 60,
-      stock: 2,
-      image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=500&auto=format&fit=crop&q=60",
-      timerSeconds: 1250
+      title: "Irani Fresh Mawa Cake Box (4pc)",
+      restaurant: "B. Merwan Heritage Bakery",
+      city: "Grant Road",
+      area: "Grant Road Station East",
+      category: "dessert",
+      type: "veg",
+      priceOriginal: 280,
+      priceDiscount: 99,
+      discountPct: 65,
+      stock: 6,
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 1650
     },
     {
       id: 5,
-      title: "Belgian Chocolate Pastry Box (2pc)",
-      restaurant: "The Artisanal Dessert Studio",
-      city: "Pune",
-      category: "dessert",
-      type: "veg",
-      priceOriginal: 450,
-      priceDiscount: 149,
-      discountPct: 67,
-      stock: 6,
-      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60",
-      timerSeconds: 3400
-    },
-    {
-      id: 6,
-      title: "Peri Peri Chicken Burger & Fries",
-      restaurant: "The Bunkers Cafe",
-      city: "Mumbai",
-      category: "fast-food",
+      title: "Tandoori Chicken Tikka Roll Combo",
+      restaurant: "Persian Darbar Delicacies",
+      city: "Andheri",
+      area: "Andheri East (Near Metro)",
+      category: "non-veg",
       type: "non-veg",
       priceOriginal: 340,
       priceDiscount: 129,
       discountPct: 62,
       stock: 3,
-      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60",
+      image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=500&auto=format&fit=crop&q=60",
       timerSeconds: 1800
+    },
+    {
+      id: 6,
+      title: "Woodfired Margherita Pizza & Fries",
+      restaurant: "The Bandra Bagel & Crust",
+      city: "Bandra",
+      area: "Bandra West (Pali Hill)",
+      category: "fast-food",
+      type: "veg",
+      priceOriginal: 450,
+      priceDiscount: 159,
+      discountPct: 65,
+      stock: 4,
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 1200
+    },
+    {
+      id: 7,
+      title: "Vasai Coastal Seafood Thali Combo",
+      restaurant: "Vasai Fishermans Wharf",
+      city: "Vasai",
+      area: "Vasai West (Station Road)",
+      category: "non-veg",
+      type: "non-veg",
+      priceOriginal: 499,
+      priceDiscount: 189,
+      discountPct: 62,
+      stock: 3,
+      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 2400
+    },
+    {
+      id: 8,
+      title: "Belgian Chocolate Truffle Pastry Box",
+      restaurant: "South Bombay Patisserie",
+      city: "Grant Road",
+      area: "Grant Road / Girgaon",
+      category: "dessert",
+      type: "veg",
+      priceOriginal: 420,
+      priceDiscount: 139,
+      discountPct: 67,
+      stock: 5,
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop&q=60",
+      timerSeconds: 3100
     }
   ];
 
@@ -2192,7 +2250,7 @@
   let activeSelectedDeal = null;
   let currentModalQty = 1;
   let savedMealCount = 0;
-  let ngoMealsDonated = 5600;
+  let ngoMealsDonated = 6200;
 
   // Loader dismiss
   window.addEventListener('load', () => {
@@ -2235,7 +2293,10 @@
     const filtered = dealsData.filter(item => {
       const matchCity = selectedCity === 'all' || item.city.toLowerCase() === selectedCity.toLowerCase();
       const matchCat = selectedCategory === 'all' || item.category === selectedCategory || (selectedCategory === 'veg' && item.type === 'veg') || (selectedCategory === 'non-veg' && item.type === 'non-veg');
-      const matchSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || item.restaurant.toLowerCase().includes(searchQuery.toLowerCase()) || item.city.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          item.restaurant.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          item.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          item.area.toLowerCase().includes(searchQuery.toLowerCase());
       return matchCity && matchCat && matchSearch;
     });
 
@@ -2243,8 +2304,8 @@
       container.innerHTML = `
         <div style="grid-column: 1 / -1; text-align:center; padding: 3rem; background: var(--card-bg); border-radius: 24px;">
           <i class="fas fa-utensils" style="font-size:2.5rem; color:var(--gray); margin-bottom:1rem;"></i>
-          <h3>No live deals found matching your filter</h3>
-          <p style="color:var(--gray); margin-top:0.4rem;">Try choosing "All Cities" or another category.</p>
+          <h3>No live deals found in this Mumbai location</h3>
+          <p style="color:var(--gray); margin-top:0.4rem;">Try choosing "All Mumbai" or selecting another area.</p>
         </div>
       `;
       return;
@@ -2270,7 +2331,7 @@
 
           <div class="food-card-body">
             <div>
-              <div class="food-city-tag"><i class="fas fa-location-dot"></i> ${item.city}</div>
+              <div class="food-city-tag"><i class="fas fa-location-dot"></i> ${item.city.toUpperCase()} • ${item.area}</div>
               <h3 class="food-title">${item.title}</h3>
               <div class="restaurant-name"><i class="fas fa-store"></i> ${item.restaurant}</div>
             </div>
@@ -2359,7 +2420,7 @@
     currentModalQty = 1;
     document.getElementById('modalFoodImg').src = activeSelectedDeal.image;
     document.getElementById('modalFoodTitle').innerText = activeSelectedDeal.title;
-    document.getElementById('modalFoodCity').innerText = activeSelectedDeal.city.toUpperCase();
+    document.getElementById('modalFoodCity').innerHTML = `<i class="fas fa-location-dot"></i> ${activeSelectedDeal.city.toUpperCase()}, MUMBAI (${activeSelectedDeal.area})`;
     document.getElementById('modalRestName').innerText = activeSelectedDeal.restaurant;
     document.getElementById('modalStockStatus').innerText = `(Max ${activeSelectedDeal.stock} available)`;
 
@@ -2451,9 +2512,9 @@
       savedMealCount += currentModalQty;
       document.getElementById('cartCount').innerText = savedMealCount;
 
-      const randomCode = 'CRV-' + Math.floor(1000 + Math.random() * 9000);
+      const randomCode = 'MUM-' + Math.floor(1000 + Math.random() * 9000);
       document.getElementById('successPickupCode').innerText = randomCode;
-      document.getElementById('successDetailsText').innerText = `${activeSelectedDeal.title} • ${currentModalQty} Meal(s)`;
+      document.getElementById('successDetailsText').innerText = `${activeSelectedDeal.title} (${activeSelectedDeal.city}) • ${currentModalQty} Meal(s)`;
       document.getElementById('successCustName').innerText = custName;
       document.getElementById('successCustPhone').innerText = custPhone;
       document.getElementById('successPickupTime').innerText = pickupSlotText;
@@ -2518,17 +2579,17 @@
     const partnerChoice = document.getElementById('ngoPartnerChoice').value;
     const btn = document.getElementById('ngoSubmitBtn');
 
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Alerting NGO Volunteers...';
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Alerting Mumbai NGO Volunteers...';
     btn.disabled = true;
 
     setTimeout(() => {
-      btn.innerHTML = '<i class="fas fa-hand-holding-heart"></i> Dispatch NGO Pickup (Free)';
+      btn.innerHTML = '<i class="fas fa-hand-holding-heart"></i> Dispatch Mumbai NGO Pickup (Free)';
       btn.disabled = false;
 
-      const randomCode = 'NGO-' + Math.floor(1000 + Math.random() * 9000);
+      const randomCode = 'MUM-NGO-' + Math.floor(1000 + Math.random() * 9000);
       document.getElementById('ngoDispatchCode').innerText = randomCode;
 
-      const assignedNgo = partnerChoice === 'Auto' ? 'Robin Hood Army (Volunteer Rahul S.)' : `${partnerChoice} (Volunteer Team Assigned)`;
+      const assignedNgo = partnerChoice === 'Auto' ? 'Mumbai Roti Bank (Van #14 - Rahul S.)' : `${partnerChoice} (Mumbai Volunteer Team Assigned)`;
       document.getElementById('ngoVolunteerInfo').innerText = `Matched: ${assignedNgo} • ${qty}`;
 
       document.getElementById('ngoDispatchFormStep').style.display = 'none';
@@ -2548,7 +2609,7 @@
         });
       }
 
-      showToast(`🍲 NGO Dispatch Dispatched! Ticket: ${randomCode}`, true);
+      showToast(`🍲 Mumbai NGO Pickup Dispatched! Ticket: ${randomCode}`, true);
       document.getElementById('ngoDispatchForm').reset();
     }, 1000);
   });
@@ -2585,7 +2646,7 @@
     const name = document.getElementById('partnerRestName').value;
     const type = document.getElementById('partnerTypeSelect').value;
     partnerModal.classList.remove('active');
-    showToast(`✅ Thanks ${name}! Our ${type.includes('NGO') ? 'NGO coordinator' : 'partner team'} will reach out within 24 hours.`);
+    showToast(`✅ Thanks ${name}! Our Mumbai ${type.includes('NGO') ? 'NGO coordinator' : 'partner team'} will reach out within 24 hours.`);
     document.getElementById('partnerForm').reset();
   });
 
@@ -2593,7 +2654,7 @@
   document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.getElementById('newsletterEmail').value;
-    showToast(`📬 Subscribed! Secret drop alerts will be sent to ${email}`);
+    showToast(`📬 Subscribed! Mumbai flash drop alerts will be sent to ${email}`);
     document.getElementById('newsletterForm').reset();
   });
 
@@ -2613,7 +2674,7 @@
     }, 3800);
   }
 
-  // Interactive Impact Calculator
+  // Interactive Impact Calculator (Mumbai Rates)
   const mealsSlider = document.getElementById('mealsSlider');
   const sliderText = document.getElementById('sliderValueText');
   const calcMoney = document.getElementById('calcMoneySaved');
@@ -2626,7 +2687,7 @@
     const val = parseInt(mealsSlider.value);
     sliderText.innerText = `${val} ${val === 1 ? 'meal' : 'meals'}`;
     const annualMeals = val * 52;
-    const moneySaved = annualMeals * 120; // Avg savings ₹120 per meal
+    const moneySaved = annualMeals * 130; // Avg savings ₹130 per meal in Mumbai
     const co2Saved = Math.round(annualMeals * 2.5); // 2.5kg CO2 per meal
     const waterSaved = annualMeals * 100; // 100L water
 
@@ -2775,9 +2836,9 @@
   // Cart button click shows toast of saved meals
   document.getElementById('cartBtn')?.addEventListener('click', () => {
     if (savedMealCount === 0) {
-      showToast('🛒 You haven\'t reserved any meals yet. Grab a live deal!');
+      showToast('🛒 You haven\'t reserved any meals in Mumbai yet. Grab a live flash drop!');
     } else {
-      showToast(`🛒 You have ${savedMealCount} meal(s) reserved. Enjoy your food rescue!`);
+      showToast(`🛒 You have ${savedMealCount} Mumbai meal(s) reserved. Enjoy your food rescue!`);
     }
   });
 
