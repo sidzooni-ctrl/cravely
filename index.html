@@ -837,6 +837,223 @@
       gap: 0.5rem;
     }
 
+    /* AI THEME & GLOW EFFECTS */
+    :root {
+      --ai-purple: #8b5cf6;
+      --ai-pink: #ec4899;
+      --ai-amber: #f59e0b;
+      --ai-gradient: linear-gradient(135deg, #8b5cf6, #ec4899, #f59e0b);
+      --ai-gradient-subtle: linear-gradient(135deg, rgba(139, 92, 246, 0.09), rgba(236, 72, 153, 0.07), var(--card-bg));
+      --ai-glow: 0 15px 35px -5px rgba(139, 92, 246, 0.25);
+    }
+    .btn-ai {
+      background: var(--ai-gradient);
+      color: white;
+      font-weight: 700;
+      border: none;
+      box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-ai:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.55);
+      color: white;
+    }
+    .ai-tag {
+      background: var(--ai-gradient) !important;
+      color: white !important;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.35);
+    }
+    .ai-link-badge {
+      background: var(--ai-gradient);
+      color: white;
+      font-size: 0.65rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 20px;
+      font-weight: 800;
+      margin-left: 0.25rem;
+      letter-spacing: 0.5px;
+    }
+    .ai-match-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(139, 92, 246, 0.95);
+      color: white;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .ai-section-card {
+      background: var(--ai-gradient-subtle);
+      border: 2px solid rgba(139, 92, 246, 0.32);
+      border-radius: 38px;
+      padding: 3.5rem 3rem;
+      box-shadow: var(--shadow-lg);
+      margin-top: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    @media (max-width: 860px) {
+      .ai-section-card { padding: 2rem 1.5rem; }
+    }
+    .ai-sparkle-bg {
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(236, 72, 153, 0) 70%);
+      pointer-events: none;
+      border-radius: 50%;
+    }
+    .ai-generator-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 2.2rem;
+      align-items: stretch;
+      margin-top: 2rem;
+    }
+    @media (max-width: 960px) {
+      .ai-generator-grid { grid-template-columns: 1fr; }
+    }
+    .ai-panel-box {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .taste-chips-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.8rem 0 1.2rem;
+    }
+    .taste-chip {
+      background: var(--light-gray);
+      border: 1px solid var(--glass-border);
+      color: var(--dark);
+      padding: 0.45rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .taste-chip:hover {
+      border-color: var(--ai-purple);
+      transform: translateY(-2px);
+    }
+    .taste-chip.active {
+      background: var(--ai-purple);
+      color: white;
+      border-color: var(--ai-purple);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+    }
+    .ai-tier-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin: 1rem 0;
+    }
+    @media (max-width: 580px) {
+      .ai-tier-cards { grid-template-columns: 1fr; }
+    }
+    .ai-tier-card {
+      background: var(--cream);
+      border: 2px solid var(--glass-border);
+      border-radius: 18px;
+      padding: 1rem 0.8rem;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .ai-tier-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--ai-purple);
+    }
+    .ai-tier-card.selected {
+      border-color: var(--ai-purple);
+      background: rgba(139, 92, 246, 0.08);
+      box-shadow: 0 6px 18px rgba(139, 92, 246, 0.2);
+    }
+    .ai-mystery-output {
+      background: linear-gradient(145deg, var(--card-bg), rgba(139, 92, 246, 0.06));
+      border: 2px solid rgba(139, 92, 246, 0.45);
+      border-radius: 28px;
+      padding: 2.2rem;
+      box-shadow: var(--ai-glow);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+    .mystery-box-badge {
+      position: absolute;
+      top: -14px;
+      right: 24px;
+      background: var(--ai-gradient);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(139,92,246,0.4);
+    }
+    .mystery-items-list {
+      background: var(--cream);
+      border: 1px dashed rgba(139, 92, 246, 0.45);
+      border-radius: 18px;
+      padding: 1.1rem;
+      margin: 1.2rem 0;
+    }
+    .mystery-item-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+    .mystery-item-row:last-child {
+      margin-bottom: 0;
+    }
+    .ai-insight-banner {
+      background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(255,159,110,0.14), var(--card-bg));
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      border-radius: 24px;
+      padding: 1.2rem 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .ai-pulse-text {
+      font-size: 0.92rem;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
     /* Savings Calculator */
     .calc-card {
       background: linear-gradient(135deg, var(--card-bg), var(--glass-bg));
@@ -1300,6 +1517,8 @@
   <div class="nav-links" id="navLinks">
     <a href="#home" class="active">Home</a>
     <a href="#deals">Live Deals</a>
+    <a href="#ai-mystery-box">AI Mystery Box <span class="ai-link-badge">New</span></a>
+    <a href="#ai-recommendations">AI Picks <span class="ai-link-badge">AI</span></a>
     <a href="#ngo-network">NGO Network <span class="ngo-link-badge">Zero Waste</span></a>
     <a href="#how-it-works">How It Works</a>
     <a href="#calculator">Savings Calc</a>
@@ -1330,9 +1549,12 @@
         <p class="hero-desc">
           Discover fresh, surplus meals from top restaurants, bakeries & cafes across <strong>Bandra, Andheri, Ghatkopar, Grant Road & Vasai</strong>. If anything remains unsold at closing, restaurants connect with <strong>verified NGOs</strong> for 100% zero-waste redistribution.
         </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
           <a href="#deals" class="btn btn-primary ripple-btn">
             <i class="fas fa-fire"></i> Explore Live Deals
+          </a>
+          <a href="#ai-mystery-box" class="btn btn-ai ripple-btn">
+            <i class="fas fa-wand-magic-sparkles"></i> AI Mystery Box
           </a>
           <button class="btn btn-ngo ripple-btn" id="openNgoHeroBtn">
             <i class="fas fa-hand-holding-heart"></i> Dispatch to NGO
@@ -1343,6 +1565,7 @@
         </div>
         <div class="hero-badges">
           <span class="badge"><i class="fas fa-tag" style="color:var(--soft-orange)"></i> 50–70% OFF</span>
+          <span class="badge"><i class="fas fa-wand-magic-sparkles" style="color:var(--ai-purple)"></i> AI Mystery Box</span>
           <span class="badge"><i class="fas fa-location-dot" style="color:#ef4444"></i> Bandra • Andheri • Ghatkopar</span>
           <span class="badge"><i class="fas fa-hand-holding-heart" style="color:#2563eb"></i> NGO Food Connect</span>
           <span class="badge"><i class="fas fa-leaf" style="color:var(--sage-dark)"></i> 100% Zero Waste</span>
@@ -1427,6 +1650,49 @@
     </div>
   </section>
 
+  <!-- AI PERSONALIZED RECOMMENDATIONS SECTION -->
+  <section id="ai-recommendations" class="container reveal">
+    <div class="section-header" style="margin-bottom:1.5rem;">
+      <span class="section-tag ai-tag"><i class="fas fa-robot"></i> Cravely AI Engine</span>
+      <h2 class="section-title">✨ AI Personalized Recommendations</h2>
+      <p class="section-desc">Cravely AI analyzes your previous meal rescues, dietary preferences, and spending habits to curate deals you're guaranteed to crave.</p>
+    </div>
+
+    <div class="ai-insight-banner">
+      <div class="ai-pulse-text">
+        <span style="font-size:1.6rem;">🤖</span>
+        <div>
+          <strong id="aiInsightTitle" style="color:var(--dark);">Based on your preferences and previous orders, you may like these deals! 🍜🥟</strong>
+          <div style="font-size:0.82rem; color:var(--gray); margin-top:2px;" id="aiInsightSub">AI Confidence: 98% Taste Match across Bandra & Andheri</div>
+        </div>
+      </div>
+      <button class="btn btn-outline btn-sm ripple-btn" id="refreshAiRecsBtn" style="padding:0.4rem 0.9rem; font-size:0.85rem;">
+        <i class="fas fa-rotate"></i> Refresh AI Match
+      </button>
+    </div>
+
+    <!-- AI Taste Profile Customizer -->
+    <div style="background:var(--card-bg); border:1px solid var(--glass-border); border-radius:24px; padding:1.4rem 1.8rem; margin-bottom:2rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.6rem;">
+        <span style="font-weight:700; font-size:0.92rem; color:var(--dark);"><i class="fas fa-sliders" style="color:var(--ai-purple)"></i> Tune Your AI Taste Profile:</span>
+        <span style="font-size:0.8rem; color:var(--gray);">Click cravings for instant AI re-matching</span>
+      </div>
+      <div class="taste-chips-wrap" id="aiTasteChips">
+        <button class="taste-chip active" data-pref="biryani">🍲 Biryani & Curries</button>
+        <button class="taste-chip active" data-pref="street-food">🥪 Pav Bhaji & Street Snacks</button>
+        <button class="taste-chip" data-pref="dessert">🍰 Bakery & Desserts</button>
+        <button class="taste-chip" data-pref="south-indian">🥞 Dosas & South Indian</button>
+        <button class="taste-chip" data-pref="pizza">🍕 Pizza & Fast Food</button>
+        <button class="taste-chip" data-pref="budget-saver">💰 Value Under ₹100</button>
+      </div>
+    </div>
+
+    <!-- Recommended Deals Grid -->
+    <div class="deals-grid" id="aiRecsContainer" style="margin-bottom:2.5rem;">
+      <!-- Populated via JS -->
+    </div>
+  </section>
+
   <!-- LIVE FOOD DEALS WITH LOCATION FILTERS -->
   <section id="deals" class="container reveal">
     <div class="section-header">
@@ -1464,6 +1730,138 @@
     <!-- Deals Grid Container -->
     <div class="deals-grid" id="dealsContainer">
       <!-- Generated via JS -->
+    </div>
+  </section>
+
+  <!-- AI MYSTERY BOX / SURPRISE BOX GENERATOR -->
+  <section id="ai-mystery-box" class="container reveal">
+    <div class="ai-section-card">
+      <div class="ai-sparkle-bg"></div>
+      
+      <div class="section-header" style="margin-bottom:1.5rem; text-align:left;">
+        <span class="section-tag ai-tag"><i class="fas fa-wand-magic-sparkles"></i> AI Inventory Bundler</span>
+        <h2 class="section-title">🤫 AI "Mystery Box" Generator</h2>
+        <p class="section-desc" style="margin-left:0; max-width:720px;">
+          Restaurants have random leftover items at closing time. Instead of listing each item individually, Cravely AI dynamically bundles fresh surplus items into high-value Surprise Boxes at <strong>60% to 70% OFF</strong>!
+        </p>
+      </div>
+
+      <div class="ai-generator-grid">
+        <!-- Generator Controls -->
+        <div class="ai-panel-box">
+          <div>
+            <h3 style="font-size:1.25rem; font-weight:800; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem;">
+              <i class="fas fa-sliders" style="color:var(--ai-purple);"></i> Configure Your AI Surprise Box
+            </h3>
+
+            <div class="form-group">
+              <label><i class="fas fa-location-dot" style="color:#ef4444;"></i> Select Neighborhood:</label>
+              <select id="aiBoxCitySelect">
+                <option value="all">⚡ Any Location (Best Deals)</option>
+                <option value="Bandra">Bandra West / East</option>
+                <option value="Andheri">Andheri West / East</option>
+                <option value="Ghatkopar">Ghatkopar East / West</option>
+                <option value="Grant Road">Grant Road / SoBo</option>
+                <option value="Vasai">Vasai / Virar</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label><i class="fas fa-utensils" style="color:var(--sage-dark);"></i> Food Type / Dietary Preference:</label>
+              <div class="taste-chips-wrap" id="aiBoxDietWrap" style="margin-top:0.4rem;">
+                <button class="taste-chip active" data-diet="veg">🌱 Pure Veg Box</button>
+                <button class="taste-chip" data-diet="non-veg">🍗 Non-Veg Feast</button>
+                <button class="taste-chip" data-diet="dessert">🍰 Sweet & Bakery Box</button>
+                <button class="taste-chip" data-diet="combo">🥪 Street Food Combo</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label><i class="fas fa-gift" style="color:var(--soft-orange);"></i> Choose Box Size & Tier:</label>
+              <div class="ai-tier-cards" id="aiTierCards">
+                <div class="ai-tier-card" data-tier="mini" data-price="129" data-orig="340" data-items="2 surplus items">
+                  <div style="font-size:1.4rem;">🎒</div>
+                  <strong style="font-size:0.9rem;">Mini Box</strong>
+                  <div style="font-weight:800; color:var(--soft-orange); font-size:1.1rem; margin-top:0.2rem;">₹129</div>
+                  <div style="font-size:0.75rem; color:var(--gray);">Orig. ₹340 (2 Items)</div>
+                </div>
+                <div class="ai-tier-card selected" data-tier="standard" data-price="199" data-orig="480" data-items="3–4 surplus items">
+                  <div style="font-size:1.4rem;">🎁</div>
+                  <strong style="font-size:0.9rem;">Surprise Box</strong>
+                  <div style="font-weight:800; color:var(--soft-orange); font-size:1.1rem; margin-top:0.2rem;">₹199</div>
+                  <div style="font-size:0.75rem; color:var(--gray);">Orig. ₹480 (3–4 Items)</div>
+                </div>
+                <div class="ai-tier-card" data-tier="deluxe" data-price="299" data-orig="750" data-items="4–5 premium items">
+                  <div style="font-size:1.4rem;">👑</div>
+                  <strong style="font-size:0.9rem;">Deluxe Feast</strong>
+                  <div style="font-weight:800; color:var(--soft-orange); font-size:1.1rem; margin-top:0.2rem;">₹299</div>
+                  <div style="font-size:0.75rem; color:var(--gray);">Orig. ₹750 (4–5 Items)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-ai ripple-btn" id="generateMysteryBoxBtn" style="width:100%; justify-content:center; padding:1rem; font-size:1.05rem; margin-top:1rem;">
+            <i class="fas fa-wand-magic-sparkles"></i> Generate AI Surprise Box
+          </button>
+        </div>
+
+        <!-- Generated Mystery Box Display -->
+        <div class="ai-mystery-output" id="aiMysteryBoxResult">
+          <span class="mystery-box-badge" id="aiMysteryBadge"><i class="fas fa-bolt"></i> AI Generated Pack</span>
+          
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+              <span class="food-city-tag" id="aiBoxCityTag"><i class="fas fa-location-dot"></i> BANDRA WEST</span>
+              <span style="background:rgba(239,68,68,0.15); color:#ef4444; font-size:0.75rem; font-weight:800; padding:3px 10px; border-radius:12px;">
+                <i class="fas fa-fire"></i> 3 Available Today
+              </span>
+            </div>
+
+            <h3 style="font-size:1.5rem; font-weight:800; color:var(--dark); margin-bottom:0.3rem;" id="aiBoxTitle">
+              AI Surprise Box 🤫
+            </h3>
+            <div style="font-size:0.95rem; color:var(--gray); margin-bottom:1rem;" id="aiBoxRestaurant">
+              <i class="fas fa-store"></i> Bundled from: <strong>Lucky Restaurant & Grill</strong>
+            </div>
+
+            <div style="display:flex; align-items:baseline; gap:0.8rem; margin-bottom:1rem;">
+              <span style="font-size:2.2rem; font-weight:900; color:var(--soft-orange);" id="aiBoxPrice">₹199</span>
+              <span style="font-size:1.1rem; color:var(--gray); text-decoration:line-through;" id="aiBoxOrig">₹480</span>
+              <span class="discount-tag" id="aiBoxDiscount">59% OFF</span>
+            </div>
+
+            <!-- Mystery Contents List -->
+            <div class="mystery-items-list">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+                <strong style="font-size:0.88rem; color:var(--dark);" id="aiBoxItemCountText"><i class="fas fa-box-open" style="color:var(--ai-purple)"></i> Contains: 2–4 surplus items</strong>
+                <button id="togglePeekBtn" style="background:none; border:none; color:var(--ai-purple); font-size:0.8rem; font-weight:700; cursor:pointer; text-decoration:underline;">
+                  Peek Inside (AI Breakdown)
+                </button>
+              </div>
+
+              <div id="aiBoxItemsContent">
+                <div class="mystery-item-row"><i class="fas fa-check-circle" style="color:var(--sage-dark);"></i> <span>1x Fresh Paneer Tikka Masala (Full Portion)</span></div>
+                <div class="mystery-item-row"><i class="fas fa-check-circle" style="color:var(--sage-dark);"></i> <span>2x Butter Tandoori Naan (Freshly Baked)</span></div>
+                <div class="mystery-item-row"><i class="fas fa-check-circle" style="color:var(--sage-dark);"></i> <span>1x Gulab Jamun Sweet Box (2pc)</span></div>
+              </div>
+            </div>
+
+            <div style="font-size:0.82rem; color:var(--sage-dark); font-weight:600; margin-bottom:1.2rem;">
+              <i class="fas fa-shield-heart"></i> 100% Edible & Fresh • Prepared within safe health standards
+            </div>
+          </div>
+
+          <div style="display:flex; gap:0.8rem;">
+            <button class="btn btn-primary ripple-btn" style="flex:1;" id="reserveMysteryBoxBtn">
+              <i class="fas fa-bag-shopping"></i> Save Mystery Box (<span id="btnBoxPrice">₹199</span>)
+            </button>
+            <button class="btn btn-outline ripple-btn" id="rerollBoxBtn" title="Generate another mystery bundle">
+              <i class="fas fa-arrows-rotate"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2240,6 +2638,144 @@
   let savedMealCount = 0;
   let ngoMealsDonated = 6200;
 
+  // AI Mystery Box Database & Generator State
+  const aiMysteryInventory = {
+    veg: [
+      {
+        restaurant: "Lucky Restaurant & Grill",
+        city: "Bandra",
+        area: "Bandra West (Hill Road)",
+        items: [
+          "1x Fresh Paneer Tikka Masala (Full Portion)",
+          "2x Butter Tandoori Naan (Freshly Baked)",
+          "1x Gulab Jamun Sweet Box (2pc)"
+        ]
+      },
+      {
+        restaurant: "South Tiffin Express",
+        city: "Andheri",
+        area: "Andheri West (Lokhandwala)",
+        items: [
+          "1x Ghee Podi Masala Dosa",
+          "2x Steamed Idli with Sambar & Chutney Duo",
+          "1x Filter Coffee Decoction Delight"
+        ]
+      },
+      {
+        restaurant: "Achija Khau Galli Corner",
+        city: "Ghatkopar",
+        area: "Ghatkopar East (Khau Galli)",
+        items: [
+          "1x Extra Butter Cheese Pav Bhaji",
+          "4x Butter Toasted Pavs",
+          "1x Roasted Masala Papad Combo"
+        ]
+      },
+      {
+        restaurant: "B. Merwan Heritage Bakery",
+        city: "Grant Road",
+        area: "Grant Road Station East",
+        items: [
+          "2x Fresh Irani Mawa Cakes",
+          "1x Veg Puff Pastry Roll",
+          "1x Bun Maska with Jam"
+        ]
+      }
+    ],
+    "non-veg": [
+      {
+        restaurant: "Persian Darbar Delicacies",
+        city: "Andheri",
+        area: "Andheri East (Near Metro)",
+        items: [
+          "1x Chicken Tikka Dum Biryani Bowl",
+          "2x Crispy Chicken Frankies",
+          "1x Mint Raita & Salad Cup"
+        ]
+      },
+      {
+        restaurant: "Beachside Wharf",
+        city: "Vasai",
+        area: "Vasai West (Station Road)",
+        items: [
+          "1x Coastal Prawns Curry (Chef Special)",
+          "2x Neer Dosas / Steamed Rice",
+          "1x Fried Fish Koliwada Cutlet"
+        ]
+      },
+      {
+        restaurant: "Lucky Restaurant & Grill",
+        city: "Bandra",
+        area: "Bandra West (Pali Hill)",
+        items: [
+          "1x Butter Chicken Boneless Curry",
+          "2x Garlic Butter Naans",
+          "1x Kheer Dessert Cup"
+        ]
+      }
+    ],
+    dessert: [
+      {
+        restaurant: "Artisanal Patisserie",
+        city: "Grant Road",
+        area: "Grant Road / Girgaon",
+        items: [
+          "2x Belgian Chocolate Truffle Pastry Slices",
+          "2x Blueberry Almond Tarts",
+          "1x Red Velvet Cupcake"
+        ]
+      },
+      {
+        restaurant: "The Bagel & Crust",
+        city: "Bandra",
+        area: "Bandra West (Pali Hill)",
+        items: [
+          "2x Warm Cinnamon Rolls with Cream Frosting",
+          "2x Chocolate Chip Brioche Buns"
+        ]
+      }
+    ],
+    combo: [
+      {
+        restaurant: "The Bagel & Crust",
+        city: "Bandra",
+        area: "Bandra West (Hill Road)",
+        items: [
+          "1x 8-inch Woodfired Margherita Pizza",
+          "1x Seasoned Peri Peri French Fries",
+          "1x Iced Lemon Mint Cooler"
+        ]
+      },
+      {
+        restaurant: "Achija Khau Galli Corner",
+        city: "Ghatkopar",
+        area: "Ghatkopar East (Khau Galli)",
+        items: [
+          "1x Grilled Paneer Cheese Sandwich",
+          "1x Crispy Sev Puri Platter (6pc)",
+          "1x Fresh Mango Shake"
+        ]
+      }
+    ]
+  };
+
+  let currentAiBox = {
+    title: "AI Surprise Box 🤫",
+    restaurant: "Lucky Restaurant & Grill",
+    city: "Bandra",
+    area: "Bandra West (Hill Road)",
+    diet: "veg",
+    tier: "standard",
+    price: 199,
+    origPrice: 480,
+    items: [
+      "1x Fresh Paneer Tikka Masala (Full Portion)",
+      "2x Butter Tandoori Naan (Freshly Baked)",
+      "1x Gulab Jamun Sweet Box (2pc)"
+    ],
+    peekRevealed: true
+  };
+
   // Loader dismiss
   window.addEventListener('load', () => {
     setTimeout(() => {
@@ -2273,7 +2809,7 @@
   const navLinks = document.getElementById('navLinks');
   mobileBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
 
-  // Render Deals
+  // Render Live Deals
   function renderDeals() {
     const container = document.getElementById('dealsContainer');
     if (!container) return;
@@ -2345,6 +2881,285 @@
       `;
     }).join('');
   }
+
+  // AI Personalized Recommendations Engine
+  function renderAiRecommendations() {
+    const container = document.getElementById('aiRecsContainer');
+    if (!container) return;
+
+    const activeChips = Array.from(document.querySelectorAll('#aiTasteChips .taste-chip.active')).map(c => c.getAttribute('data-pref'));
+    
+    // Retrieve previous saved history
+    let orderHistory = [];
+    try {
+      orderHistory = JSON.parse(localStorage.getItem('cravely_order_history') || '[]');
+    } catch(e) {
+      orderHistory = [];
+    }
+
+    // Score deals based on preferences and history
+    const scoredDeals = dealsData.map(deal => {
+      let score = 82; // Base score
+      
+      // Match active cravings
+      if (activeChips.includes('biryani') && deal.title.toLowerCase().includes('biryani')) score += 14;
+      if (activeChips.includes('street-food') && (deal.category === 'fast-food' || deal.title.toLowerCase().includes('pav bhaji') || deal.title.toLowerCase().includes('roll'))) score += 13;
+      if (activeChips.includes('dessert') && deal.category === 'dessert') score += 15;
+      if (activeChips.includes('south-indian') && (deal.title.toLowerCase().includes('dosa') || deal.restaurant.toLowerCase().includes('tiffin'))) score += 16;
+      if (activeChips.includes('pizza') && deal.title.toLowerCase().includes('pizza')) score += 14;
+      if (activeChips.includes('budget-saver') && deal.priceDiscount < 100) score += 12;
+
+      // History bonus
+      if (orderHistory.some(o => o.restaurant === deal.restaurant || o.city === deal.city)) {
+        score += 8;
+      }
+
+      // Cap at 99%
+      score = Math.min(99, score + (deal.id % 5));
+
+      return { ...deal, matchScore: score };
+    });
+
+    scoredDeals.sort((a, b) => b.matchScore - a.matchScore);
+    const topRecs = scoredDeals.slice(0, 3);
+
+    // Update dynamic banner
+    const insightTitle = document.getElementById('aiInsightTitle');
+    const insightSub = document.getElementById('aiInsightSub');
+    if (orderHistory.length > 0) {
+      const lastMeal = orderHistory[orderHistory.length - 1];
+      if (insightTitle) insightTitle.innerText = `Based on your previous orders (${lastMeal.title}), you may love these deals! 🍜🥟`;
+      if (insightSub) insightSub.innerText = `AI Confidence: ${topRecs[0].matchScore}% Match based on your dining patterns`;
+    } else {
+      if (insightTitle) insightTitle.innerText = `Based on your taste preferences and favorite spots, you may like these deals! 🍜🥟`;
+      if (insightSub) insightSub.innerText = `AI Confidence: ${topRecs[0].matchScore}% Match across Bandra, Andheri & Ghatkopar`;
+    }
+
+    container.innerHTML = topRecs.map(item => {
+      return `
+        <div class="food-card" style="border: 2px solid rgba(139, 92, 246, 0.35); box-shadow: 0 12px 30px -8px rgba(139, 92, 246, 0.2);">
+          <div class="food-image-wrap">
+            <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <span class="diet-badge ${item.type}">
+              <span class="diet-dot"></span>
+              ${item.type === 'veg' ? 'Pure Veg' : 'Non-Veg'}
+            </span>
+            <span class="ai-match-badge">
+              <i class="fas fa-wand-magic-sparkles"></i> ${item.matchScore}% Taste Match
+            </span>
+          </div>
+
+          <div class="food-card-body">
+            <div>
+              <div class="food-city-tag" style="color:var(--ai-purple);"><i class="fas fa-robot"></i> AI CURATED • ${item.city.toUpperCase()}</div>
+              <h3 class="food-title">${item.title}</h3>
+              <div class="restaurant-name"><i class="fas fa-store"></i> ${item.restaurant}</div>
+            </div>
+
+            <div>
+              <div class="food-meta">
+                <div class="pricing">
+                  <span class="price-discount">₹${item.priceDiscount}</span>
+                  <span class="price-original">₹${item.priceOriginal}</span>
+                  <span class="discount-tag">${item.discountPct}% OFF</span>
+                </div>
+                <div class="stock-left" style="color:var(--ai-purple); font-weight:700;">
+                  <i class="fas fa-bolt"></i> High Match
+                </div>
+              </div>
+
+              <button class="btn btn-ai ripple-btn" style="width:100%; justify-content:center;" onclick="openReservationModal(${item.id})">
+                <i class="fas fa-bag-shopping"></i> Save AI Pick (₹${item.priceDiscount})
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Taste Chip listeners for AI recommendations
+  document.querySelectorAll('#aiTasteChips .taste-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      renderAiRecommendations();
+    });
+  });
+
+  document.getElementById('refreshAiRecsBtn')?.addEventListener('click', () => {
+    const btn = document.getElementById('refreshAiRecsBtn');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> AI Matching...';
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-rotate"></i> Refresh AI Match';
+      renderAiRecommendations();
+      showToast('✨ Cravely AI updated recommendations with latest surplus drop availability!');
+    }, 500);
+  });
+
+  // AI Mystery Box Generator Engine
+  function generateMysteryBox() {
+    const city = document.getElementById('aiBoxCitySelect').value;
+    const activeDietBtn = document.querySelector('#aiBoxDietWrap .taste-chip.active');
+    const diet = activeDietBtn ? activeDietBtn.getAttribute('data-diet') : 'veg';
+    const activeTierCard = document.querySelector('#aiTierCards .ai-tier-card.selected');
+    const tier = activeTierCard ? activeTierCard.getAttribute('data-tier') : 'standard';
+    const price = parseInt(activeTierCard ? activeTierCard.getAttribute('data-price') : '199');
+    const origPrice = parseInt(activeTierCard ? activeTierCard.getAttribute('data-orig') : '480');
+
+    const btn = document.getElementById('generateMysteryBoxBtn');
+    const outputBox = document.getElementById('aiMysteryBoxResult');
+    
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> AI Bundling Surplus Inventory...';
+    btn.disabled = true;
+    if (outputBox) outputBox.classList.add('generating');
+
+    setTimeout(() => {
+      btn.innerHTML = '<i class="fas fa-wand-magic-sparkles"></i> Generate AI Surprise Box';
+      btn.disabled = false;
+      if (outputBox) outputBox.classList.remove('generating');
+
+      // Pick matching inventory list
+      const pool = aiMysteryInventory[diet] || aiMysteryInventory.veg;
+      let matched = pool[Math.floor(Math.random() * pool.length)];
+
+      if (city !== 'all') {
+        const cityMatch = pool.find(p => p.city.toLowerCase() === city.toLowerCase());
+        if (cityMatch) matched = cityMatch;
+      }
+
+      const discountPct = Math.round(((origPrice - price) / origPrice) * 100);
+
+      currentAiBox = {
+        id: 9999 + Math.floor(Math.random() * 1000),
+        title: `AI Surprise Box 🤫`,
+        restaurant: matched.restaurant,
+        city: matched.city,
+        area: matched.area,
+        diet: diet,
+        tier: tier,
+        price: price,
+        origPrice: origPrice,
+        discountPct: discountPct,
+        items: matched.items,
+        peekRevealed: true
+      };
+
+      // Update UI
+      document.getElementById('aiBoxCityTag').innerHTML = `<i class="fas fa-location-dot"></i> ${matched.city.toUpperCase()} (${matched.area})`;
+      document.getElementById('aiBoxRestaurant').innerHTML = `<i class="fas fa-store"></i> Bundled from: <strong>${matched.restaurant}</strong>`;
+      document.getElementById('aiBoxPrice').innerText = `₹${price}`;
+      document.getElementById('aiBoxOrig').innerText = `₹${origPrice}`;
+      document.getElementById('aiBoxDiscount').innerText = `${discountPct}% OFF`;
+      document.getElementById('btnBoxPrice').innerText = `₹${price}`;
+      
+      const countLabel = tier === 'mini' ? 'Contains: 2 surplus items' : tier === 'deluxe' ? 'Contains: 4–5 premium items' : 'Contains: 2–4 surplus items';
+      document.getElementById('aiBoxItemCountText').innerHTML = `<i class="fas fa-box-open" style="color:var(--ai-purple)"></i> ${countLabel}`;
+
+      renderMysteryBoxItems();
+
+      // Confetti burst for new mystery box
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 50,
+          spread: 60,
+          origin: { y: 0.7 }
+        });
+      }
+
+      showToast(`✨ Generated ${matched.city} AI Mystery Box from ${matched.restaurant} (Save ₹${origPrice - price})!`);
+    }, 700);
+  }
+
+  function renderMysteryBoxItems() {
+    const container = document.getElementById('aiBoxItemsContent');
+    const toggleBtn = document.getElementById('togglePeekBtn');
+    if (!container) return;
+
+    if (currentAiBox.peekRevealed) {
+      container.innerHTML = currentAiBox.items.map(item => `
+        <div class="mystery-item-row"><i class="fas fa-check-circle" style="color:var(--sage-dark);"></i> <span>${item}</span></div>
+      `).join('');
+      if (toggleBtn) toggleBtn.innerText = 'Hide Contents (Keep Surprise 🤫)';
+    } else {
+      container.innerHTML = `
+        <div style="text-align:center; padding:0.8rem 0; color:var(--gray); font-style:italic;">
+          <i class="fas fa-question-circle" style="font-size:1.4rem; color:var(--ai-purple); margin-bottom:0.3rem;"></i>
+          <div>Mystery Box items sealed! Discover upon collection counter.</div>
+        </div>
+      `;
+      if (toggleBtn) toggleBtn.innerText = 'Peek Inside (AI Breakdown)';
+    }
+  }
+
+  // Toggle Peek / Surprise
+  document.getElementById('togglePeekBtn')?.addEventListener('click', () => {
+    currentAiBox.peekRevealed = !currentAiBox.peekRevealed;
+    renderMysteryBoxItems();
+  });
+
+  // Mystery Box Tier selection
+  document.querySelectorAll('#aiTierCards .ai-tier-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('#aiTierCards .ai-tier-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+    });
+  });
+
+  // Mystery Box Diet selection
+  document.querySelectorAll('#aiBoxDietWrap .taste-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#aiBoxDietWrap .taste-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  document.getElementById('generateMysteryBoxBtn')?.addEventListener('click', generateMysteryBox);
+  document.getElementById('rerollBoxBtn')?.addEventListener('click', generateMysteryBox);
+
+  // Reserve AI Mystery Box
+  document.getElementById('reserveMysteryBoxBtn')?.addEventListener('click', () => {
+    // Create virtual deal item for reservation modal
+    const boxDeal = {
+      id: currentAiBox.id || 9999,
+      title: `${currentAiBox.title} (${currentAiBox.tier.toUpperCase()})`,
+      restaurant: currentAiBox.restaurant,
+      city: currentAiBox.city,
+      area: currentAiBox.area,
+      category: currentAiBox.diet,
+      type: currentAiBox.diet === 'non-veg' ? 'non-veg' : 'veg',
+      priceOriginal: currentAiBox.origPrice,
+      priceDiscount: currentAiBox.price,
+      discountPct: currentAiBox.discountPct,
+      stock: 3,
+      image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=60"
+    };
+
+    activeSelectedDeal = boxDeal;
+    currentModalQty = 1;
+
+    document.getElementById('modalFoodImg').src = boxDeal.image;
+    document.getElementById('modalFoodTitle').innerText = boxDeal.title;
+    document.getElementById('modalFoodCity').innerHTML = `<i class="fas fa-location-dot"></i> ${boxDeal.city.toUpperCase()} (${boxDeal.area})`;
+    document.getElementById('modalRestName').innerText = boxDeal.restaurant;
+    document.getElementById('modalStockStatus').innerText = `(Surplus AI Pack)`;
+
+    // Auto-fill saved customer details from localStorage
+    if (localStorage.getItem('cravely_cust_name')) {
+      document.getElementById('custName').value = localStorage.getItem('cravely_cust_name');
+    }
+    if (localStorage.getItem('cravely_cust_phone')) {
+      document.getElementById('custPhone').value = localStorage.getItem('cravely_cust_phone');
+    }
+    if (localStorage.getItem('cravely_cust_email')) {
+      document.getElementById('custEmail').value = localStorage.getItem('cravely_cust_email');
+    }
+
+    document.getElementById('modalStep1').style.display = 'block';
+    document.getElementById('modalStepSuccess').style.display = 'none';
+
+    updateModalPricing();
+    reserveModal.classList.add('active');
+  });
 
   // Countdown timer ticker
   setInterval(() => {
@@ -2462,7 +3277,7 @@
     });
   });
 
-  // Confirm Reservation with User Info Validation
+  // Confirm Reservation with User Info Validation & AI Learning
   document.getElementById('confirmReserveBtn')?.addEventListener('click', () => {
     const custName = document.getElementById('custName').value.trim();
     const custPhone = document.getElementById('custPhone').value.trim();
@@ -2487,6 +3302,20 @@
     localStorage.setItem('cravely_cust_name', custName);
     localStorage.setItem('cravely_cust_phone', custPhone);
     if (custEmail) localStorage.setItem('cravely_cust_email', custEmail);
+
+    // Save order into AI Order History for personalized recommendation learning
+    try {
+      let history = JSON.parse(localStorage.getItem('cravely_order_history') || '[]');
+      history.push({
+        title: activeSelectedDeal.title,
+        restaurant: activeSelectedDeal.restaurant,
+        city: activeSelectedDeal.city,
+        category: activeSelectedDeal.category || 'food',
+        price: activeSelectedDeal.priceDiscount,
+        date: new Date().toISOString()
+      });
+      localStorage.setItem('cravely_order_history', JSON.stringify(history));
+    } catch(e) {}
 
     const btn = document.getElementById('confirmReserveBtn');
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing UPI for ' + custName + '...';
@@ -2528,6 +3357,7 @@
       }
 
       showToast(`🎉 Order reserved for ${custName}! Pickup Code: ${randomCode}`);
+      renderAiRecommendations(); // Recompute AI recommendations based on new save
     }, 900);
   });
 
@@ -2832,6 +3662,7 @@
 
   // Initialize
   renderDeals();
+  renderAiRecommendations();
   updateCalculator();
 </script>
 </body>

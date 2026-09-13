@@ -8,7 +8,24 @@
 
 ## 🌟 Key Features
 
-### 1. 📍 Curated Locations & Flash Drops
+### 1. 🤫 AI "Mystery Box" / Surprise Box Generator
+- **Smart Surplus Bundling**: Instead of restaurants having to list every single random leftover item individually, Cravely AI dynamically bundles available kitchen inventory into high-value Surprise Boxes at **60% to 70% OFF**.
+- **Dynamic Configuration**:
+  - **Location Awareness**: Tailored to Bandra, Andheri, Ghatkopar, Grant Road & Vasai.
+  - **Dietary Preferences**: 🌱 Pure Veg Box, 🍗 Non-Veg Feast, 🍰 Sweet & Bakery Box, 🥪 Street Food & Munchies.
+  - **Tiered Box Sizes**:
+    - 🎒 **Mini Box**: ₹129 *(Orig. ₹340 • 2 Surplus Items)*
+    - 🎁 **Surprise Box**: ₹199 *(Orig. ₹480 • 3–4 Surplus Items)*
+    - 👑 **Deluxe Feast**: ₹299 *(Orig. ₹750 • 4–5 Premium Items + Beverage)*
+- **Interactive Peek & Reveal**: Toggle between "Peek Inside (AI Breakdown)" to inspect portions or keep it sealed as a thrilling surprise!
+
+### 2. ✨ AI Personalized Recommendations ("Cravely AI Taste Match")
+- **Adaptive Machine Learning Engine**: Analyzes user's previous meal saves, dietary profile, and neighborhood spending habits from local storage.
+- **Dynamic Confidence Scoring**: Displays high-accuracy match badges (e.g. `🤖 98% Taste Match`, `🔥 High Value Pick`).
+- **Interactive Taste Tuning**: Users can click real-time craving chips (Biryani & Curries, Street Snacks, Desserts, South Indian, Pizza, Budget <₹100) to instantly regenerate matched surplus deals.
+- **Continuous Learning**: Automatically learns from every completed reservation.
+
+### 3. 📍 Curated Locations & Flash Drops
 - Real-time surplus listings from top eateries across major hubs:
   - **Bandra** (Hill Road, Pali Hill, Bandra Station)
   - **Andheri** (Lokhandwala, JB Nagar, Metro line)
@@ -18,32 +35,32 @@
 - **Dynamic Countdown Timers** showing real-time pickup windows for each live deal.
 - **Dietary & Category Filters**: Filter by Pure Veg 🌱, Non-Veg 🍗, Desserts & Bakery 🍰, and Street Food & Combos 🥪.
 
-### 2. ⚡ Instant Reservation with Customer Details & UPI Checkout
+### 4. ⚡ Instant Reservation with Customer Details & UPI Checkout
 - **Customer Verification & Basic Info**: Prompts user for their **Full Name**, **Mobile Number** (for SMS / OTP pickup verification), **Email**, and optional **Pickup Notes**.
 - **Smart Auto-Fill**: Remembers customer info in `localStorage` for 1-tap subsequent meal rescues.
 - **Flexible Pickup Windows**: Immediate (Next 30 mins), Evening (8–9 PM), Late Night (10–11:15 PM).
 - **Simulated Instant UPI Payment**: Google Pay, PhonePe, Paytm, and Pay-at-Counter.
 - **Customized Pickup Ticket**: Generates instant unique pickup code (`CRV-XXXX`) linked with customer name, phone, and area.
 
-### 3. 🤝 100% Zero-Waste NGO Redistribution Network
+### 5. 🤝 100% Zero-Waste NGO Redistribution Network
 - **End-of-Day Surplus Connect**: If prepared food is still remaining at restaurants after discounted customer windows close, restaurants can request a volunteer pickup in 1 click.
 - **Verified NGO Partnerships**: Integrated with **Roti Bank, Robin Hood Army, Feeding India, Akshaya Patra**, and local night shelters.
 - **Instant Dispatch Tracker**: Generates live volunteer assignment tickets (`NGO-XXXX`) with volunteer ETA and location routing.
 - **80G Tax Exemption & CSR Certificates**: Generates digital receipts for restaurants eligible for tax benefits and corporate social responsibility (CSR) compliance.
 - **NGO Recipient Onboarding**: Dedicated registration flow for registered charities and shelter homes.
 
-### 4. 🌍 Eco-Impact & Annual Money Savings Calculator
+### 6. 🌍 Eco-Impact & Annual Money Savings Calculator
 - Interactive weekly rescue slider tailored for dining averages:
   - 💰 **Annual ₹ Saved** (₹20,280/yr default for 3 meals/week)
   - 🌿 **Kg CO₂ Emissions Prevented**
   - 💧 **Litres of Water Conserved**
   - 🍽️ **Total Meals Rescued & Donated**
 
-### 5. 🏪 Restaurant Partner Portal & Revenue Estimator
+### 7. 🏪 Restaurant Partner Portal & Revenue Estimator
 - Dedicated partner onboarding modal with ROI calculator (Est. ₹42,000–₹85,000 extra monthly revenue).
 - Zero listing fees with customizable takeaway and donation slots.
 
-### 6. 🎨 Modern Glassmorphic UI & Micro-interactions
+### 8. 🎨 Modern Glassmorphic UI & Micro-interactions
 - Responsive glassmorphic aesthetic with dark mode toggle & `localStorage` persistence.
 - Animated floating canvas particles and live impact stats ticker.
 - Toast notification system and floating back-to-top button.
