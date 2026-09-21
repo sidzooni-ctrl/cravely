@@ -1485,6 +1485,600 @@
       color: white;
       transform: translateY(-3px);
     }
+  
+    /* =========================================
+       MY CRAVELY DASHBOARD & FAVORITE STYLES
+       ========================================= */
+    .card-fav-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9ca3af;
+      cursor: pointer;
+      z-index: 4;
+      font-size: 1rem;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    body.dark .card-fav-btn {
+      background: rgba(26, 39, 32, 0.85);
+      border-color: var(--glass-border);
+      color: #9ca3af;
+    }
+    .card-fav-btn:hover {
+      transform: scale(1.15);
+      color: #ef4444;
+    }
+    .card-fav-btn.saved {
+      color: #ef4444;
+      background: #fff;
+      animation: heartPop 0.4s ease forwards;
+    }
+    body.dark .card-fav-btn.saved {
+      background: rgba(36, 53, 44, 0.95);
+    }
+    @keyframes heartPop {
+      0% { transform: scale(0.8); }
+      50% { transform: scale(1.28); }
+      100% { transform: scale(1); }
+    }
+
+    /* Modal dialog custom width for My Cravely */
+    .modal-dialog-lg {
+      max-width: 920px;
+      width: 94%;
+      padding: 2rem;
+    }
+    @media (max-width: 768px) {
+      .modal-dialog-lg {
+        padding: 1.4rem 1.1rem;
+        max-height: 94vh;
+        border-radius: 24px;
+      }
+    }
+
+    /* My Cravely Tab Navigation */
+    .cravely-nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--glass-border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      scrollbar-width: thin;
+    }
+    .cravely-tab-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.15rem;
+      border-radius: 30px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--gray);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+      position: relative;
+    }
+    .cravely-tab-item:hover {
+      color: var(--dark);
+      background: rgba(143, 191, 159, 0.15);
+    }
+    .cravely-tab-item.active {
+      background: var(--card-bg);
+      color: var(--dark);
+      border-color: var(--glass-border);
+      box-shadow: var(--shadow-sm);
+    }
+    .cravely-tab-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: -0.85rem;
+      left: 15%;
+      right: 15%;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--soft-orange);
+    }
+    .cravely-tab-item .tab-pill-badge {
+      background: var(--soft-orange);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.1rem 0.45rem;
+      border-radius: 12px;
+      margin-left: 0.2rem;
+    }
+    .cravely-tab-item.active .tab-pill-badge {
+      background: var(--sage-dark);
+    }
+
+    /* Tab Panes */
+    .cravely-tab-pane {
+      display: none;
+      animation: tabFadeIn 0.35s ease forwards;
+    }
+    .cravely-tab-pane.active {
+      display: block;
+    }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Profile Header & Card */
+    .profile-hero-card {
+      background: linear-gradient(135deg, rgba(143, 191, 159, 0.22), rgba(255, 159, 110, 0.18));
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .profile-avatar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .profile-avatar-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 3px solid var(--soft-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .profile-avatar-circle:hover {
+      transform: scale(1.06);
+    }
+    .profile-avatar-circle .avatar-edit-icon {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      background: var(--dark);
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--card-bg);
+    }
+    .profile-info-text h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .profile-info-text .profile-tier-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      background: rgba(143, 191, 159, 0.3);
+      color: var(--sage-dark);
+      padding: 0.2rem 0.65rem;
+      border-radius: 20px;
+      margin-top: 0.3rem;
+    }
+    body.dark .profile-info-text .profile-tier-badge {
+      color: #a7f3d0;
+      background: rgba(5, 150, 105, 0.25);
+    }
+
+    .profile-quick-stats {
+      display: flex;
+      gap: 1.2rem;
+    }
+    .profile-mini-stat {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 0.6rem 1rem;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      min-width: 90px;
+    }
+    .profile-mini-stat-val {
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--soft-orange);
+      line-height: 1;
+    }
+    .profile-mini-stat-label {
+      font-size: 0.72rem;
+      color: var(--gray);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    /* Avatar Grid */
+    .avatar-grid {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin: 0.8rem 0 1.2rem 0;
+    }
+    .avatar-option {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      border: 2px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .avatar-option:hover {
+      transform: scale(1.15);
+      border-color: var(--soft-orange);
+    }
+    .avatar-option.selected {
+      border-color: var(--soft-orange);
+      background: rgba(255, 159, 110, 0.2);
+      transform: scale(1.12);
+    }
+
+    /* Dietary Tag selector */
+    .diet-select-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .diet-select-pill {
+      padding: 0.45rem 0.9rem;
+      border-radius: 20px;
+      border: 1px solid var(--glass-border);
+      background: var(--card-bg);
+      color: var(--dark);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .diet-select-pill:hover {
+      border-color: var(--sage);
+    }
+    .diet-select-pill.selected {
+      background: var(--sage);
+      color: white;
+      border-color: var(--sage);
+    }
+
+    /* Order History Cards */
+    .order-history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .order-item-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.2rem 1.4rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.2rem;
+      transition: var(--transition);
+    }
+    .order-item-card:hover {
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 640px) {
+      .order-item-card {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+      }
+    }
+    .order-item-thumb {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+    .order-item-code-badge {
+      display: inline-block;
+      font-family: monospace;
+      font-weight: 800;
+      font-size: 0.8rem;
+      color: var(--soft-orange);
+      background: rgba(255, 159, 110, 0.15);
+      padding: 0.15rem 0.55rem;
+      border-radius: 8px;
+    }
+    .order-item-status-pill {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.25rem 0.65rem;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .order-item-status-pill.completed {
+      background: rgba(143, 191, 159, 0.25);
+      color: var(--sage-dark);
+    }
+    body.dark .order-item-status-pill.completed {
+      background: rgba(5, 150, 105, 0.25);
+      color: #a7f3d0;
+    }
+    .order-item-status-pill.active {
+      background: rgba(255, 159, 110, 0.25);
+      color: #ea580c;
+    }
+
+    /* Active Pickup Code Passes */
+    .active-pickup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.2rem;
+    }
+    .active-pass-ticket {
+      background: var(--card-bg);
+      border: 2px dashed var(--soft-orange);
+      border-radius: 24px;
+      padding: 1.5rem;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+    .active-pass-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .active-pass-code-huge {
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: monospace;
+      letter-spacing: 2px;
+      color: var(--soft-orange);
+      line-height: 1;
+    }
+    .active-pass-qr-box {
+      background: white;
+      border-radius: 16px;
+      padding: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.4rem;
+      border: 1px solid #e5e7eb;
+      margin: 1rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .qr-laser-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ef4444, transparent);
+      animation: qrScanMove 2.2s infinite ease-in-out;
+      box-shadow: 0 0 8px #ef4444;
+    }
+    @keyframes qrScanMove {
+      0% { top: 0; }
+      50% { top: 96%; }
+      100% { top: 0; }
+    }
+    .active-countdown-pill {
+      background: #fee2e2;
+      color: #ef4444;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      animation: pulseAlert 1.5s infinite alternate;
+    }
+    body.dark .active-countdown-pill {
+      background: rgba(239, 68, 68, 0.2);
+    }
+    @keyframes pulseAlert {
+      0% { opacity: 0.85; }
+      100% { opacity: 1; transform: scale(1.02); }
+    }
+
+    /* Saved Meals Grid */
+    .saved-meals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    /* Eco Impact Grid */
+    .impact-stat-quad {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .impact-box {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .impact-box-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+    .impact-box-val {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--sage-dark);
+      line-height: 1.1;
+    }
+    body.dark .impact-box-val {
+      color: #6ee7b7;
+    }
+    .impact-box-lbl {
+      font-size: 0.8rem;
+      color: var(--gray);
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    .eco-progress-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .eco-bar-track {
+      height: 12px;
+      background: var(--light-gray);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0.6rem 0;
+    }
+    .eco-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--sage), var(--soft-orange));
+      border-radius: 10px;
+      transition: width 0.8s ease;
+    }
+
+    .badges-collection {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .badge-card {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 0.85rem 0.5rem;
+      text-align: center;
+      transition: var(--transition);
+      opacity: 0.45;
+      filter: grayscale(80%);
+    }
+    .badge-card.unlocked {
+      opacity: 1;
+      filter: grayscale(0%);
+      border-color: var(--soft-orange);
+      background: linear-gradient(145deg, var(--card-bg), rgba(255, 159, 110, 0.12));
+    }
+    .badge-card:hover {
+      transform: translateY(-3px);
+    }
+    .badge-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+    .badge-card-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    .badge-card-desc {
+      font-size: 0.68rem;
+      color: var(--gray);
+      margin-top: 0.2rem;
+    }
+
+    /* Share Eco Impact Certificate Card */
+    .eco-share-card-preview {
+      background: linear-gradient(135deg, #2D5A43, #1c3628);
+      color: #fff;
+      border-radius: 24px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+    .eco-share-card-preview::before {
+      content: '🌿';
+      position: absolute;
+      right: -20px;
+      bottom: -20px;
+      font-size: 8rem;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    /* AI Preference Options */
+    .ai-pref-section {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+    .spice-slider-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-top: 0.6rem;
+    }
+    .spice-pill-btn {
+      padding: 0.75rem 0.5rem;
+      border-radius: 16px;
+      border: 1px solid var(--glass-border);
+      background: var(--card-bg);
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .spice-pill-btn:hover {
+      border-color: var(--soft-orange);
+    }
+    .spice-pill-btn.selected {
+      background: var(--soft-orange);
+      color: #1f1f1f;
+      border-color: var(--soft-orange);
+    }
+
   </style>
 </head>
 <body>
@@ -1524,10 +2118,16 @@
     <a href="#calculator">Savings Calc</a>
     <a href="#business">For Restaurants</a>
     <a href="#faq">FAQs</a>
+    <a href="javascript:void(0)" onclick="openMyCravely('profile')" id="navMyCravelyLink">👤 My Cravely <span class="badge-count" id="activePickupsNavBadge" style="display:none; position:static; margin-left:4px; font-size:0.65rem; width:16px; height:16px;">0</span></a>
   </div>
 
   <div class="nav-actions">
-    <button class="btn-icon" id="cartBtn" title="Saved Meal Reservations">
+    <button class="btn btn-outline btn-sm" id="openMyCravelyBtn" onclick="openMyCravely('profile')" title="Open My Cravely Dashboard" style="padding:0.4rem 0.9rem; border-radius:40px; display:inline-flex; align-items:center; gap:0.4rem; font-weight:700;">
+      <span id="navUserAvatar" style="font-size:1.1rem;">🥑</span>
+      <span id="navUserName">My Cravely</span>
+      <span class="badge-count" id="activePickupsBtnBadge" style="display:none; position:static; width:18px; height:18px; font-size:0.68rem; margin-left:2px;">0</span>
+    </button>
+    <button class="btn-icon" id="cartBtn" title="Saved Meal Reservations & Active Passes">
       <i class="fas fa-bag-shopping"></i>
       <span class="badge-count" id="cartCount">0</span>
     </button>
@@ -2356,6 +2956,9 @@
         </div>
       </div>
 
+      <button class="btn btn-primary ripple-btn" style="width:100%; margin-bottom:0.6rem;" onclick="reserveModal.classList.remove('active'); openMyCravely('pickup-codes');">
+        <i class="fas fa-ticket"></i> View Live Pickup Pass in My Cravely
+      </button>
       <button class="btn btn-dark" style="width:100%;" id="finishOrderBtn">Done</button>
     </div>
   </div>
@@ -2502,6 +3105,350 @@
 </div>
 
 <!-- TOAST CONTAINER -->
+
+<!-- =========================================
+     MY CRAVELY DASHBOARD MODAL
+     ========================================= -->
+<div class="modal-backdrop" id="myCravelyModalBackdrop">
+  <div class="modal-dialog modal-dialog-lg">
+    <button class="modal-close" id="closeMyCravelyModal" aria-label="Close My Cravely"><i class="fas fa-times"></i></button>
+
+    <!-- Modal Header -->
+    <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:1.2rem;">
+      <span style="font-size:2.2rem;" id="modalHeaderAvatar">🥑</span>
+      <div>
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <h2 style="font-size:1.6rem; font-weight:900; line-height:1.2;">My Cravely</h2>
+          <span class="section-tag" style="margin-bottom:0; font-size:0.72rem; padding:0.15rem 0.6rem;">Member Hub</span>
+        </div>
+        <p style="color:var(--gray); font-size:0.88rem;">Manage your profile, active pickup passes, AI preferences & personal eco-impact.</p>
+      </div>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="cravely-nav-tabs" id="myCravelyTabs">
+      <button class="cravely-tab-item active" data-tab="profile">
+        <i class="fas fa-user"></i> Profile
+      </button>
+      <button class="cravely-tab-item" data-tab="orders">
+        <i class="fas fa-bag-shopping"></i> My Orders <span class="tab-pill-badge" id="tabOrdersBadge">0</span>
+      </button>
+      <button class="cravely-tab-item" data-tab="saved">
+        <i class="fas fa-heart"></i> Saved Meals <span class="tab-pill-badge" id="tabSavedBadge">0</span>
+      </button>
+      <button class="cravely-tab-item" data-tab="ai-pref">
+        <i class="fas fa-robot"></i> My AI Preferences
+      </button>
+      <button class="cravely-tab-item" data-tab="impact">
+        <i class="fas fa-seedling"></i> My Impact
+      </button>
+      <button class="cravely-tab-item" data-tab="pickup-codes">
+        <i class="fas fa-ticket"></i> Active Pickup Codes <span class="tab-pill-badge" id="tabActivePassBadge" style="background:#ef4444; display:none;">0</span>
+      </button>
+    </div>
+
+    <!-- ==================== TAB 1: PROFILE ==================== -->
+    <div class="cravely-tab-pane active" id="pane-profile">
+      <div class="profile-hero-card">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar-circle" id="profileAvatarDisplay" title="Click to change avatar">
+            <span id="heroAvatarEmoji">🥑</span>
+            <div class="avatar-edit-icon"><i class="fas fa-pen"></i></div>
+          </div>
+          <div class="profile-info-text">
+            <h3 id="heroUserName">Alex Patel</h3>
+            <div style="font-size:0.85rem; color:var(--gray);" id="heroUserPhone">+91 98765 43210</div>
+            <div class="profile-tier-badge" id="heroUserTier"><i class="fas fa-medal"></i> 🌱 Eco Warrior • Level 2</div>
+          </div>
+        </div>
+
+        <div class="profile-quick-stats">
+          <div class="profile-mini-stat">
+            <div class="profile-mini-stat-val" id="profileStatRescues">0</div>
+            <div class="profile-mini-stat-label">Rescues</div>
+          </div>
+          <div class="profile-mini-stat">
+            <div class="profile-mini-stat-val" id="profileStatSaved">₹0</div>
+            <div class="profile-mini-stat-label">Saved</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Avatar Picker Row (Hidden by default, toggled on click) -->
+      <div id="avatarPickerSection" style="display:none; background:var(--card-bg); padding:1rem; border-radius:18px; border:1px solid var(--glass-border); margin-bottom:1.2rem;">
+        <label style="font-weight:700; font-size:0.85rem;">Choose Your Foodie Avatar:</label>
+        <div class="avatar-grid" id="avatarGrid">
+          <div class="avatar-option selected" data-avatar="🥑">🥑</div>
+          <div class="avatar-option" data-avatar="🍕">🍕</div>
+          <div class="avatar-option" data-avatar="🥗">🥗</div>
+          <div class="avatar-option" data-avatar="🍜">🍜</div>
+          <div class="avatar-option" data-avatar="🍔">🍔</div>
+          <div class="avatar-option" data-avatar="🍰">🍰</div>
+          <div class="avatar-option" data-avatar="🍱">🍱</div>
+          <div class="avatar-option" data-avatar="🌮">🌮</div>
+          <div class="avatar-option" data-avatar="🥟">🥟</div>
+          <div class="avatar-option" data-avatar="🥪">🥪</div>
+          <div class="avatar-option" data-avatar="🌿">🌿</div>
+          <div class="avatar-option" data-avatar="👑">👑</div>
+        </div>
+      </div>
+
+      <form id="profileForm">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Full Name</label>
+            <input type="text" id="profName" placeholder="e.g. Alex Patel" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Mobile (For SMS & OTP)</label>
+            <input type="tel" id="profPhone" placeholder="e.g. 9876543210" required>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="profEmail" placeholder="e.g. alex@example.com">
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-location-dot"></i> Default Neighborhood</label>
+            <select id="profLocality">
+              <option value="Bandra">Bandra (West / East)</option>
+              <option value="Andheri">Andheri (Lokhandwala / JB Nagar)</option>
+              <option value="Ghatkopar">Ghatkopar (Khau Galli)</option>
+              <option value="Grant Road">Grant Road (SoBo)</option>
+              <option value="Vasai">Vasai (Coastal)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-utensils"></i> Primary Dietary Identity</label>
+          <div class="diet-select-pills" id="profDietPills">
+            <div class="diet-select-pill selected" data-diet="veg">🌱 Pure Veg</div>
+            <div class="diet-select-pill" data-diet="non-veg">🍗 Non-Veg / All</div>
+            <div class="diet-select-pill" data-diet="vegan">🌿 100% Vegan</div>
+            <div class="diet-select-pill" data-diet="jain">🕊️ Jain Friendly</div>
+            <div class="diet-select-pill" data-diet="eggetarian">🥚 Eggetarian</div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:0.8rem; margin-top:1.5rem;">
+          <button type="submit" class="btn btn-primary ripple-btn" style="flex:1;">
+            <i class="fas fa-floppy-disk"></i> Save Profile Details
+          </button>
+          <button type="button" class="btn btn-outline" id="loadDemoDataBtn" title="Load sample rescue history for preview" style="padding:0.6rem 1rem; font-size:0.85rem;">
+            <i class="fas fa-wand-magic-sparkles"></i> Load Sample Data
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ==================== TAB 2: MY ORDERS ==================== -->
+    <div class="cravely-tab-pane" id="pane-orders">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; flex-wrap:wrap; gap:0.5rem;">
+        <div>
+          <h3 style="font-size:1.15rem; font-weight:800;">Rescue Order History</h3>
+          <p style="color:var(--gray); font-size:0.82rem;">Your past surplus saves and restaurant pickup receipts.</p>
+        </div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn btn-outline btn-sm" id="clearOrdersBtn" style="font-size:0.78rem; padding:0.35rem 0.8rem;">
+            <i class="fas fa-trash-can"></i> Clear History
+          </button>
+        </div>
+      </div>
+
+      <div class="order-history-list" id="orderHistoryContainer">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+
+    <!-- ==================== TAB 3: SAVED MEALS ==================== -->
+    <div class="cravely-tab-pane" id="pane-saved">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem;">
+        <div>
+          <h3 style="font-size:1.15rem; font-weight:800;">❤️ Saved Deals & Favorites</h3>
+          <p style="color:var(--gray); font-size:0.82rem;">Meals you've bookmarked to rescue before flash drops close.</p>
+        </div>
+      </div>
+
+      <div class="saved-meals-grid" id="savedMealsContainer">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+
+    <!-- ==================== TAB 4: AI PREFERENCES ==================== -->
+    <div class="cravely-tab-pane" id="pane-ai-pref">
+      <div class="ai-pref-section">
+        <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.8rem;">
+          <i class="fas fa-wand-magic-sparkles" style="color:var(--ai-purple); font-size:1.3rem;"></i>
+          <h3 style="font-size:1.1rem; font-weight:800;">Favorite Taste & Cravings</h3>
+        </div>
+        <p style="color:var(--gray); font-size:0.85rem; margin-bottom:1rem;">
+          Select your go-to cravings. Cravely AI will prioritize these cuisines in your personalized recommendation feed.
+        </p>
+
+        <div class="taste-chips-wrapper" id="prefTasteChips" style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+          <button type="button" class="taste-chip active" data-pref="biryani">🍚 Biryani & Curries</button>
+          <button type="button" class="taste-chip active" data-pref="street-food">🥪 Mumbai Street Snacks</button>
+          <button type="button" class="taste-chip" data-pref="dessert">🍰 Desserts & Bakeries</button>
+          <button type="button" class="taste-chip" data-pref="south-indian">🥞 South Indian Tiffin</button>
+          <button type="button" class="taste-chip" data-pref="pizza">🍕 Artisan Pizza & Pasta</button>
+          <button type="button" class="taste-chip" data-pref="budget-saver">⚡ Budget Pick &lt;₹100</button>
+          <button type="button" class="taste-chip" data-pref="healthy">🥗 Healthy Bowls & Salads</button>
+        </div>
+      </div>
+
+      <div class="ai-pref-section">
+        <label style="font-weight:700; font-size:0.92rem; display:block; margin-bottom:0.4rem;">
+          <i class="fas fa-pepper-hot" style="color:#ef4444;"></i> Spice Tolerance Level
+        </label>
+        <div class="spice-slider-options" id="prefSpiceSelector">
+          <div class="spice-pill-btn" data-spice="mild">🌿 Mild / No Chili</div>
+          <div class="spice-pill-btn selected" data-spice="medium">🌶️ Medium Mumbai Heat</div>
+          <div class="spice-pill-btn" data-spice="fiery">🔥 Extra Fiery Kolhapuri</div>
+        </div>
+      </div>
+
+      <div class="ai-pref-section">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem;">
+          <label style="font-weight:700; font-size:0.92rem;"><i class="fas fa-wallet" style="color:var(--sage-dark);"></i> Max Budget Per Meal</label>
+          <span style="font-weight:900; color:var(--soft-orange); font-size:1.1rem;" id="prefBudgetVal">₹200</span>
+        </div>
+        <input type="range" id="prefBudgetSlider" min="50" max="350" step="25" value="200" style="width:100%; accent-color:var(--soft-orange);">
+        <div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--gray); margin-top:0.2rem;">
+          <span>₹50 (Ultra Budget)</span>
+          <span>₹200 (Popular)</span>
+          <span>₹350+ (Feast Box)</span>
+        </div>
+      </div>
+
+      <div class="ai-pref-section" style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div style="font-weight:700; font-size:0.92rem;">🤖 Adaptive Machine Learning</div>
+          <div style="font-size:0.8rem; color:var(--gray);">Continuously improve recommendation confidence using my order history</div>
+        </div>
+        <label style="position:relative; display:inline-block; width:48px; height:26px;">
+          <input type="checkbox" id="prefAiLearnToggle" checked style="opacity:0; width:0; height:0;">
+          <span style="position:absolute; cursor:pointer; inset:0; background-color:var(--sage-dark); border-radius:34px; transition:0.3s;" id="aiToggleSlider"></span>
+        </label>
+      </div>
+
+      <button class="btn btn-ai ripple-btn" id="saveAiPrefsBtn" style="width:100%; margin-top:0.5rem;">
+        <i class="fas fa-wand-magic-sparkles"></i> Save Preferences & Retune AI Feed
+      </button>
+    </div>
+
+    <!-- ==================== TAB 5: MY IMPACT ==================== -->
+    <div class="cravely-tab-pane" id="pane-impact">
+      <div class="impact-stat-quad">
+        <div class="impact-box">
+          <div class="impact-box-icon">🍽️</div>
+          <div class="impact-box-val" id="impactMealsRescued">0</div>
+          <div class="impact-box-lbl">Meals Rescued</div>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-icon">💰</div>
+          <div class="impact-box-val" id="impactMoneySaved">₹0</div>
+          <div class="impact-box-lbl">Money Saved</div>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-icon">🌿</div>
+          <div class="impact-box-val" id="impactCO2Saved">0.0 kg</div>
+          <div class="impact-box-lbl">CO₂ Prevented</div>
+        </div>
+        <div class="impact-box">
+          <div class="impact-box-icon">💧</div>
+          <div class="impact-box-val" id="impactWaterSaved">0 L</div>
+          <div class="impact-box-lbl">Water Conserved</div>
+        </div>
+      </div>
+
+      <div class="eco-progress-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <div style="font-weight:800; font-size:0.95rem;" id="impactLevelTitle">Level 1: Food Rescue Explorer</div>
+          <div style="font-size:0.82rem; font-weight:700; color:var(--soft-orange);" id="impactLevelProgress">0 / 3 Meals to Level 2</div>
+        </div>
+        <div class="eco-bar-track">
+          <div class="eco-bar-fill" id="impactProgressBar" style="width: 10%;"></div>
+        </div>
+        <div style="font-size:0.75rem; color:var(--gray);">Every meal rescued saves ~0.85 kg CO₂ from entering our city atmosphere!</div>
+      </div>
+
+      <div>
+        <h4 style="font-size:0.95rem; font-weight:800; margin-bottom:0.6rem;">🏆 Environmental Rescue Milestones</h4>
+        <div class="badges-collection" id="impactBadgesCollection">
+          <div class="badge-card" id="badge-first-save">
+            <div class="badge-card-icon">🌱</div>
+            <div class="badge-card-title">First Saver</div>
+            <div class="badge-card-desc">1st Meal Rescued</div>
+          </div>
+          <div class="badge-card" id="badge-carbon-saver">
+            <div class="badge-card-icon">🌍</div>
+            <div class="badge-card-title">Carbon Hero</div>
+            <div class="badge-card-desc">Saved 5kg+ CO₂</div>
+          </div>
+          <div class="badge-card" id="badge-night-saver">
+            <div class="badge-card-icon">🌙</div>
+            <div class="badge-card-title">Night Owl</div>
+            <div class="badge-card-desc">Late Night Rescue</div>
+          </div>
+          <div class="badge-card" id="badge-master-saver">
+            <div class="badge-card-icon">👑</div>
+            <div class="badge-card-title">Zero Waste Hero</div>
+            <div class="badge-card-desc">10+ Meals Rescued</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Share Eco Card Preview -->
+      <div class="eco-share-card-preview" id="ecoShareCardPreview">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+          <div style="display:flex; align-items:center; gap:0.4rem; font-weight:800;">
+            <span>🌿</span> Cravely Zero-Waste Pass
+          </div>
+          <span style="font-size:0.75rem; background:rgba(255,255,255,0.2); padding:0.15rem 0.5rem; border-radius:12px;" id="ecoCardMemberSince">Verified Member</span>
+        </div>
+        <div style="font-size:1.3rem; font-weight:900;" id="ecoCardUserName">Alex Patel</div>
+        <div style="font-size:0.85rem; opacity:0.9; margin-bottom:1rem;" id="ecoCardLocality">Bandra, Mumbai</div>
+
+        <div style="display:flex; gap:1.5rem; margin-top:0.8rem; border-top:1px solid rgba(255,255,255,0.2); padding-top:0.8rem;">
+          <div>
+            <div style="font-size:1.4rem; font-weight:900;" id="ecoCardMeals">0</div>
+            <div style="font-size:0.7rem; opacity:0.8;">Meals Rescued</div>
+          </div>
+          <div>
+            <div style="font-size:1.4rem; font-weight:900;" id="ecoCardCO2">0 kg</div>
+            <div style="font-size:0.7rem; opacity:0.8;">CO₂ Prevented</div>
+          </div>
+          <div>
+            <div style="font-size:1.4rem; font-weight:900;" id="ecoCardSaved">₹0</div>
+            <div style="font-size:0.7rem; opacity:0.8;">₹ Saved</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-outline" id="copyEcoCardBtn" style="width:100%; margin-top:0.8rem; justify-content:center;">
+        <i class="fas fa-share-nodes"></i> Share Eco-Impact Card
+      </button>
+    </div>
+
+    <!-- ==================== TAB 6: ACTIVE PICKUP CODES ==================== -->
+    <div class="cravely-tab-pane" id="pane-pickup-codes">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem;">
+        <div>
+          <h3 style="font-size:1.15rem; font-weight:800;">🎟️ Active Pickup Passes</h3>
+          <p style="color:var(--gray); font-size:0.82rem;">Show your live pickup code & QR scanner at the restaurant counter.</p>
+        </div>
+      </div>
+
+      <div class="active-pickup-grid" id="activePickupsContainer">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="toast-container" id="toastContainer"></div>
 
 <!-- JAVASCRIPT LOGIC -->
@@ -3069,6 +4016,9 @@
         <div class="food-card">
           <div class="food-image-wrap">
             <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <button class="card-fav-btn ${isDealSaved(item.id) ? 'saved' : ''}" onclick="toggleSaveDeal(event, ${item.id})" title="Save to favorites">
+              <i class="${isDealSaved(item.id) ? 'fas fa-heart' : 'far fa-heart'}"></i>
+            </button>
             <span class="diet-badge ${item.type}">
               <span class="diet-dot"></span>
               ${item.type === 'veg' ? 'Pure Veg' : 'Non-Veg'}
@@ -3165,6 +4115,9 @@
         <div class="food-card" style="border: 2px solid rgba(139, 92, 246, 0.35); box-shadow: 0 12px 30px -8px rgba(139, 92, 246, 0.2);">
           <div class="food-image-wrap">
             <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <button class="card-fav-btn ${isDealSaved(item.id) ? 'saved' : ''}" onclick="toggleSaveDeal(event, ${item.id})" title="Save to favorites">
+              <i class="${isDealSaved(item.id) ? 'fas fa-heart' : 'far fa-heart'}"></i>
+            </button>
             <span class="diet-badge ${item.type}">
               <span class="diet-dot"></span>
               ${item.type === 'veg' ? 'Pure Veg' : 'Non-Veg'}
@@ -3528,20 +4481,6 @@
     localStorage.setItem('cravely_cust_phone', custPhone);
     if (custEmail) localStorage.setItem('cravely_cust_email', custEmail);
 
-    // Save order into AI Order History for personalized recommendation learning
-    try {
-      let history = JSON.parse(localStorage.getItem('cravely_order_history') || '[]');
-      history.push({
-        title: activeSelectedDeal.title,
-        restaurant: activeSelectedDeal.restaurant,
-        city: activeSelectedDeal.city,
-        category: activeSelectedDeal.category || 'food',
-        price: activeSelectedDeal.priceDiscount,
-        date: new Date().toISOString()
-      });
-      localStorage.setItem('cravely_order_history', JSON.stringify(history));
-    } catch(e) {}
-
     const btn = document.getElementById('confirmReserveBtn');
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing UPI for ' + custName + '...';
     btn.disabled = true;
@@ -3555,6 +4494,61 @@
       document.getElementById('cartCount').innerText = savedMealCount;
 
       const randomCode = 'CRV-' + Math.floor(1000 + Math.random() * 9000);
+      const randomOtp = Math.floor(1000 + Math.random() * 9000);
+      const totalPaid = activeSelectedDeal.priceDiscount * currentModalQty;
+      const origTotal = activeSelectedDeal.priceOriginal * currentModalQty;
+
+      // Save rich order into AI Order History
+      try {
+        let history = JSON.parse(localStorage.getItem('cravely_order_history') || '[]');
+        const newOrder = {
+          id: Date.now(),
+          code: randomCode,
+          otp: randomOtp,
+          title: activeSelectedDeal.title,
+          restaurant: activeSelectedDeal.restaurant,
+          city: activeSelectedDeal.city,
+          area: activeSelectedDeal.area || '',
+          category: activeSelectedDeal.category || 'veg',
+          price: totalPaid,
+          priceOriginal: origTotal,
+          discountPct: activeSelectedDeal.discountPct || 60,
+          qty: currentModalQty,
+          image: activeSelectedDeal.image,
+          date: new Date().toISOString(),
+          status: 'active',
+          pickupSlot: pickupSlotText,
+          notes: custNotes
+        };
+        history.unshift(newOrder);
+        localStorage.setItem('cravely_order_history', JSON.stringify(history));
+
+        // Also add to Active Pickups list
+        let activeList = JSON.parse(localStorage.getItem('cravely_active_pickups') || '[]');
+        activeList.unshift({
+          id: newOrder.id,
+          code: randomCode,
+          otp: randomOtp,
+          dealId: activeSelectedDeal.id,
+          title: activeSelectedDeal.title,
+          restaurant: activeSelectedDeal.restaurant,
+          city: activeSelectedDeal.city,
+          area: activeSelectedDeal.area || '',
+          price: totalPaid,
+          priceOriginal: origTotal,
+          qty: currentModalQty,
+          image: activeSelectedDeal.image,
+          pickupSlot: pickupSlotText,
+          placedAt: new Date().toISOString(),
+          expiresAt: Date.now() + 45 * 60 * 1000, // 45 minutes collection window
+          status: 'active',
+          notes: custNotes
+        });
+        localStorage.setItem('cravely_active_pickups', JSON.stringify(activeList));
+      } catch(e) {}
+
+      updateDashboardBadges();
+      refreshMyCravelyTabs();
       document.getElementById('successPickupCode').innerText = randomCode;
       document.getElementById('successDetailsText').innerText = `${activeSelectedDeal.title} (${activeSelectedDeal.city}) • ${currentModalQty} Meal(s)`;
       document.getElementById('successCustName').innerText = custName;
@@ -3876,12 +4870,13 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Cart button click shows toast of saved meals
+  // Cart button opens My Cravely Active Passes or Orders
   document.getElementById('cartBtn')?.addEventListener('click', () => {
-    if (savedMealCount === 0) {
-      showToast('🛒 You haven\'t reserved any meals yet. Grab a live flash drop!');
+    const activeList = getActivePickups();
+    if (activeList.length > 0) {
+      openMyCravely('pickup-codes');
     } else {
-      showToast(`🛒 You have ${savedMealCount} meal(s) reserved. Enjoy your food rescue!`);
+      openMyCravely('orders');
     }
   });
 
@@ -3889,6 +4884,862 @@
   renderDeals();
   renderAiRecommendations();
   updateCalculator();
+
+  // =========================================================
+  // 🌟 MY CRAVELY USER PROFILE & DASHBOARD ENGINE
+  // =========================================================
+
+  // Storage Helpers
+  function getUserProfile() {
+    try {
+      const stored = localStorage.getItem('cravely_user_profile');
+      if (stored) return JSON.parse(stored);
+    } catch(e) {}
+
+    // Fallback using individual keys or defaults
+    return {
+      name: localStorage.getItem('cravely_cust_name') || 'Alex Patel',
+      phone: localStorage.getItem('cravely_cust_phone') || '9876543210',
+      email: localStorage.getItem('cravely_cust_email') || 'alex@cravely.in',
+      locality: 'Bandra',
+      diet: 'veg',
+      avatar: '🥑',
+      spiceTolerance: 'medium',
+      maxBudget: 200,
+      aiLearning: true
+    };
+  }
+
+  function setUserProfile(profile) {
+    localStorage.setItem('cravely_user_profile', JSON.stringify(profile));
+    if (profile.name) localStorage.setItem('cravely_cust_name', profile.name);
+    if (profile.phone) localStorage.setItem('cravely_cust_phone', profile.phone);
+    if (profile.email) localStorage.setItem('cravely_cust_email', profile.email);
+    updateNavUserProfile();
+    updateDashboardBadges();
+  }
+
+  function getOrderHistory() {
+    try {
+      return JSON.parse(localStorage.getItem('cravely_order_history') || '[]');
+    } catch(e) {
+      return [];
+    }
+  }
+
+  function getActivePickups() {
+    try {
+      return JSON.parse(localStorage.getItem('cravely_active_pickups') || '[]');
+    } catch(e) {
+      return [];
+    }
+  }
+
+  function getSavedMeals() {
+    try {
+      return JSON.parse(localStorage.getItem('cravely_saved_meals') || '[]');
+    } catch(e) {
+      return [];
+    }
+  }
+
+  function isDealSaved(dealId) {
+    const saved = getSavedMeals();
+    return saved.includes(dealId);
+  }
+
+  // Favorite ❤️ Toggle
+  window.toggleSaveDeal = function(event, dealId) {
+    if (event) event.stopPropagation();
+    let saved = getSavedMeals();
+    const index = saved.indexOf(dealId);
+    let isAdded = false;
+
+    if (index > -1) {
+      saved.splice(index, 1);
+      isAdded = false;
+    } else {
+      saved.push(dealId);
+      isAdded = true;
+    }
+
+    localStorage.setItem('cravely_saved_meals', JSON.stringify(saved));
+
+    // Update heart icons across the page
+    renderDeals();
+    renderAiRecommendations();
+    updateDashboardBadges();
+    renderSavedMealsTab();
+
+    const deal = dealsData.find(d => d.id === dealId);
+    const title = deal ? deal.title : 'Meal';
+    showToast(isAdded ? `❤️ Added "${title}" to Saved Meals` : `🤍 Removed "${title}" from Saved Meals`);
+  };
+
+  // Nav Profile Display Update
+  function updateNavUserProfile() {
+    const profile = getUserProfile();
+    const navName = document.getElementById('navUserName');
+    const navAvatar = document.getElementById('navUserAvatar');
+    const headerAvatar = document.getElementById('modalHeaderAvatar');
+
+    if (navName) navName.innerText = profile.name ? profile.name.split(' ')[0] : 'My Cravely';
+    if (navAvatar) navAvatar.innerText = profile.avatar || '🥑';
+    if (headerAvatar) headerAvatar.innerText = profile.avatar || '🥑';
+  }
+
+  // Update Badge Counts in Nav and Tabs
+  function updateDashboardBadges() {
+    const orders = getOrderHistory();
+    const saved = getSavedMeals();
+    const active = getActivePickups();
+
+    // Orders badge
+    const tabOrdersBadge = document.getElementById('tabOrdersBadge');
+    if (tabOrdersBadge) tabOrdersBadge.innerText = orders.length;
+
+    // Saved badge
+    const tabSavedBadge = document.getElementById('tabSavedBadge');
+    if (tabSavedBadge) tabSavedBadge.innerText = saved.length;
+
+    // Active passes badge
+    const tabActivePassBadge = document.getElementById('tabActivePassBadge');
+    const navActiveBadge = document.getElementById('activePickupsNavBadge');
+    const btnActiveBadge = document.getElementById('activePickupsBtnBadge');
+
+    if (active.length > 0) {
+      if (tabActivePassBadge) { tabActivePassBadge.innerText = active.length; tabActivePassBadge.style.display = 'inline-block'; }
+      if (navActiveBadge) { navActiveBadge.innerText = active.length; navActiveBadge.style.display = 'inline-block'; }
+      if (btnActiveBadge) { btnActiveBadge.innerText = active.length; btnActiveBadge.style.display = 'inline-flex'; }
+    } else {
+      if (tabActivePassBadge) tabActivePassBadge.style.display = 'none';
+      if (navActiveBadge) navActiveBadge.style.display = 'none';
+      if (btnActiveBadge) btnActiveBadge.style.display = 'none';
+    }
+
+    // Update cart badge to reflect active passes count if any
+    const cartCountEl = document.getElementById('cartCount');
+    if (cartCountEl) {
+      cartCountEl.innerText = active.length > 0 ? active.length : orders.length;
+    }
+  }
+
+  // Open My Cravely Modal
+  window.openMyCravely = function(tabName = 'profile') {
+    const modal = document.getElementById('myCravelyModalBackdrop');
+    if (!modal) return;
+
+    modal.classList.add('active');
+    switchMyCravelyTab(tabName);
+    refreshMyCravelyTabs();
+  };
+
+  // Close My Cravely Modal
+  const closeMyCravelyBtn = document.getElementById('closeMyCravelyModal');
+  const myCravelyModal = document.getElementById('myCravelyModalBackdrop');
+  closeMyCravelyBtn?.addEventListener('click', () => myCravelyModal.classList.remove('active'));
+  myCravelyModal?.addEventListener('click', (e) => {
+    if (e.target === myCravelyModal) myCravelyModal.classList.remove('active');
+  });
+
+  // Switch Tabs in My Cravely
+  function switchMyCravelyTab(tabName) {
+    document.querySelectorAll('#myCravelyTabs .cravely-tab-item').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-tab') === tabName);
+    });
+
+    document.querySelectorAll('.cravely-tab-pane').forEach(pane => {
+      pane.classList.remove('active');
+    });
+
+    const targetPane = document.getElementById(`pane-${tabName}`);
+    if (targetPane) targetPane.classList.add('active');
+  }
+
+  // Tab click listeners
+  document.querySelectorAll('#myCravelyTabs .cravely-tab-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.getAttribute('data-tab');
+      switchMyCravelyTab(tab);
+      refreshMyCravelyTabs();
+    });
+  });
+
+  function refreshMyCravelyTabs() {
+    renderProfileTab();
+    renderOrdersTab();
+    renderSavedMealsTab();
+    renderAiPrefTab();
+    renderImpactTab();
+    renderActivePickupsTab();
+    updateDashboardBadges();
+  }
+
+  // 1. RENDER PROFILE TAB
+  function renderProfileTab() {
+    const profile = getUserProfile();
+    const orders = getOrderHistory();
+
+    // Calculate total rescues and savings
+    let totalSaved = 0;
+    orders.forEach(o => {
+      const orig = o.priceOriginal || (o.price ? o.price * 2.5 : 200);
+      const paid = o.price || 100;
+      totalSaved += Math.max(0, orig - paid);
+    });
+
+    // Level calculation
+    const count = orders.length;
+    let levelName = '🌱 Food Rescue Explorer';
+    if (count >= 10) levelName = '👑 Zero-Waste Legend • Level 4';
+    else if (count >= 5) levelName = '🌿 Green Guardian • Level 3';
+    else if (count >= 2) levelName = '🥑 Eco Warrior • Level 2';
+
+    // Update Hero Card in Profile
+    const heroAvatar = document.getElementById('heroAvatarEmoji');
+    const heroName = document.getElementById('heroUserName');
+    const heroPhone = document.getElementById('heroUserPhone');
+    const heroTier = document.getElementById('heroUserTier');
+    const statRescues = document.getElementById('profileStatRescues');
+    const statSaved = document.getElementById('profileStatSaved');
+
+    if (heroAvatar) heroAvatar.innerText = profile.avatar || '🥑';
+    if (heroName) heroName.innerText = profile.name || 'Alex Patel';
+    if (heroPhone) heroPhone.innerText = profile.phone ? `+91 ${profile.phone}` : '+91 98765 43210';
+    if (heroTier) heroTier.innerHTML = `<i class="fas fa-medal"></i> ${levelName}`;
+    if (statRescues) statRescues.innerText = count;
+    if (statSaved) statSaved.innerText = `₹${totalSaved.toLocaleString('en-IN')}`;
+
+    // Update Form Inputs
+    const profName = document.getElementById('profName');
+    const profPhone = document.getElementById('profPhone');
+    const profEmail = document.getElementById('profEmail');
+    const profLocality = document.getElementById('profLocality');
+
+    if (profName && !profName.value) profName.value = profile.name || '';
+    if (profPhone && !profPhone.value) profPhone.value = profile.phone || '';
+    if (profEmail && !profEmail.value) profEmail.value = profile.email || '';
+    if (profLocality && profile.locality) profLocality.value = profile.locality;
+
+    // Diet pills
+    document.querySelectorAll('#profDietPills .diet-select-pill').forEach(pill => {
+      pill.classList.toggle('selected', pill.getAttribute('data-diet') === (profile.diet || 'veg'));
+    });
+
+    // Avatar Picker selection
+    document.querySelectorAll('#avatarGrid .avatar-option').forEach(opt => {
+      opt.classList.toggle('selected', opt.getAttribute('data-avatar') === (profile.avatar || '🥑'));
+    });
+  }
+
+  // Toggle Avatar Picker
+  document.getElementById('profileAvatarDisplay')?.addEventListener('click', () => {
+    const sec = document.getElementById('avatarPickerSection');
+    if (sec) sec.style.display = sec.style.display === 'none' ? 'block' : 'none';
+  });
+
+  // Select Avatar
+  document.querySelectorAll('#avatarGrid .avatar-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('#avatarGrid .avatar-option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      const avatar = opt.getAttribute('data-avatar');
+      const profile = getUserProfile();
+      profile.avatar = avatar;
+      setUserProfile(profile);
+      renderProfileTab();
+      showToast(`Avatar updated to ${avatar}!`);
+    });
+  });
+
+  // Select Diet Pill
+  document.querySelectorAll('#profDietPills .diet-select-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('#profDietPills .diet-select-pill').forEach(p => p.classList.remove('selected'));
+      pill.classList.add('selected');
+    });
+  });
+
+  // Save Profile Form
+  document.getElementById('profileForm')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('profName').value.trim();
+    const phone = document.getElementById('profPhone').value.trim();
+    const email = document.getElementById('profEmail').value.trim();
+    const locality = document.getElementById('profLocality').value;
+    const selectedDietEl = document.querySelector('#profDietPills .diet-select-pill.selected');
+    const diet = selectedDietEl ? selectedDietEl.getAttribute('data-diet') : 'veg';
+    const selectedAvatarEl = document.querySelector('#avatarGrid .avatar-option.selected');
+    const avatar = selectedAvatarEl ? selectedAvatarEl.getAttribute('data-avatar') : '🥑';
+
+    const profile = {
+      ...getUserProfile(),
+      name,
+      phone,
+      email,
+      locality,
+      diet,
+      avatar
+    };
+
+    setUserProfile(profile);
+    showToast(`✅ Profile for ${name} saved successfully!`);
+    renderProfileTab();
+  });
+
+  // Load Sample Demo Data
+  document.getElementById('loadDemoDataBtn')?.addEventListener('click', () => {
+    loadSampleOrders();
+    showToast('🎉 Loaded sample surplus food rescues! Check out My Orders & My Impact.');
+  });
+
+  function loadSampleOrders() {
+    const sampleOrders = [
+      {
+        id: 1711001001,
+        code: "CRV-7429",
+        otp: 3812,
+        title: "Royal Paneer Dum Biryani",
+        restaurant: "Lucky Restaurant & Grill",
+        city: "Bandra",
+        area: "Bandra West (Hill Road)",
+        category: "veg",
+        price: 119,
+        priceOriginal: 320,
+        discountPct: 63,
+        qty: 1,
+        image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&auto=format&fit=crop&q=60",
+        date: new Date(Date.now() - 86400000 * 2).toISOString(),
+        status: "completed",
+        pickupSlot: "Evening (8:00 - 9:00 PM)",
+        notes: "Extra mint chutney requested"
+      },
+      {
+        id: 1711001002,
+        code: "CRV-5104",
+        otp: 9421,
+        title: "Special Mysore Masala Dosa Feast",
+        restaurant: "South Tiffin Express",
+        city: "Andheri",
+        area: "Andheri West (Lokhandwala)",
+        category: "veg",
+        price: 138,
+        priceOriginal: 380,
+        discountPct: 64,
+        qty: 2,
+        image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60",
+        date: new Date(Date.now() - 86400000 * 5).toISOString(),
+        status: "completed",
+        pickupSlot: "Late Night (10:00 - 11:15 PM)",
+        notes: ""
+      },
+      {
+        id: 1711001003,
+        code: "CRV-9820",
+        otp: 7120,
+        title: "Cheese Pav Bhaji Mega",
+        restaurant: "Achija Khau Galli Corner",
+        city: "Ghatkopar",
+        area: "Ghatkopar East (Khau Galli)",
+        category: "fast-food",
+        price: 89,
+        priceOriginal: 240,
+        discountPct: 63,
+        qty: 1,
+        image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=60",
+        date: new Date(Date.now() - 86400000 * 8).toISOString(),
+        status: "completed",
+        pickupSlot: "Evening (8:00 - 9:00 PM)",
+        notes: ""
+      }
+    ];
+
+    localStorage.setItem('cravely_order_history', JSON.stringify(sampleOrders));
+
+    // Also add 1 active pickup for instant testing
+    const sampleActive = [
+      {
+        id: Date.now(),
+        code: "CRV-8942",
+        otp: 4819,
+        dealId: 4,
+        title: "Fresh Mawa Cake Box (4pc)",
+        restaurant: "B. Merwan Heritage Bakery",
+        city: "Grant Road",
+        area: "Grant Road Station East",
+        price: 69,
+        priceOriginal: 180,
+        qty: 1,
+        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=60",
+        pickupSlot: "Immediate (Next 30 Mins)",
+        placedAt: new Date().toISOString(),
+        expiresAt: Date.now() + 25 * 60 * 1000,
+        status: "active",
+        notes: "Package nicely for takeaway"
+      }
+    ];
+    localStorage.setItem('cravely_active_pickups', JSON.stringify(sampleActive));
+
+    // Add 2 saved favorites
+    localStorage.setItem('cravely_saved_meals', JSON.stringify([1, 2, 7]));
+
+    refreshMyCravelyTabs();
+    renderDeals();
+    renderAiRecommendations();
+  }
+
+  // 2. RENDER MY ORDERS TAB
+  function renderOrdersTab() {
+    const container = document.getElementById('orderHistoryContainer');
+    if (!container) return;
+
+    const orders = getOrderHistory();
+
+    if (orders.length === 0) {
+      container.innerHTML = `
+        <div style="text-align:center; padding:3rem 1.5rem; background:var(--card-bg); border-radius:24px; border:1px solid var(--glass-border);">
+          <div style="font-size:3rem; margin-bottom:0.8rem;">🛍️</div>
+          <h4 style="font-size:1.2rem; font-weight:800; margin-bottom:0.4rem;">No Surplus Orders Yet</h4>
+          <p style="color:var(--gray); font-size:0.9rem; max-width:400px; margin:0 auto 1.5rem;">
+            When you rescue discounted flash drop meals or surprise boxes, your pickup receipts and savings will appear here.
+          </p>
+          <div style="display:flex; justify-content:center; gap:0.8rem; flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="document.getElementById('myCravelyModalBackdrop').classList.remove('active'); window.location.href='#deals';">
+              <i class="fas fa-fire"></i> Browse Live Deals
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="loadSampleOrders();">
+              <i class="fas fa-wand-magic-sparkles"></i> Load Demo Orders
+            </button>
+          </div>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = orders.map(order => {
+      const orig = order.priceOriginal || (order.price ? Math.round(order.price * 2.6) : 200);
+      const paid = order.price || 99;
+      const saved = Math.max(0, orig - paid);
+      const formattedDate = order.date ? new Date(order.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Recent';
+      const imgUrl = order.image || "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=60";
+      const isCompleted = order.status === 'completed';
+
+      return `
+        <div class="order-item-card">
+          <img src="${imgUrl}" alt="${order.title}" class="order-item-thumb" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=60'">
+
+          <div>
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.3rem; flex-wrap:wrap;">
+              <span class="order-item-code-badge">${order.code || 'CRV-ORDER'}</span>
+              <span class="order-item-status-pill ${isCompleted ? 'completed' : 'active'}">
+                <i class="fas ${isCompleted ? 'fa-check-circle' : 'fa-clock'}"></i>
+                ${isCompleted ? 'Collected & Rescued' : 'Active Pickup'}
+              </span>
+              <span style="font-size:0.75rem; color:var(--gray);"><i class="fas fa-calendar-days"></i> ${formattedDate}</span>
+            </div>
+
+            <h4 style="font-size:1.05rem; font-weight:800; margin-bottom:0.2rem;">${order.title} ${order.qty > 1 ? `(${order.qty}x)` : ''}</h4>
+            <div style="font-size:0.85rem; color:var(--gray);"><i class="fas fa-store"></i> ${order.restaurant} • <i class="fas fa-location-dot"></i> ${order.city} ${order.area ? `(${order.area})` : ''}</div>
+            ${order.notes ? `<div style="font-size:0.78rem; color:var(--gray); margin-top:0.2rem;"><em>Note: "${order.notes}"</em></div>` : ''}
+          </div>
+
+          <div style="text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:0.4rem;">
+            <div>
+              <span style="font-size:1.25rem; font-weight:900; color:var(--soft-orange);">₹${paid}</span>
+              <span style="font-size:0.85rem; text-decoration:line-through; color:var(--gray); margin-left:4px;">₹${orig}</span>
+            </div>
+            <span style="font-size:0.75rem; font-weight:800; color:var(--sage-dark); background:rgba(143,191,159,0.2); padding:0.15rem 0.5rem; border-radius:10px;">Saved ₹${saved}</span>
+
+            <div style="display:flex; gap:0.4rem; margin-top:0.4rem;">
+              <button class="btn btn-outline btn-sm" style="padding:0.3rem 0.65rem; font-size:0.75rem;" onclick="viewOrderSlip('${order.code || 'CRV-ORDER'}', '${order.title.replace(/'/g, "\'")}', '${order.restaurant.replace(/'/g, "\'")}', '${paid}', '${saved}')">
+                <i class="fas fa-receipt"></i> Slip
+              </button>
+              <button class="btn btn-primary btn-sm" style="padding:0.3rem 0.65rem; font-size:0.75rem;" onclick="reorderSimilarMeal('${order.city}', '${order.category}')">
+                <i class="fas fa-rotate"></i> Reorder
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Clear Order History
+  document.getElementById('clearOrdersBtn')?.addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear your local rescue history?')) {
+      localStorage.removeItem('cravely_order_history');
+      refreshMyCravelyTabs();
+      showToast('🗑️ Order history cleared.');
+    }
+  });
+
+  // View Order Slip
+  window.viewOrderSlip = function(code, title, restaurant, paid, saved) {
+    showToast(`🧾 Receipt ${code}: ${title} at ${restaurant} (Paid ₹${paid}, Saved ₹${saved})`);
+  };
+
+  // Reorder Similar Meal
+  window.reorderSimilarMeal = function(city, category) {
+    document.getElementById('myCravelyModalBackdrop')?.classList.remove('active');
+    selectCity(city.toLowerCase());
+    window.location.href = '#deals';
+    showToast(`🔍 Showing live surplus deals in ${city}!`);
+  };
+
+  // 3. RENDER SAVED MEALS TAB
+  function renderSavedMealsTab() {
+    const container = document.getElementById('savedMealsContainer');
+    if (!container) return;
+
+    const savedIds = getSavedMeals();
+    const savedDeals = dealsData.filter(d => savedIds.includes(d.id));
+
+    if (savedDeals.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column:1/-1; text-align:center; padding:3rem 1.5rem; background:var(--card-bg); border-radius:24px; border:1px solid var(--glass-border);">
+          <div style="font-size:3rem; margin-bottom:0.8rem;">❤️</div>
+          <h4 style="font-size:1.2rem; font-weight:800; margin-bottom:0.4rem;">No Saved Meals Yet</h4>
+          <p style="color:var(--gray); font-size:0.9rem; max-width:380px; margin:0 auto 1.5rem;">
+            Click the heart icon on any live flash deal or AI pick to save your favorite dishes here for quick booking!
+          </p>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('myCravelyModalBackdrop').classList.remove('active'); window.location.href='#deals';">
+            <i class="fas fa-fire"></i> Explore Flash Drops
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = savedDeals.map(deal => {
+      return `
+        <div class="food-card" style="margin-bottom:0;">
+          <div class="food-image-wrap">
+            <img src="${deal.image}" alt="${deal.title}" loading="lazy">
+            <button class="card-fav-btn saved" onclick="toggleSaveDeal(event, ${deal.id})" title="Remove from favorites">
+              <i class="fas fa-heart"></i>
+            </button>
+            <span class="diet-badge ${deal.type}">
+              <span class="diet-dot"></span>
+              ${deal.type === 'veg' ? 'Pure Veg' : 'Non-Veg'}
+            </span>
+          </div>
+
+          <div class="food-card-body" style="padding:1rem;">
+            <div>
+              <div class="food-city-tag"><i class="fas fa-location-dot"></i> ${deal.city.toUpperCase()} • ${deal.area}</div>
+              <h4 class="food-title" style="font-size:1rem;">${deal.title}</h4>
+              <div class="restaurant-name" style="font-size:0.8rem;"><i class="fas fa-store"></i> ${deal.restaurant}</div>
+            </div>
+
+            <div style="margin-top:0.8rem;">
+              <div class="food-meta" style="margin-bottom:0.6rem;">
+                <div class="pricing">
+                  <span class="price-discount">₹${deal.priceDiscount}</span>
+                  <span class="price-original">₹${deal.priceOriginal}</span>
+                </div>
+                <span class="discount-tag">${deal.discountPct}% OFF</span>
+              </div>
+
+              <button class="btn btn-primary ripple-btn" style="width:100%; font-size:0.85rem; padding:0.6rem;" onclick="document.getElementById('myCravelyModalBackdrop').classList.remove('active'); openReservationModal(${deal.id});">
+                <i class="fas fa-bag-shopping"></i> Reserve Now (₹${deal.priceDiscount})
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // 4. RENDER AI PREFERENCES TAB
+  function renderAiPrefTab() {
+    const profile = getUserProfile();
+
+    // Budget slider
+    const slider = document.getElementById('prefBudgetSlider');
+    const valText = document.getElementById('prefBudgetVal');
+    if (slider && valText) {
+      slider.value = profile.maxBudget || 200;
+      valText.innerText = `₹${slider.value}`;
+    }
+
+    // Spice pills
+    document.querySelectorAll('#prefSpiceSelector .spice-pill-btn').forEach(btn => {
+      btn.classList.toggle('selected', btn.getAttribute('data-spice') === (profile.spiceTolerance || 'medium'));
+    });
+
+    // AI toggle
+    const toggle = document.getElementById('prefAiLearnToggle');
+    if (toggle) toggle.checked = profile.aiLearning !== false;
+  }
+
+  // Spice pill clicks
+  document.querySelectorAll('#prefSpiceSelector .spice-pill-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#prefSpiceSelector .spice-pill-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+    });
+  });
+
+  // Budget slider input
+  document.getElementById('prefBudgetSlider')?.addEventListener('input', (e) => {
+    const valText = document.getElementById('prefBudgetVal');
+    if (valText) valText.innerText = `₹${e.target.value}`;
+  });
+
+  // Save AI Preferences
+  document.getElementById('saveAiPrefsBtn')?.addEventListener('click', () => {
+    const selectedSpiceEl = document.querySelector('#prefSpiceSelector .spice-pill-btn.selected');
+    const spice = selectedSpiceEl ? selectedSpiceEl.getAttribute('data-spice') : 'medium';
+    const maxBudget = parseInt(document.getElementById('prefBudgetSlider')?.value || '200');
+    const aiLearning = document.getElementById('prefAiLearnToggle')?.checked !== false;
+
+    // Active taste cravings
+    const activeCravings = Array.from(document.querySelectorAll('#prefTasteChips .taste-chip.active')).map(c => c.getAttribute('data-pref'));
+
+    const profile = {
+      ...getUserProfile(),
+      spiceTolerance: spice,
+      maxBudget,
+      aiLearning,
+      cravings: activeCravings
+    };
+
+    setUserProfile(profile);
+
+    // Sync taste chips in hero recommendation bar
+    document.querySelectorAll('#aiTasteChips .taste-chip').forEach(c => {
+      const pref = c.getAttribute('data-pref');
+      c.classList.toggle('active', activeCravings.includes(pref));
+    });
+
+    renderAiRecommendations();
+    showToast('✨ AI Taste Match preferences updated! Your recommendation feed has re-calibrated.');
+  });
+
+  // 5. RENDER MY IMPACT TAB
+  function renderImpactTab() {
+    const orders = getOrderHistory();
+    const profile = getUserProfile();
+
+    let totalPaid = 0;
+    let totalOrig = 0;
+    orders.forEach(o => {
+      const orig = o.priceOriginal || (o.price ? Math.round(o.price * 2.6) : 200);
+      const paid = o.price || 100;
+      totalPaid += paid;
+      totalOrig += orig;
+    });
+
+    const mealCount = orders.length;
+    const moneySaved = Math.max(0, totalOrig - totalPaid);
+    const co2Saved = (mealCount * 0.85).toFixed(1);
+    const waterSaved = mealCount * 320;
+
+    // Update Quad Stats
+    const elMeals = document.getElementById('impactMealsRescued');
+    const elMoney = document.getElementById('impactMoneySaved');
+    const elCO2 = document.getElementById('impactCO2Saved');
+    const elWater = document.getElementById('impactWaterSaved');
+
+    if (elMeals) elMeals.innerText = mealCount;
+    if (elMoney) elMoney.innerText = `₹${moneySaved.toLocaleString('en-IN')}`;
+    if (elCO2) elCO2.innerText = `${co2Saved} kg`;
+    if (elWater) elWater.innerText = `${waterSaved.toLocaleString('en-IN')} L`;
+
+    // Eco Level Progress
+    let levelTitle = 'Level 1: Food Rescue Explorer';
+    let nextTarget = 3;
+    let progressPct = Math.min(100, Math.round((mealCount / nextTarget) * 100));
+
+    if (mealCount >= 10) {
+      levelTitle = 'Level 4: Zero Waste Legend 👑';
+      nextTarget = 25;
+      progressPct = Math.min(100, Math.round((mealCount / nextTarget) * 100));
+    } else if (mealCount >= 5) {
+      levelTitle = 'Level 3: Green Guardian 🌿';
+      nextTarget = 10;
+      progressPct = Math.min(100, Math.round((mealCount / nextTarget) * 100));
+    } else if (mealCount >= 2) {
+      levelTitle = 'Level 2: Eco Warrior 🥑';
+      nextTarget = 5;
+      progressPct = Math.min(100, Math.round((mealCount / nextTarget) * 100));
+    }
+
+    const elLvlTitle = document.getElementById('impactLevelTitle');
+    const elLvlProg = document.getElementById('impactLevelProgress');
+    const elBar = document.getElementById('impactProgressBar');
+
+    if (elLvlTitle) elLvlTitle.innerText = levelTitle;
+    if (elLvlProg) elLvlProg.innerText = `${mealCount} / ${nextTarget} Rescues to Next Tier`;
+    if (elBar) elBar.style.width = `${Math.max(8, progressPct)}%`;
+
+    // Unlock badges
+    const badgeFirst = document.getElementById('badge-first-save');
+    const badgeCarbon = document.getElementById('badge-carbon-saver');
+    const badgeNight = document.getElementById('badge-night-saver');
+    const badgeMaster = document.getElementById('badge-master-saver');
+
+    if (badgeFirst) badgeFirst.classList.toggle('unlocked', mealCount >= 1);
+    if (badgeCarbon) badgeCarbon.classList.toggle('unlocked', parseFloat(co2Saved) >= 3.0);
+    if (badgeNight) badgeNight.classList.toggle('unlocked', orders.some(o => o.pickupSlot && o.pickupSlot.includes('Night')));
+    if (badgeMaster) badgeMaster.classList.toggle('unlocked', mealCount >= 5);
+
+    // Update Share Card Preview
+    const cardUser = document.getElementById('ecoCardUserName');
+    const cardLocality = document.getElementById('ecoCardLocality');
+    const cardMeals = document.getElementById('ecoCardMeals');
+    const cardCO2 = document.getElementById('ecoCardCO2');
+    const cardSaved = document.getElementById('ecoCardSaved');
+
+    if (cardUser) cardUser.innerText = profile.name || 'Alex Patel';
+    if (cardLocality) cardLocality.innerText = `${profile.locality || 'Bandra'}, Mumbai • ${levelTitle.split(':')[1] || 'Eco Rescuer'}`;
+    if (cardMeals) cardMeals.innerText = mealCount;
+    if (cardCO2) cardCO2.innerText = `${co2Saved} kg`;
+    if (cardSaved) cardSaved.innerText = `₹${moneySaved.toLocaleString('en-IN')}`;
+  }
+
+  // Share / Copy Eco Impact Card
+  document.getElementById('copyEcoCardBtn')?.addEventListener('click', () => {
+    const profile = getUserProfile();
+    const orders = getOrderHistory();
+    const count = orders.length;
+    let saved = 0;
+    orders.forEach(o => saved += Math.max(0, (o.priceOriginal || o.price * 2.5) - o.price));
+    const co2 = (count * 0.85).toFixed(1);
+
+    const shareText = `🌿 I've rescued ${count} surplus meals and prevented ${co2}kg of CO₂ emissions with Cravely! 🍽️ Saved ₹${saved} across Mumbai. Check out surplus drops at cravely.in!`;
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(shareText).then(() => {
+        if (typeof confetti === 'function') confetti({ particleCount: 50, spread: 60 });
+        showToast('🎉 Eco-Impact text copied to clipboard! Share on WhatsApp & Stories.');
+      });
+    } else {
+      showToast(shareText);
+    }
+  });
+
+  // 6. RENDER ACTIVE PICKUP CODES TAB
+  function renderActivePickupCodesTab() {
+    const container = document.getElementById('activePickupsContainer');
+    if (!container) return;
+
+    const activeList = getActivePickups();
+
+    if (activeList.length === 0) {
+      container.innerHTML = `
+        <div style="grid-column:1/-1; text-align:center; padding:3rem 1.5rem; background:var(--card-bg); border-radius:24px; border:1px solid var(--glass-border);">
+          <div style="font-size:3rem; margin-bottom:0.8rem;">🎟️</div>
+          <h4 style="font-size:1.2rem; font-weight:800; margin-bottom:0.4rem;">No Active Pickup Codes</h4>
+          <p style="color:var(--gray); font-size:0.9rem; max-width:400px; margin:0 auto 1.5rem;">
+            When you reserve a live meal or mystery box, your instant verification code, OTP and counter QR pass will show here.
+          </p>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('myCravelyModalBackdrop').classList.remove('active'); window.location.href='#deals';">
+            <i class="fas fa-fire"></i> Grab a Live Surplus Deal
+          </button>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = activeList.map(item => {
+      const now = Date.now();
+      const timeLeftMs = Math.max(0, (item.expiresAt || (now + 30 * 60 * 1000)) - now);
+      const mins = Math.floor(timeLeftMs / 60000);
+      const secs = Math.floor((timeLeftMs % 60000) / 1000);
+      const timeStr = `${mins}m ${secs < 10 ? '0' : ''}${secs}s`;
+
+      return `
+        <div class="active-pass-ticket">
+          <div class="active-pass-header">
+            <div>
+              <div style="font-size:0.75rem; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:1px;">COUNTER PICKUP CODE</div>
+              <div class="active-pass-code-huge" id="passCode-${item.id}">${item.code || 'CRV-8942'}</div>
+            </div>
+            <div class="active-countdown-pill" id="passTimer-${item.id}">
+              <i class="fas fa-stopwatch"></i> <span>${timeStr}</span>
+            </div>
+          </div>
+
+          <!-- Dynamic QR Graphic with scan laser -->
+          <div class="active-pass-qr-box">
+            <div class="qr-laser-line"></div>
+            <div style="font-size:3.5rem; color:#1f2937; line-height:1;"><i class="fas fa-qrcode"></i></div>
+            <div style="font-size:0.75rem; color:#4b5563; font-weight:700; letter-spacing:1px;">COUNTER SCAN OTP: <strong style="color:#ef4444; font-size:0.9rem;">${item.otp || '4821'}</strong></div>
+          </div>
+
+          <div style="margin-bottom:1rem; font-size:0.88rem;">
+            <div style="font-weight:800; font-size:1.05rem; margin-bottom:0.2rem;">${item.title} ${item.qty > 1 ? `(${item.qty}x)` : ''}</div>
+            <div style="color:var(--gray);"><i class="fas fa-store"></i> ${item.restaurant}</div>
+            <div style="color:var(--gray);"><i class="fas fa-location-dot"></i> ${item.city} ${item.area ? `(${item.area})` : ''}</div>
+            <div style="font-size:0.8rem; color:var(--sage-dark); font-weight:700; margin-top:0.3rem;"><i class="fas fa-clock"></i> Window: ${item.pickupSlot || 'Next 30 Mins'}</div>
+            ${item.notes ? `<div style="font-size:0.78rem; color:var(--gray); margin-top:0.2rem;"><em>Note: "${item.notes}"</em></div>` : ''}
+          </div>
+
+          <div style="display:flex; gap:0.6rem; margin-top:0.8rem;">
+            <button class="btn btn-primary btn-sm ripple-btn" style="flex:1; justify-content:center;" onclick="markPickupAsCollected('${item.code}')">
+              <i class="fas fa-check-double"></i> Mark as Collected
+            </button>
+            <button class="btn btn-outline btn-sm" style="padding:0.4rem 0.7rem;" title="Directions on Google Maps" onclick="openDirections('${item.restaurant}', '${item.city}')">
+              <i class="fas fa-diamond-turn-right"></i>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Mark Active Pickup as Collected
+  window.markPickupAsCollected = function(code) {
+    let activeList = getActivePickups();
+    const item = activeList.find(a => a.code === code);
+
+    activeList = activeList.filter(a => a.code !== code);
+    localStorage.setItem('cravely_active_pickups', JSON.stringify(activeList));
+
+    // Update status in order history
+    let orders = getOrderHistory();
+    orders.forEach(o => {
+      if (o.code === code) o.status = 'completed';
+    });
+    localStorage.setItem('cravely_order_history', JSON.stringify(orders));
+
+    if (typeof confetti === 'function') {
+      confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
+    }
+
+    showToast(`🎉 Meal collected! Thank you for rescuing surplus food with Cravely.`);
+    refreshMyCravelyTabs();
+    updateDashboardBadges();
+  };
+
+  // Open Google Maps Directions
+  window.openDirections = function(restaurant, city) {
+    const query = encodeURIComponent(`${restaurant} ${city} Mumbai`);
+    window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+  };
+
+  // Active Pass Countdown Ticker (1 sec interval)
+  setInterval(() => {
+    const activeList = getActivePickups();
+    if (activeList.length === 0) return;
+
+    const now = Date.now();
+    activeList.forEach(item => {
+      const timerEl = document.getElementById(`passTimer-${item.id}`);
+      if (timerEl) {
+        const timeLeftMs = Math.max(0, (item.expiresAt || (now + 30 * 60 * 1000)) - now);
+        const mins = Math.floor(timeLeftMs / 60000);
+        const secs = Math.floor((timeLeftMs % 60000) / 1000);
+        timerEl.querySelector('span').innerText = `${mins}m ${secs < 10 ? '0' : ''}${secs}s`;
+      }
+    });
+  }, 1000);
+
+  // Initial Sync of User Profile and Badges
+  updateNavUserProfile();
+  updateDashboardBadges();
+
 </script>
 </body>
 </html>

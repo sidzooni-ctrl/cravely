@@ -19,13 +19,21 @@
     - 👑 **Deluxe Feast**: ₹299 *(Orig. ₹750 • 4–5 Premium Items + Beverage)*
 - **Interactive Peek & Reveal**: Toggle between "Peek Inside (AI Breakdown)" to inspect portions or keep it sealed as a thrilling surprise!
 
-### 2. ✨ AI Personalized Recommendations ("Cravely AI Taste Match")
+### 2. 👤 "My Cravely" Member Hub & User Dashboard
+- **👤 Profile Management**: Customize foodie avatar (🥑, 🍕, 🥗, 🍜, 🍰, 👑), full name, SMS/OTP phone number, email, neighborhood locality (Bandra, Andheri, Ghatkopar, Grant Road, Vasai), and dietary tags (Pure Veg, Non-Veg, Vegan, Jain, Eggetarian).
+- **🛍️ My Orders History**: Complete log of all past food rescues with prices paid, money saved, receipt slips, and 1-click reorder matching.
+- **❤️ Saved Meals & Wishlist**: Bookmark favorite surplus flash deals with instant 1-tap heart toggles (`cravely_saved_meals`) across the app and reserve directly from your saved list.
+- **🤖 My AI Preferences**: Fine-tune cuisine cravings, spice tolerance slider (Mild 🌿, Medium 🌶️, Fiery 🔥), max budget ceiling, and toggle adaptive machine learning.
+- **🌱 Personal Eco-Impact**: Real-time calculated counters for Meals Rescued, ₹ Saved, Kg CO₂ Emissions Prevented, and Litres of Water Conserved. Features environmental milestone badges and a generative shareable Eco-Impact Certificate.
+- **🎟️ Active Pickup Codes & Live Passes**: Live counter passes featuring high-visibility pickup codes (`CRV-XXXX`), simulated animated QR laser scanner, 4-digit counter OTP, live ticking collection timer, Google Maps directions, and 1-click "Mark as Collected" completion.
+
+### 3. ✨ AI Personalized Recommendations ("Cravely AI Taste Match")
 - **Adaptive Machine Learning Engine**: Analyzes user's previous meal saves, dietary profile, and neighborhood spending habits from local storage.
 - **Dynamic Confidence Scoring**: Displays high-accuracy match badges (e.g. `🤖 98% Taste Match`, `🔥 High Value Pick`).
 - **Interactive Taste Tuning**: Users can click real-time craving chips (Biryani & Curries, Street Snacks, Desserts, South Indian, Pizza, Budget <₹100) to instantly regenerate matched surplus deals.
 - **Continuous Learning**: Automatically learns from every completed reservation.
 
-### 3. 📍 Curated Locations & Flash Drops
+### 4. 📍 Curated Locations & Flash Drops
 - Real-time surplus listings from top eateries across major hubs:
   - **Bandra** (Hill Road, Pali Hill, Bandra Station)
   - **Andheri** (Lokhandwala, JB Nagar, Metro line)
@@ -35,32 +43,32 @@
 - **Dynamic Countdown Timers** showing real-time pickup windows for each live deal.
 - **Dietary & Category Filters**: Filter by Pure Veg 🌱, Non-Veg 🍗, Desserts & Bakery 🍰, and Street Food & Combos 🥪.
 
-### 4. ⚡ Instant Reservation with Customer Details & UPI Checkout
+### 5. ⚡ Instant Reservation with Customer Details & UPI Checkout
 - **Customer Verification & Basic Info**: Prompts user for their **Full Name**, **Mobile Number** (for SMS / OTP pickup verification), **Email**, and optional **Pickup Notes**.
 - **Smart Auto-Fill**: Remembers customer info in `localStorage` for 1-tap subsequent meal rescues.
 - **Flexible Pickup Windows**: Immediate (Next 30 mins), Evening (8–9 PM), Late Night (10–11:15 PM).
 - **Simulated Instant UPI Payment**: Google Pay, PhonePe, Paytm, and Pay-at-Counter.
 - **Customized Pickup Ticket**: Generates instant unique pickup code (`CRV-XXXX`) linked with customer name, phone, and area.
 
-### 5. 🤝 100% Zero-Waste NGO Redistribution Network
+### 6. 🤝 100% Zero-Waste NGO Redistribution Network
 - **End-of-Day Surplus Connect**: If prepared food is still remaining at restaurants after discounted customer windows close, restaurants can request a volunteer pickup in 1 click.
 - **Verified NGO Partnerships**: Integrated with **Roti Bank, Robin Hood Army, Feeding India, Akshaya Patra**, and local night shelters.
 - **Instant Dispatch Tracker**: Generates live volunteer assignment tickets (`NGO-XXXX`) with volunteer ETA and location routing.
 - **80G Tax Exemption & CSR Certificates**: Generates digital receipts for restaurants eligible for tax benefits and corporate social responsibility (CSR) compliance.
 - **NGO Recipient Onboarding**: Dedicated registration flow for registered charities and shelter homes.
 
-### 6. 🌍 Eco-Impact & Annual Money Savings Calculator
+### 7. 🌍 Eco-Impact & Annual Money Savings Calculator
 - Interactive weekly rescue slider tailored for dining averages:
   - 💰 **Annual ₹ Saved** (₹20,280/yr default for 3 meals/week)
   - 🌿 **Kg CO₂ Emissions Prevented**
   - 💧 **Litres of Water Conserved**
   - 🍽️ **Total Meals Rescued & Donated**
 
-### 7. 🏪 Restaurant Partner Portal & Revenue Estimator
+### 8. 🏪 Restaurant Partner Portal & Revenue Estimator
 - Dedicated partner onboarding modal with ROI calculator (Est. ₹42,000–₹85,000 extra monthly revenue).
 - Zero listing fees with customizable takeaway and donation slots.
 
-### 8. 🎨 Modern Glassmorphic UI & Micro-interactions
+### 9. 🎨 Modern Glassmorphic UI & Micro-interactions
 - Responsive glassmorphic aesthetic with dark mode toggle & `localStorage` persistence.
 - Animated floating canvas particles and live impact stats ticker.
 - Toast notification system and floating back-to-top button.
