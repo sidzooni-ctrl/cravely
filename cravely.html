@@ -1491,7 +1491,7 @@
        ========================================= */
     .card-fav-btn {
       position: absolute;
-      top: 12px;
+      bottom: 12px;
       right: 12px;
       width: 36px;
       height: 36px;
@@ -3802,7 +3802,7 @@
     }
   ];
 
-  let selectedCity = 'all';;
+  let selectedCity = 'all';
   let selectedCategory = 'all';
   let searchQuery = '';
   let activeSelectedDeal = null;
@@ -4015,7 +4015,7 @@
       return `
         <div class="food-card">
           <div class="food-image-wrap">
-            <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=60'">
             <button class="card-fav-btn ${isDealSaved(item.id) ? 'saved' : ''}" onclick="toggleSaveDeal(event, ${item.id})" title="Save to favorites">
               <i class="${isDealSaved(item.id) ? 'fas fa-heart' : 'far fa-heart'}"></i>
             </button>
@@ -4114,7 +4114,7 @@
       return `
         <div class="food-card" style="border: 2px solid rgba(139, 92, 246, 0.35); box-shadow: 0 12px 30px -8px rgba(139, 92, 246, 0.2);">
           <div class="food-image-wrap">
-            <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=60'">
             <button class="card-fav-btn ${isDealSaved(item.id) ? 'saved' : ''}" onclick="toggleSaveDeal(event, ${item.id})" title="Save to favorites">
               <i class="${isDealSaved(item.id) ? 'fas fa-heart' : 'far fa-heart'}"></i>
             </button>
@@ -4339,7 +4339,7 @@
     reserveModal.classList.add('active');
   });
 
-  // Countdown timer ticker
+  // Countdown timer ticker for live deals
   setInterval(() => {
     dealsData.forEach(item => {
       if (item.timerSeconds > 0) {
@@ -4348,7 +4348,12 @@
         if (timerEl) {
           const m = Math.floor(item.timerSeconds / 60);
           const s = item.timerSeconds % 60;
-          timerEl.querySelector('span').innerText = `${m}m ${s < 10 ? '0' : ''}${s}s`;
+          const span = timerEl.querySelector('span');
+          if (span) {
+            span.innerText = `${m}m ${s < 10 ? '0' : ''}${s}s`;
+          } else {
+            timerEl.innerText = `${m}m ${s < 10 ? '0' : ''}${s}s`;
+          }
         }
       }
     });
@@ -4395,7 +4400,7 @@
   const finishOrderBtn = document.getElementById('finishOrderBtn');
 
   window.openReservationModal = function(dealId) {
-    activeSelectedDeal = dealsData.find(d => d.id === dealId);
+    activeSelectedDeal = dealsData.find(d => d.id == dealId);
     if (!activeSelectedDeal) return;
 
     currentModalQty = 1;
@@ -5731,7 +5736,12 @@
         const timeLeftMs = Math.max(0, (item.expiresAt || (now + 30 * 60 * 1000)) - now);
         const mins = Math.floor(timeLeftMs / 60000);
         const secs = Math.floor((timeLeftMs % 60000) / 1000);
-        timerEl.querySelector('span').innerText = `${mins}m ${secs < 10 ? '0' : ''}${secs}s`;
+        const span = timerEl.querySelector('span');
+        if (span) {
+          span.innerText = `${mins}m ${secs < 10 ? '0' : ''}${secs}s`;
+        } else {
+          timerEl.innerText = `${mins}m ${secs < 10 ? '0' : ''}${secs}s`;
+        }
       }
     });
   }, 1000);
